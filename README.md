@@ -15,7 +15,8 @@ Cognição versionada da **Sylvia** — inteligência executiva da holding do fu
 
 | Pasta | Conteúdo |
 |---|---|
-| `cognicao/` | Protocolos da mente: memória, clippings, autonomia, heartbeat. |
+| raiz (`MEMORY.md`, `IDENTITY.md`, `USER.md`, `BOOT.md`, `memory/`) | Arquivos nativos do workspace OpenClaw — carregados automaticamente pelo runtime. |
+| `cognicao/` | Protocolos da mente: memória, clippings, autonomia, heartbeat, poderes. |
 | `empresas/` | Camada de negócio: Ginkgo (ecossistema + 10 produtos + briefs) e Scale Group. |
 | `operacao/` | Contas e canais, protocolo financeiro. |
 | `ginkgo-vault/` | Biblioteca e memória (Obsidian): cérebro, inbox de clippings, marca, conhecimento, estratégia, conteúdo, plataformas, financeiro, studio/agência, quarentena. |
@@ -24,7 +25,7 @@ Cognição versionada da **Sylvia** — inteligência executiva da holding do fu
 
 ## Runtime
 
-- **Alvo:** OpenClaw (canais Telegram/WhatsApp, heartbeat, skills) — `runtime/openclaw/SETUP.md`.
+- **Alvo:** OpenClaw — **este repo é o workspace** (`C:\sylvia-brain`); canais web/Telegram/WhatsApp, heartbeat, skills. Setup verificado: `runtime/openclaw/SETUP.md`. Poderes: `cognicao/PODERES.md`.
 - **Oficina:** Claude Cowork / Claude Code sobre este repo.
 - **Automação:** stack Docker `leaf` (n8n, Postgres, Redis, Evolution, AnythingLLM).
 - **Legado:** Hermes Agent em desativação — histórico em `MIGRATION.md`.

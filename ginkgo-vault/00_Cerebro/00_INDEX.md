@@ -22,7 +22,7 @@
 - Dados de cliente vivem nas respectivas pastas e são acessados somente no escopo necessário para a tarefa. O cérebro global pode registrar uma síntese operacional sanitizada — decisão, status, risco e próxima ação —, nunca transcrições brutas, PII, chaves, tokens ou segredos.
 - A Ginkgo Tree é o produto em `C:\dev\ginkgo-tree`; `C:\dev` concentra desenvolvimento, teste e produção. Esta vault é a biblioteca de comando pessoal e operacional da Sexta-feira e não substitui o repositório nem a memória runtime por tenant.
 - `75_Studio/` é a frente ativa de agenciamento, incluindo clientes, Ginkgo Motor e as redes da Ginkgo. Cada frente deve manter contexto, briefing, estratégia, entregas, métricas e próximo passo no seu próprio escopo.
-- `C:\sexta-feira\memory\` continua apenas como compatibilidade do runtime Hermes. Não é a fonte canônica para decisões novas.
+- `C:\sylvia-brain\runtime\hermes-memory-compat\` (ex-`memory\`) continua apenas como compatibilidade do runtime Hermes. Não é a fonte canônica para decisões novas.
 - Um clipping ou conversa pode gerar uma hipótese; só evidência verificável ou confirmação do fundador gera decisão canônica.
 
 ## Convenções de estado

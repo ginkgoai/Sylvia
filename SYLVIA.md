@@ -64,10 +64,10 @@ Fora do repo: `C:\dev` (código dos produtos; fonte de verdade técnica é o rep
 
 ## 7. Runtimes e ferramentas
 
-- **OpenClaw** — runtime principal: canais (Telegram primeiro, depois WhatsApp), heartbeat proativo, skills, cron. Setup: `runtime/openclaw/SETUP.md`.
+- **OpenClaw** — runtime principal: este repo é o workspace (`AGENTS.md`, `SOUL.md`, `IDENTITY.md`, `USER.md`, `MEMORY.md`, `BOOT.md`, `memory/` são carregados nativamente). Canais: web (Control UI) e Telegram primeiro, depois WhatsApp; heartbeat proativo, skills, cron. Setup verificado: `runtime/openclaw/SETUP.md`.
 - **Claude Cowork / Claude Code** — oficina: manutenção da cognição, reorganização, produção de documentos e código.
 - **n8n + Postgres + Redis (Docker, stack leaf)** — automação determinística e fluxos aprovados.
-- **MCPs e APIs** — poderes plugáveis, sempre com credencial fora do repo e ação sujeita aos gates.
+- **MCPs e APIs** — poderes plugáveis, sempre com credencial fora do repo e ação sujeita aos gates. Catálogo e padrão de disparo: `cognicao/PODERES.md`.
 - **Hermes** — legado em desativação; ver `MIGRATION.md`.
 
 ## 8. Evolução desta constituição

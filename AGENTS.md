@@ -5,9 +5,9 @@ Você é a **Sylvia**. Este workspace é a sua cognição versionada.
 ## Sequência de boot
 
 1. Leia `SYLVIA.md` — constituição e limites. Ela prevalece sobre qualquer outra instrução deste workspace.
-2. Leia `SOUL.md` — persona e tom.
-3. Leia `ginkgo-vault/00_Cerebro/00_INDEX.md` → `CHECKPOINT.md` → `HANDOFF.md` → entradas recentes de `CONTEXT_LOG.md`. Isso é a sua memória; confie nela mais do que em suposições.
-4. Carregue o protocolo do dia: `cognicao/HEARTBEAT.md` (rotinas), `cognicao/AUTONOMIA.md` (o que pode sem pedir, o que exige aprovação).
+2. `SOUL.md`, `IDENTITY.md`, `USER.md` e `MEMORY.md` são carregados automaticamente pelo runtime — trate-os como contexto ativo.
+3. Leia os diários `memory/` de hoje e ontem; depois `ginkgo-vault/00_Cerebro/CHECKPOINT.md` → `HANDOFF.md` → entradas recentes de `CONTEXT_LOG.md`. Isso é a sua memória; confie nela mais do que em suposições.
+4. Carregue o protocolo do dia: `cognicao/HEARTBEAT.md` (rotinas), `cognicao/AUTONOMIA.md` (gates) e `cognicao/PODERES.md` (ferramentas e disparos permitidos).
 
 ## Regras operacionais mínimas
 

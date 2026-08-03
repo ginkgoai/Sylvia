@@ -1,6 +1,6 @@
 # Handoff operacional
 
-> 2026-08-03: **Sexta-feira → Sylvia.** Boot novo: `SYLVIA.md` na raiz → `AGENTS.md`/`SOUL.md` → este cérebro. Pendências imediatas: rodar `subir_github.ps1` (push do repo privado `sylvia`) + revogar o PAT; instalar OpenClaw (`runtime/openclaw/SETUP.md`); dossiês a partir de `empresas/*/briefs_fonte/`.
+> 2026-08-03: **Sexta-feira → Sylvia.** Boot novo: `SYLVIA.md` na raiz → `AGENTS.md`/`SOUL.md` → este cérebro. Repo publicado: `ginkgoai/Sylvia` (privado, SSH); pasta local: `C:\sylvia-brain`. Pendências imediatas: revogar o PAT colado em chat; instalar OpenClaw (`runtime/openclaw/SETUP.md`); dossiês a partir de `empresas/*/briefs_fonte/`.
 
 ## Onde retomar
 
@@ -21,4 +21,4 @@
 - Produto Ginkgo: `C:\dev\ginkgo-tree\docs\PRD.md` e `C:\dev\ginkgo-tree\docs\CHECKPOINT.md`.
 - Agência e clientes: `75_Studio/`, sempre no escopo da pasta da frente/cliente.
 - Cérebro pessoal/operacional: esta vault; arquitetura em `00_Cerebro/MODELO_OPERACIONAL.md`.
-- Runtime Hermes legado: `C:\sexta-feira\runtime\hermes-memory-compat\` (compatibilidade, não canônico; movido em 2026-08-03).
+- Runtime Hermes legado: `C:\sylvia-brain\runtime\hermes-memory-compat\` (compatibilidade, não canônico; movido em 2026-08-03).

@@ -7,8 +7,9 @@
 | Camada | Onde | O que guarda |
 |---|---|---|
 | Sessão | contexto do runtime | Trabalho em andamento. Volátil. |
+| Diário de runtime | `memory/AAAA-MM-DD.md` (raiz) + `MEMORY.md` (curada) | Log do dia do OpenClaw; `MEMORY.md` guarda só fatos duráveis e ponteiros. |
 | Estado vivo | `00_Cerebro/CHECKPOINT.md` + `HANDOFF.md` | Onde paramos, próxima ação, pendências. |
-| Diário | `00_Cerebro/CONTEXT_LOG.md` | Uma linha por evento relevante, com data. |
+| Diário canônico | `00_Cerebro/CONTEXT_LOG.md` | Uma linha por evento relevante, com data. |
 | Decisões | `00_Cerebro/Decisoes/AAAA-MM-DD-titulo.md` | Decisões confirmadas pelo fundador. Imutáveis; revogar = nova decisão. |
 | Insights | `00_Cerebro/Insights/` | Teses reutilizáveis destiladas de evidência ou clippings. |
 | Conversas | `00_Cerebro/Conversas/` | Resumos sanitizados de conversas importantes. |
@@ -26,4 +27,4 @@
 
 ## Consolidação (anti-entropia)
 
-No heartbeat semanal: fundir duplicatas, marcar `Arquivado` o que envelheceu, atualizar índices (`00_INDEX.md`), verificar que decisões recentes têm registro e que o CHECKPOINT reflete a realidade. Memória que contradiz evidência atual é corrigida com nota, nunca apagada silenciosamente.
+No heartbeat semanal: fundir duplicatas, marcar `Arquivado` o que envelheceu, atualizar índices (`00_INDEX.md`), verificar que decisões recentes têm registro e que o CHECKPOINT reflete a realidade. Destilar os diários `memory/` da semana para o vault (CONTEXT_LOG + Insights/Decisões quando couber) e podar o que for só ruído operacional. `MEMORY.md` fica curto: fato que deixou de ser durável sai. Memória que contradiz evidência atual é corrigida com nota, nunca apagada silenciosamente. Fechar com proposta de commit git (`memoria: ...`) para o fundador aprovar o push.

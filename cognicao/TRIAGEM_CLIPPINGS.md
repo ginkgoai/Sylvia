@@ -2,6 +2,13 @@
 
 > O fundador clippa qualquer coisa que julga relevante. A Sylvia refina e transforma em memória oficial. Nada vira verdade por ter sido clippado.
 
+## Captura (o hábito do fundador não muda)
+
+- **Extensão do Chrome** (web clipper do Obsidian ou similar): configurar a pasta de destino para **`ginkgo-vault/00_Inbox/`** — um ajuste único nas opções da extensão. A partir daí, todo clip cai direto na esteira de triagem.
+- **Obsidian** (desktop/mobile): notas rápidas e colagens também nascem em `00_Inbox/`.
+- Pastas de clipping antigas (ex.: `Clippings/` fora do repo, `20_Conhecimento/Referencias/`) são **fontes legadas**: a Sylvia as varre na triagem de backlog até esvaziá-las; novos clips não devem mais ir para lá.
+- Qualquer formato serve (`.md`, `.txt`, `.pdf`, imagem, link solto). Bagunça é aceitável na captura; ordem é responsabilidade da triagem.
+
 ## Fluxo
 
 ```

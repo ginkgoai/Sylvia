@@ -1,60 +1,108 @@
-# OpenClaw — runtime da Sylvia (setup)
+# OpenClaw — runtime da Sylvia (setup verificado)
 
-> Decisão 2026-08-03: OpenClaw é o runtime principal da Sylvia; a cognição permanece agnóstica neste repo. Confirme comandos na doc oficial (docs.openclaw.ai) — o projeto evolui rápido.
+> Atualizado em 2026-08-03 com comandos confirmados na doc oficial (docs.openclaw.ai). O workspace do OpenClaw usa exatamente os arquivos que este repo já tem na raiz: `AGENTS.md`, `SOUL.md`, `IDENTITY.md`, `USER.md`, `MEMORY.md`, `BOOT.md`, `memory/`. **C:\sylvia-brain é o workspace.**
 
-## Por que OpenClaw
+## 1. Pré-requisitos
 
-- Sempre ativo: gateway local com Telegram, WhatsApp e outros canais → **comunicável**.
-- Heartbeat e cron nativos → **proatividade** (implementa `cognicao/HEARTBEAT.md`).
-- Memória em arquivos markdown no workspace → casa 1:1 com esta cognição.
-- Skills e ferramentas plugáveis (bash, browser, MCPs, APIs) → **poderes plugáveis** (n8n, Postgres, Redis via `runtime/bridges/`).
-- Multi-agente no roadmap do projeto → **delegação futura** (Sylvia coordenando sub-agentes).
+- **Node 22.22.3+ / 24.15+ / 25.9+** (26 recomendado) — conferir: `node --version`.
+- **ANTHROPIC_API_KEY** (Claude) — o onboarding pede.
+- Windows: o caminho mais fácil é o **app nativo (Windows Hub)**; o instalador PowerShell e o gateway em WSL2 também são suportados.
 
-## Instalação (Windows)
+## 2. Instalar e onboardar
 
-1. Recomendado rodar no **WSL2** (Ubuntu) ou Docker — evita atrito de tooling no Windows nativo.
-2. Node 22+ instalado, então: `npm install -g openclaw@latest` e rode o onboarding: `openclaw onboard` (configura provider, gateway e canais).
-3. Provider: **Anthropic (Claude)** com a API key do fundador. Pendência conhecida: billing definido (ver CHECKPOINT).
+```powershell
+# Windows (PowerShell)
+iwr -useb https://openclaw.ai/install.ps1 | iex
 
-## Ligando a cognição (este repo)
+# Onboarding completo (provider + API key + gateway + daemon)
+openclaw onboard --install-daemon
+```
 
-O OpenClaw usa um workspace (por padrão `~/.openclaw/workspace`) com `AGENTS.md`, `SOUL.md` e arquivos de memória. Estratégia:
+No wizard: provider **Anthropic**, colar a API key ("env de LLM" fica guardada em `~/.openclaw/`, fora do workspace/repo — nunca commitada). Pulou algo? `openclaw configure` volta ao wizard; `openclaw doctor` diagnostica.
 
-1. Clonar este repo dentro do ambiente do OpenClaw (ex.: `~/sylvia`) e **apontar/sincronizar o workspace para ele** — os `AGENTS.md` e `SOUL.md` da raiz já são os arquivos de boot que o OpenClaw procura.
-2. Alternativa simples: copiar `AGENTS.md` + `SOUL.md` para o workspace e manter neles apenas ponteiros para o repo (já estão escritos assim).
-3. Memória do dia-a-dia continua sendo escrita em `ginkgo-vault/00_Cerebro/` conforme `cognicao/MEMORIA.md`; commits regulares preservam a evolução (memória versionada).
+## 3. Apontar o workspace para este repo
 
-## Canais
+Editar `~/.openclaw/openclaw.json`:
 
-1. **Telegram primeiro**: criar bot novo no @BotFather (ex.: `@SylviaExecBot`) — não reaproveitar o bot "Friday" do Hermes até desativá-lo, para não haver duas mentes no mesmo canal.
-2. **Allowlist obrigatória**: somente o user id do fundador (7318821830). Sem grupos, sem DMs de terceiros.
-3. WhatsApp depois, quando a rotina Telegram estiver estável (usar número dedicado, nunca o comercial do Leaf).
+```json5
+{
+  agents: {
+    defaults: {
+      workspace: "C:\\sylvia-brain",   // no WSL2: "/mnt/c/sylvia-brain"
+      skipBootstrap: true,             // nós gerimos os arquivos; não semear defaults
+    },
+  },
+}
+```
 
-## Segurança (inegociável)
+O OpenClaw carrega automaticamente por sessão: `AGENTS.md` (instruções) → `SOUL.md` (persona) → `IDENTITY.md` (nome/vibe) → `USER.md` (modelo do fundador, orçamento 4k chars) → `MEMORY.md` (memória curada, só na sessão principal) → diários `memory/AAAA-MM-DD.md`. `BOOT.md` roda como checklist no restart do gateway (com hooks internos habilitados).
 
-- Allowlist de remetentes em todos os canais; pairing desligado para desconhecidos.
-- Ferramentas com efeito externo só via gates de `cognicao/AUTONOMIA.md` — configurar aprovação para exec sensível.
-- Credenciais em variáveis de ambiente/gerenciador do próprio OpenClaw; **nunca** no workspace/repo.
-- Gateway apenas local (não expor porta na internet); atualizações do OpenClaw acompanhadas (projeto novo, patches frequentes).
+## 4. Canais
 
-## Heartbeat e cron
+**Web (imediato):**
 
-- Heartbeat: instruções de `cognicao/HEARTBEAT.md` (briefing diário útil, `HEARTBEAT_OK` quando não houver nada).
-- Cron: triagem semanal de clippings, fechamento financeiro semanal, auditoria mensal de acessos.
+```bash
+openclaw gateway status    # deve escutar na porta 18789
+openclaw dashboard         # abre o Control UI no navegador → chat pronto
+```
 
-## Migração do Hermes (legado)
+**Telegram (o mais rápido para o celular):**
+
+1. Falar com **@BotFather** → `/newbot` → guardar o token (ex.: bot `SylviaExecBot`). Não reaproveitar o bot "Friday" do Hermes.
+2. Configurar em `~/.openclaw/openclaw.json` (ou env `TELEGRAM_BOT_TOKEN`):
+
+```json5
+{
+  channels: {
+    telegram: {
+      enabled: true,
+      botToken: "SEU_TOKEN_AQUI",   // fica fora do repo
+      dmPolicy: "pairing",           // ninguém fala com a Sylvia sem aprovação
+    },
+  },
+}
+```
+
+3. Ativar e aprovar a si mesmo (código de pareamento expira em 1h):
+
+```bash
+openclaw gateway
+openclaw pairing list telegram
+openclaw pairing approve telegram <CODE>
+```
+
+**WhatsApp:** depois da rotina Telegram estável; número dedicado, nunca o comercial do Leaf.
+
+## 5. Segurança (inegociável)
+
+- `dmPolicy: "pairing"` + aprovar somente o fundador; sem grupos abertos.
+- Gateway local (não expor 18789 na internet).
+- Segredos vivem em `~/.openclaw/` e variáveis de ambiente — **jamais** no workspace (repo).
+- Para isolamento de execução: `agents.defaults.sandbox` (ver doc "Sandboxing").
+- Ações A3 continuam regidas por `cognicao/AUTONOMIA.md` — o runtime não altera os gates.
+
+## 6. Memória e git
+
+- Diário: a Sylvia escreve `memory/AAAA-MM-DD.md`; consolidação semanal para o vault (`cognicao/MEMORIA.md`).
+- Backup: este repo já é privado (`ginkgoai/Sylvia`). Rotina: `git add . && git commit -m "memoria: ..." && git push` (a própria Sylvia pode propor o commit; push com aprovação).
+
+## 7. Poderes plugáveis
+
+Arsenal (n8n, Postgres, Redis, RAG, APIs, MCPs) e o padrão de disparo determinístico: `cognicao/PODERES.md`. Skills de workspace ficam em `skills/` (maior precedência no OpenClaw).
+
+## 8. Migração do Hermes (legado)
 
 | Item | Destino |
 |---|---|
-| Bot Telegram "Friday" | Desativar após Sylvia estável no novo bot. |
+| Bot Telegram "Friday" | Desativar após Sylvia estável no bot novo. |
 | `runtime/hermes/config/SOUL.md` | Substituído pelo `SOUL.md` da raiz. |
-| Skills `sexta-*` | Recriar como skills OpenClaw usando `runtime/bridges/` (n8n read-only, status, RAG). |
+| Skills `sexta-*` | Recriar como skills de workspace usando `runtime/bridges/` (ver `cognicao/PODERES.md`). |
 | `runtime/hermes-memory-compat/` | Congelado; memória canônica é o vault. |
 | Instalação `%LOCALAPPDATA%\hermes` | Remover quando a migração for confirmada. |
 
-## Critério de pronto (Fase 1 da Sylvia)
+## 9. Critério de pronto (Fase 1)
 
-1. Sylvia responde no Telegram com a persona do `SOUL.md` e boot do `AGENTS.md`.
-2. Lê e escreve memória no vault conforme protocolo.
-3. Heartbeat diário entrega briefing executivo real (ou silêncio consciente).
-4. Nenhuma ação A3 executada sem aprovação registrada.
+1. Sylvia responde no Control UI e no Telegram com persona e boot corretos.
+2. Lê e escreve memória conforme protocolo (diário + vault).
+3. Heartbeat diário entrega briefing executivo real (ou `HEARTBEAT_OK` silencioso).
+4. Nenhuma ação A3 sem aprovação registrada.

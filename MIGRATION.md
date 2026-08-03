@@ -5,7 +5,7 @@ Reorganização do centro de comando e nascimento do repo `sylvia`.
 ## Renomeação
 
 - A assistente **"Sexta-feira" passa a se chamar "Sylvia"**. Persona, constituição e boot novos na raiz (`SYLVIA.md`, `SOUL.md`, `AGENTS.md`, `CLAUDE.md`).
-- A pasta local continua `C:\sexta-feira` (renomear quebraria Hermes/leaf/paths legados); o repo GitHub chama-se `sylvia`. Renomear a pasta é opcional e fica para depois da migração ao OpenClaw.
+- **2026-08-03 (concluído):** pasta local renomeada para **`C:\sylvia-brain`** e repo publicado como **`ginkgoai/Sylvia`** (privado, push via SSH do fundador). O script `subir_github.ps1` cumpriu seu papel e foi removido (recuperável no histórico git). Efeito colateral esperado: qualquer path legado `C:\sexta-feira\...` no Hermes instalado ou em docs históricos aponta para o caminho antigo — o Hermes está em desativação e os docs vivos foram atualizados.
 
 ## De → Para
 

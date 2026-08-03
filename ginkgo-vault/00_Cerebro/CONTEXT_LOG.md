@@ -12,3 +12,5 @@
 <!-- Adicione entradas novas no topo. Não registre segredos, PII ou dados de cliente. -->
 
 - 2026-08-03 — Fundação da Sylvia: renomeação (ex-Sexta-feira), constituição SYLVIA.md, protocolos cognicao/, empresas/ (Ginkgo + Scale Group), runtime/ reorganizado, repo git criado; runtime alvo OpenClaw; pendências: push GitHub + revogar PAT + dossiês. [comprovado: commit]
+
+- 2026-08-03 (2) — Pós-push: repo `ginkgoai/Sylvia` publicado (SSH), pasta renomeada p/ C:\sylvia-brain; camada OpenClaw nativa criada (MEMORY/IDENTITY/USER/BOOT/memory/), SETUP verificado na doc oficial, PODERES.md (arsenal + runbooks de disparo), captura de clippings formalizada (extensão Chrome → 00_Inbox). [comprovado: commit]
