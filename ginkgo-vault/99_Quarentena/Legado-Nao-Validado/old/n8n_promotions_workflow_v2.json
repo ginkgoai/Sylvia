@@ -1,0 +1,296 @@
+{
+  "name": "Fluxo de Promoções - ML, Shopee, Amazon",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": "everyMinute",
+        "value": 1
+      },
+      "id": "78796843-8684-4864-8684-868486848684",
+      "name": "Cron Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.mercadolibre.com/sites/MLB/search",
+        "options": {
+          "qs": [
+            {
+              "name": "q",
+              "value": "ofertas"
+            },
+            {
+              "name": "discount",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "id": "11111111-1111-1111-1111-111111111111",
+      "name": "Mercado Livre - Buscar Ofertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://open.shopee.com/api/v2/product/get_item_list",
+        "options": {
+          "qs": [
+            {
+              "name": "keyword",
+              "value": "ofertas"
+            }
+          ]
+        }
+      },
+      "id": "22222222-2222-2222-2222-222222222222",
+      "name": "Shopee - Buscar Ofertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.example.com/amazon/deals"
+      },
+      "id": "33333333-3333-3333-3333-333333333333",
+      "name": "Amazon - Buscar Ofertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "source_ml",
+              "name": "source",
+              "value": "MercadoLivre",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "44444444-4444-4444-4444-444444444444",
+      "name": "Set Source - ML",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "source_shopee",
+              "name": "source",
+              "value": "Shopee",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "55555555-5555-5555-5555-555555555555",
+      "name": "Set Source - Shopee",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "source_amazon",
+              "name": "source",
+              "value": "Amazon",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "66666666-6666-6666-6666-666666666666",
+      "name": "Set Source - Amazon",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        500
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "77777777-7777-7777-7777-777777777777",
+      "name": "Merge Ofertas",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        700,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.EVOLUTION_API_BASE_URL }}/message/sendMedia/{{ $env.EVOLUTION_API_INSTANCE_NAME }}",
+        "sendHeaders": true,
+        "headerData": [
+          {
+            "name": "apikey",
+            "value": "={{ $env.EVOLUTION_API_KEY }}"
+          }
+        ],
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $env.EVOLUTION_API_WHATSAPP_NUMBER }}"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $json.message }}"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $json.image_url }}"
+            }
+          ]
+        }
+      },
+      "id": "88888888-8888-8888-8888-888888888888",
+      "name": "Evolution API - Enviar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        900,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Cron Trigger": {
+      "main": [
+        [
+          {
+            "node": "Mercado Livre - Buscar Ofertas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Shopee - Buscar Ofertas",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Amazon - Buscar Ofertas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mercado Livre - Buscar Ofertas": {
+      "main": [
+        [
+          {
+            "node": "Set Source - ML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shopee - Buscar Ofertas": {
+      "main": [
+        [
+          {
+            "node": "Set Source - Shopee",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Amazon - Buscar Ofertas": {
+      "main": [
+        [
+          {
+            "node": "Set Source - Amazon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Source - ML": {
+      "main": [
+        [
+          {
+            "node": "Merge Ofertas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Source - Shopee": {
+      "main": [
+        [
+          {
+            "node": "Merge Ofertas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Source - Amazon": {
+      "main": [
+        [
+          {
+            "node": "Merge Ofertas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Ofertas": {
+      "main": [
+        [
+          {
+            "node": "Evolution API - Enviar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

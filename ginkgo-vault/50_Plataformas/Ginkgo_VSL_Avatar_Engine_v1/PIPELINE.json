@@ -1,0 +1,77 @@
+{
+  "name": "Ginkgo VSL Avatar Engine",
+  "version": "1.0.0",
+  "output": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 25,
+    "container": "mp4",
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio": "aac"
+  },
+  "inputs": {
+    "avatar_master": "PNG/JPG, busto, boca livre, luz frontal",
+    "driver_motion": "MP4, 6-10s, 25fps, câmera fixa",
+    "voice": "WAV mono, 16k ou 48k, sem música",
+    "brief": "JSON conforme VSL_SCENE_SCHEMA.json",
+    "brand_assets": "logos, cores, CTA e screenshots"
+  },
+  "stages": [
+    {
+      "id": "S01_VALIDATE",
+      "checks": [
+        "face_visible",
+        "mouth_not_occluded",
+        "solid_matte_clothing",
+        "audio_clean",
+        "segment_5_to_10_seconds"
+      ]
+    },
+    {
+      "id": "S02_MOTION_BASE",
+      "engine": "LivePortraitKJ",
+      "settings": {
+        "relative_motion": true,
+        "stitching": true,
+        "eye_retargeting": true,
+        "lip_retargeting": false,
+        "head_motion": "low",
+        "expression": "low_to_medium"
+      }
+    },
+    {
+      "id": "S03_LIPSYNC_PRIMARY",
+      "engine": "MuseTalk 1.5",
+      "settings": {
+        "fps": 25,
+        "segment_seconds": "5-10",
+        "bbox_shift": "calibrate_per_avatar",
+        "audio_language": "validate_pt_BR"
+      }
+    },
+    {
+      "id": "S04_LIPSYNC_FALLBACK",
+      "engine": "LatentSync 1.6",
+      "run_when": "MuseTalk_QA_failed",
+      "settings": {
+        "inference_steps": 25,
+        "guidance_scale": 1.6,
+        "segment_seconds": "5-10",
+        "minimum_vram_gb": 18
+      }
+    },
+    {
+      "id": "S05_VSL_COMPOSE",
+      "engine": "VideoHelperSuite + FFmpeg",
+      "settings": {
+        "avatar_scale_percent": "65-78",
+        "safe_top_px": 160,
+        "safe_bottom_px": 280,
+        "max_caption_lines": 2,
+        "max_words_per_caption": 7,
+        "cta_hold_seconds": 3.5
+      }
+    }
+  ]
+}

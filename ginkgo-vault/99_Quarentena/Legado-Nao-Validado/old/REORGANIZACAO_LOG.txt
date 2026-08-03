@@ -1,0 +1,95 @@
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] FASE 1: CRIANDO ESTRUTURA DE DIRETÓRIOS
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_SYSTEM/Templates
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_SYSTEM/Prompts
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_SYSTEM/Frameworks
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_SYSTEM/Configs
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_SYSTEM/Snippets
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_SYSTEM/Naming_Conventions
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/01_PESSOAL/Documentos/Contexto_Arquitetura
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/01_PESSOAL/Estudos
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/01_PESSOAL/Financas
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/01_PESSOAL/Projetos_Criativos
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/01_PESSOAL/Downloads_Temporarios
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/01_INTERNAL_PROJECTS
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/02_PRODUCTS
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/03_SAAS
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/04_AGENTS/Skills
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/05_DESIGN
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/06_DOCUMENTATION
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/07_MEDIA/Raw
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/07_MEDIA/Edited
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/07_MEDIA/Final
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/08_SITES
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/09_AUTOMATIONS/n8n
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/09_AUTOMATIONS/Make
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/09_AUTOMATIONS/Zapier
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/02_GINKGO_AI_SYSTEMS/09_AUTOMATIONS/Scripts
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/99_ARCHIVE
+[2026-04-21 00:16:47] [INFO] ✅ Diretório criado: /home/ubuntu/00_REVISAO_MANUAL
+[2026-04-21 00:16:47] [INFO] ✅ Total de diretórios criados: 27/27
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] FASE 2: EXECUTANDO MOVIMENTAÇÕES
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Movimentando: Skills → Ginkgo Core
+[2026-04-21 00:16:47] [INFO] ✅ Movido (directory): /home/ubuntu/skills → /home/ubuntu/02_GINKGO_AI_SYSTEMS/04_AGENTS/Skills_Backup
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Movimentando: Downloads → Pessoal
+[2026-04-21 00:16:47] [INFO] ✅ Movido (directory): /home/ubuntu/Downloads → /home/ubuntu/01_PESSOAL/Downloads_Temporarios/Downloads_Backup
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Movimentando: Upload → Pessoal/Contexto
+[2026-04-21 00:16:47] [INFO] ✅ Movido (directory): /home/ubuntu/upload → /home/ubuntu/01_PESSOAL/Documentos/Contexto_Arquitetura/upload_Backup
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Movimentando: sandbox.txt → Revisão Manual
+[2026-04-21 00:16:47] [INFO] ✅ Movido (file): /home/ubuntu/sandbox.txt → /home/ubuntu/00_REVISAO_MANUAL/sandbox.txt
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Movimentando: terminal_full_output → Revisão Manual
+[2026-04-21 00:16:47] [INFO] ✅ Movido (directory): /home/ubuntu/terminal_full_output → /home/ubuntu/00_REVISAO_MANUAL/terminal_full_output
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] ✅ Movimentações bem-sucedidas: 5
+[2026-04-21 00:16:47] [INFO] ❌ Movimentações falhadas: 0
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] FASE 3: VALIDAÇÃO PÓS-MOVIMENTAÇÃO
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] ✅ Verificado: 00_SYSTEM/
+[2026-04-21 00:16:47] [INFO] ✅ Verificado: 01_PESSOAL/
+[2026-04-21 00:16:47] [INFO] ✅ Verificado: 02_GINKGO_AI_SYSTEMS/
+[2026-04-21 00:16:47] [INFO] ✅ Verificado: 99_ARCHIVE/
+[2026-04-21 00:16:47] [INFO] ✅ Verificado: 00_REVISAO_MANUAL/
+[2026-04-21 00:16:47] [INFO] ✅ Diretórios verificados: 5/5
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Verificando destinos de movimentação:
+[2026-04-21 00:16:47] [INFO] ✅ Skills movido com sucesso
+[2026-04-21 00:16:47] [INFO] ✅ Downloads movido com sucesso
+[2026-04-21 00:16:47] [INFO] ✅ Upload movido com sucesso
+[2026-04-21 00:16:47] [INFO] ✅ sandbox.txt movido com sucesso
+[2026-04-21 00:16:47] [INFO] ✅ terminal_full_output movido com sucesso
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] FASE 4: SALVANDO LOGS
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] ✅ Log salvo: /home/ubuntu/REORGANIZACAO_LOG.txt
+[2026-04-21 00:16:47] [INFO] ✅ Movimentações registradas: /home/ubuntu/REORGANIZACAO_MOVIMENTACOES.json
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] 🎉 REORGANIZAÇÃO CONCLUÍDA COM SUCESSO!
+[2026-04-21 00:16:47] [INFO] ================================================================================
+[2026-04-21 00:16:47] [INFO] Total de diretórios criados: 27
+[2026-04-21 00:16:47] [INFO] Total de movimentações: 5
+[2026-04-21 00:16:47] [INFO] Total de falhas: 0
+[2026-04-21 00:16:47] [INFO] Diretórios verificados: 5
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Arquivos de log gerados:
+[2026-04-21 00:16:47] [INFO]   - /home/ubuntu/REORGANIZACAO_LOG.txt
+[2026-04-21 00:16:47] [INFO]   - /home/ubuntu/REORGANIZACAO_MOVIMENTACOES.json
+[2026-04-21 00:16:47] [INFO] 
+[2026-04-21 00:16:47] [INFO] Próximos passos:
+[2026-04-21 00:16:47] [INFO] 1. Revisar /home/ubuntu/00_REVISAO_MANUAL/ para itens ambíguos
+[2026-04-21 00:16:47] [INFO] 2. Verificar integridade de arquivos em novos locais
+[2026-04-21 00:16:47] [INFO] 3. Atualizar referências de caminhos em scripts/configs
+[2026-04-21 00:16:47] [INFO] 4. Inicializar Obsidian apontando para 02_GINKGO_AI_SYSTEMS/
+[2026-04-21 00:16:47] [INFO] 

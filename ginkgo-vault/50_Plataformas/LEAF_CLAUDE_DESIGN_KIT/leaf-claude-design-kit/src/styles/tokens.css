@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --leaf-background: #050a08;
+  --leaf-surface: #0b1511;
+  --leaf-surface-raised: #102019;
+  --leaf-surface-soft: #15271f;
+  --leaf-primary: #65c77a;
+  --leaf-primary-bright: #8fe6a2;
+  --leaf-emerald: #1fae67;
+  --leaf-deep: #0e5a3b;
+  --leaf-gold: #c8a96b;
+  --leaf-text: #f5f7f5;
+  --leaf-text-muted: #a6b0a9;
+  --leaf-border: rgba(143, 230, 162, 0.18);
+  --leaf-border-strong: rgba(143, 230, 162, 0.34);
+  --leaf-danger: #e45d5d;
+
+  --leaf-radius-sm: 12px;
+  --leaf-radius-md: 16px;
+  --leaf-radius-lg: 20px;
+  --leaf-radius-xl: 28px;
+
+  --leaf-shadow-card: 0 18px 60px rgba(0, 0, 0, 0.34);
+  --leaf-shadow-active: 0 0 32px rgba(101, 199, 122, 0.18);
+
+  --leaf-space-1: 8px;
+  --leaf-space-2: 16px;
+  --leaf-space-3: 24px;
+  --leaf-space-4: 32px;
+  --leaf-space-5: 48px;
+  --leaf-space-6: 64px;
+  --leaf-space-7: 80px;
+}
+
+.leaf-canvas {
+  color: var(--leaf-text);
+  background:
+    radial-gradient(circle at 78% 22%, rgba(31, 174, 103, 0.10), transparent 32%),
+    linear-gradient(145deg, #050a08 0%, #08100c 55%, #050a08 100%);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.leaf-display {
+  font-family: Manrope, Inter, system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.leaf-mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+.leaf-card {
+  background: linear-gradient(145deg, rgba(16, 32, 25, 0.94), rgba(11, 21, 17, 0.82));
+  border: 1px solid var(--leaf-border);
+  border-radius: var(--leaf-radius-lg);
+  box-shadow: var(--leaf-shadow-card);
+  backdrop-filter: blur(18px);
+}
+
+.leaf-active {
+  border-color: var(--leaf-border-strong);
+  box-shadow: var(--leaf-shadow-active);
+}

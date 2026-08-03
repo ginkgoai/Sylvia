@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  @keyframes gkP{0%,100%{opacity:1}50%{opacity:.45}}
+  section::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<!-- ============ 1 · COVER ============ -->
+<section data-label="Capa" data-screen-label="01 Capa" data-speaker-notes="Abertura. Ginkgo como streaming de inteligência: você assina, ativa e deixa rodar. Posicione como SaaS B2B AI-native." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;flex-direction:column;justify-content:space-between;padding:96px 104px;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(ellipse 70% 60% at 80% 15%,rgba(0,229,160,.14),transparent 60%),radial-gradient(ellipse 60% 60% at 8% 95%,rgba(43,211,255,.09),transparent 60%)"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse 90% 80% at 50% 50%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse 90% 80% at 50% 50%,#000 30%,transparent 85%)"></div>
+  <div style="position:relative;display:flex;align-items:center;gap:16px">
+    <img src="assets/logo-ginkgo.png" alt="Ginkgo" style="width:54px;height:54px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(43,211,255,.5))" />
+    <span style="font-weight:700;font-size:28px;letter-spacing:-.01em">Ginkgo<span style="color:#5E6779;font-weight:500;font-size:24px;margin-left:10px;font-family:'JetBrains Mono',monospace">AI&nbsp;SYSTEMS</span></span>
+  </div>
+  <div style="position:relative">
+    <div style="display:inline-flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.06em;color:#7fe6c4;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.24);padding:11px 22px;border-radius:999px;margin-bottom:40px">
+      <span style="width:10px;height:10px;border-radius:50%;background:#00E5A0;animation:gkP 2.4s infinite"></span>
+      STREAMING DE INTELIGÊNCIA · SaaS B2B
+    </div>
+    <h1 style="font-size:104px;line-height:1.0;letter-spacing:-.03em;font-weight:700;margin:0;max-width:1320px">Sua empresa, operada por <span style="color:#00E5A0;text-shadow:0 0 44px rgba(0,229,160,.45)">agentes de IA</span>.</h1>
+    <p style="font-size:40px;color:#97A1B4;margin:36px 0 0;font-weight:500">Assine. Ative. Deixe rodar.</p>
+  </div>
+  <div style="position:relative;display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:24px;color:#5E6779">
+    <span>Catálogo de produtos · 2026</span>
+    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd9a9493969a928e848e8998908ebd9a909c9491d39e9290">[email&#160;protected]</a></span>
+  </div>
+</section>
+
+<!-- ============ 2 · O QUE É SaaS ============ -->
+<section data-label="O que é SaaS" data-screen-label="02 SaaS" data-speaker-notes="Explique SaaS em linguagem simples: você não compra nem instala nada. Acessa pronto pela nuvem, paga uma mensalidade e tudo se atualiza sozinho. A analogia direta é a Netflix — você não compra o filme, assina o acesso." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;flex-direction:column;justify-content:center;padding:96px 104px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.12em;color:#00E5A0;margin-bottom:28px">01 — O MODELO</div>
+  <h2 style="font-size:76px;line-height:1.04;letter-spacing:-.02em;font-weight:700;margin:0;max-width:1280px">Software como serviço, explicado em uma linha.</h2>
+  <p style="font-size:38px;color:#97A1B4;line-height:1.5;margin:40px 0 64px;max-width:1340px">Você não compra um programa, não instala nada e não mantém servidor. <span style="color:#E8EEF5">Acessa pronto pela nuvem e paga por mês</span> — como assistir a um streaming em vez de comprar o DVD.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div style="padding:40px 36px;border-radius:20px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)">
+      <div style="font-size:34px;font-weight:700;color:#00E5A0;font-family:'JetBrains Mono',monospace;margin-bottom:18px">00</div>
+      <div style="font-size:32px;font-weight:600;margin-bottom:10px">Sem instalação</div>
+      <div style="font-size:26px;color:#97A1B4;line-height:1.45">Abre no navegador. Nada para baixar ou configurar.</div>
+    </div>
+    <div style="padding:40px 36px;border-radius:20px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)">
+      <div style="font-size:34px;font-weight:700;color:#00E5A0;font-family:'JetBrains Mono',monospace;margin-bottom:18px">$/mês</div>
+      <div style="font-size:32px;font-weight:600;margin-bottom:10px">Mensalidade</div>
+      <div style="font-size:26px;color:#97A1B4;line-height:1.45">Preço previsível. Cancela quando quiser, sem multa.</div>
+    </div>
+    <div style="padding:40px 36px;border-radius:20px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)">
+      <div style="font-size:34px;font-weight:700;color:#00E5A0;font-family:'JetBrains Mono',monospace;margin-bottom:18px">↻</div>
+      <div style="font-size:32px;font-weight:600;margin-bottom:10px">Sempre atualizado</div>
+      <div style="font-size:26px;color:#97A1B4;line-height:1.45">Melhorias entram sozinhas. Você usa sempre a versão nova.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · MODELO GINKGO (NETFLIX) ============ -->
+<section data-label="Modelo Netflix" data-screen-label="03 Modelo" data-speaker-notes="A Ginkgo aplica o modelo de streaming à inteligência de negócio. Um catálogo de agentes, uma assinatura. Escolhe os agentes que precisa, ativa na hora, combina como quiser e cancela quando quiser." style="background:#070B16;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;flex-direction:column;justify-content:center;padding:96px 104px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.12em;color:#00E5A0;margin-bottom:28px">02 — A ASSINATURA</div>
+  <h2 style="font-size:80px;line-height:1.04;letter-spacing:-.02em;font-weight:700;margin:0;max-width:1320px">Um catálogo de agentes. <span style="color:#00E5A0">Uma assinatura.</span></h2>
+  <p style="font-size:38px;color:#97A1B4;line-height:1.5;margin:40px 0 60px;max-width:1320px">Escolha os agentes que sua operação precisa, ative na hora e combine como quiser. É a sua empresa rodando no piloto — com você no controle.</p>
+  <div style="display:flex;gap:48px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:18px"><span style="font-size:44px;font-weight:700;color:#00E5A0;font-family:'JetBrains Mono',monospace">1</span><span style="font-size:30px;color:#E8EEF5">Escolha os agentes</span></div>
+    <div style="display:flex;align-items:center;gap:18px"><span style="font-size:44px;font-weight:700;color:#00E5A0;font-family:'JetBrains Mono',monospace">2</span><span style="font-size:30px;color:#E8EEF5">Ative em minutos</span></div>
+    <div style="display:flex;align-items:center;gap:18px"><span style="font-size:44px;font-weight:700;color:#00E5A0;font-family:'JetBrains Mono',monospace">3</span><span style="font-size:30px;color:#E8EEF5">Cancele quando quiser</span></div>
+  </div>
+</section>
+
+<!-- ============ 4 · CATÁLOGO ============ -->
+<section data-label="Catálogo" data-screen-label="04 Catálogo" data-speaker-notes="Apresente os três produtos como capas de catálogo. Cada um tem cor e agente próprios: LEAF/Brann (atendimento), PYRE/Nyra (conteúdo), WAVE/Alfred (tráfego). Detalhe cada um nos próximos slides." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;flex-direction:column;justify-content:center;padding:88px 104px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.12em;color:#00E5A0;margin-bottom:24px">03 — O CATÁLOGO</div>
+  <h2 style="font-size:72px;line-height:1.04;letter-spacing:-.02em;font-weight:700;margin:0 0 52px">Três agentes, prontos para assinar.</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px">
+    <div style="border-radius:22px;border:1px solid rgba(0,229,160,.28);background:linear-gradient(170deg,rgba(0,229,160,.1),rgba(255,255,255,.02));padding:42px 38px;display:flex;flex-direction:column;min-height:430px">
+      <div style="width:84px;height:84px;border-radius:18px;background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.32);display:grid;place-items:center;margin-bottom:30px"><img src="assets/logo-leaf.png" alt="Leaf" style="width:54px;height:54px;object-fit:contain" /></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#00E5A0;letter-spacing:.06em;margin-bottom:12px">LEAF · BRANN</div>
+      <div style="font-size:38px;font-weight:700;margin-bottom:16px">Secretária IA</div>
+      <div style="font-size:27px;color:#97A1B4;line-height:1.45;margin-top:auto">Atende, qualifica e agenda — direto no WhatsApp e Instagram.</div>
+    </div>
+    <div style="border-radius:22px;border:1px solid rgba(255,157,60,.28);background:linear-gradient(170deg,rgba(255,157,60,.1),rgba(255,255,255,.02));padding:42px 38px;display:flex;flex-direction:column;min-height:430px">
+      <div style="width:84px;height:84px;border-radius:18px;background:rgba(255,157,60,.12);border:1px solid rgba(255,157,60,.32);display:grid;place-items:center;margin-bottom:30px"><img src="assets/logo-pyre.png" alt="Pyre" style="width:54px;height:54px;object-fit:contain" /></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#FF9D3C;letter-spacing:.06em;margin-bottom:12px">PYRE · NYRA</div>
+      <div style="font-size:38px;font-weight:700;margin-bottom:16px">Conteúdo IA</div>
+      <div style="font-size:27px;color:#97A1B4;line-height:1.45;margin-top:auto">Cria, edita e publica conteúdo em todas as redes, sozinha.</div>
+    </div>
+    <div style="border-radius:22px;border:1px solid rgba(43,211,255,.28);background:linear-gradient(170deg,rgba(43,211,255,.1),rgba(255,255,255,.02));padding:42px 38px;display:flex;flex-direction:column;min-height:430px">
+      <div style="width:84px;height:84px;border-radius:18px;background:rgba(43,211,255,.12);border:1px solid rgba(43,211,255,.32);display:grid;place-items:center;margin-bottom:30px"><img src="assets/logo-wave.png" alt="Wave" style="width:54px;height:54px;object-fit:contain" /></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#2BD3FF;letter-spacing:.06em;margin-bottom:12px">WAVE · ALFRED</div>
+      <div style="font-size:38px;font-weight:700;margin-bottom:16px">Tráfego IA</div>
+      <div style="font-size:27px;color:#97A1B4;line-height:1.45;margin-top:auto">Lê seu público, monta a estratégia e opera as campanhas.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · SECRETÁRIA IA (LEAF) ============ -->
+<section data-label="Secretária IA" data-screen-label="05 Secretária" data-speaker-notes="LEAF/Brann é a secretária de IA: um CRM vivo no WhatsApp. Atende 24/7, qualifica o lead com método SPIN, marca na agenda e faz follow-up sozinha de quem não respondeu. Tudo registrado e auditável." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:72px;padding:88px 104px">
+  <div style="flex:1.05">
+    <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px"><div style="width:60px;height:60px;border-radius:15px;background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.32);display:grid;place-items:center"><img src="assets/logo-leaf.png" alt="Leaf" style="width:40px;height:40px;object-fit:contain" /></div><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#00E5A0;letter-spacing:.06em">LEAF · AGENTE BRANN</span></div>
+    <h2 style="font-size:74px;line-height:1.03;letter-spacing:-.02em;font-weight:700;margin:0 0 28px">Secretária IA</h2>
+    <p style="font-size:34px;color:#97A1B4;line-height:1.5;margin:0 0 40px;max-width:760px">Um CRM que atende sozinho no WhatsApp e Instagram. Conversa como gente, entende a intenção e nunca esquece um lead.</p>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Atendimento consultivo 24/7 e qualificação com método SPIN</span></div>
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Agendamento automático direto na sua agenda</span></div>
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Follow-up automático de quem não respondeu</span></div>
+    </div>
+  </div>
+  <div style="flex:.95;display:flex;justify-content:center">
+    <div style="width:520px;border-radius:26px;border:1px solid rgba(0,229,160,.2);background:#071a14;padding:30px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px rgba(0,0,0,.45)">
+      <div style="display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;animation:gkP 2s infinite"></span><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#7fe6c4">Brann · online</span></div>
+      <div style="align-self:flex-start;max-width:78%;background:rgba(255,255,255,.06);padding:16px 20px;border-radius:16px 16px 16px 5px;font-size:25px;color:#cdd6e3">Vocês fazem orçamento p/ implante?</div>
+      <div style="align-self:flex-end;max-width:84%;background:rgba(0,229,160,.14);border:1px solid rgba(0,229,160,.3);padding:16px 20px;border-radius:16px 16px 5px 16px;font-size:25px;color:#d6f5e8">Fazemos sim! É unitário ou mais de um dente? Já te passo certinho e marco uma avaliação.</div>
+      <div style="align-self:flex-start;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);padding:18px 22px;border-radius:16px"><span style="width:11px;height:11px;border-radius:50%;background:#00E5A0;animation:gkP 1.2s infinite"></span><span style="width:11px;height:11px;border-radius:50%;background:#00E5A0;animation:gkP 1.2s infinite .2s"></span><span style="width:11px;height:11px;border-radius:50%;background:#00E5A0;animation:gkP 1.2s infinite .4s"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6 · CONTEÚDO IA (PYRE) ============ -->
+<section data-label="Conteúdo IA" data-screen-label="06 Conteúdo" data-speaker-notes="PYRE/Nyra cuida do conteúdo de ponta a ponta: detecta a trend, escreve o roteiro, edita o vídeo e publica em todas as redes no melhor horário. Você aprova com um clique — ou deixa no automático." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:72px;padding:88px 104px">
+  <div style="flex:.95;display:flex;justify-content:center;order:0">
+    <div style="width:520px;border-radius:26px;border:1px solid rgba(255,157,60,.2);background:#1a1108;padding:34px;display:flex;flex-direction:column;gap:18px;box-shadow:0 30px 80px rgba(0,0,0,.45)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#d99a5b;margin-bottom:4px">PIPELINE · NYRA</div>
+      <div style="display:flex;align-items:center;gap:18px;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.25);border-radius:14px;padding:18px 20px"><span style="width:44px;height:44px;border-radius:11px;background:rgba(255,157,60,.16);display:grid;place-items:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9D3C" stroke-width="2"><path d="M3 17v-6l9-9 9 9-9 9-9-9Z"/></svg></span><span style="font-size:26px;color:#E8EEF5">Trend detectada</span></div>
+      <div style="display:flex;align-items:center;gap:18px;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.25);border-radius:14px;padding:18px 20px"><span style="width:44px;height:44px;border-radius:11px;background:rgba(255,157,60,.16);display:grid;place-items:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF9D3C" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg></span><span style="font-size:26px;color:#E8EEF5">Roteiro + edição</span></div>
+      <div style="display:flex;align-items:center;gap:18px;background:#FF9D3C;border-radius:14px;padding:18px 20px"><span style="width:44px;height:44px;border-radius:11px;background:rgba(0,0,0,.18);display:grid;place-items:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a1108" stroke-width="2.2"><path d="m22 2-7 20-4-9-9-4Z"/></svg></span><span style="font-size:26px;color:#1a1108;font-weight:600">Publicado · 4 redes</span></div>
+    </div>
+  </div>
+  <div style="flex:1.05">
+    <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px"><div style="width:60px;height:60px;border-radius:15px;background:rgba(255,157,60,.12);border:1px solid rgba(255,157,60,.32);display:grid;place-items:center"><img src="assets/logo-pyre.png" alt="Pyre" style="width:40px;height:40px;object-fit:contain" /></div><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#FF9D3C;letter-spacing:.06em">PYRE · AGENTE NYRA</span></div>
+    <h2 style="font-size:74px;line-height:1.03;letter-spacing:-.02em;font-weight:700;margin:0 0 28px">Conteúdo IA</h2>
+    <p style="font-size:34px;color:#97A1B4;line-height:1.5;margin:0 0 40px;max-width:760px">Sua presença nas redes no piloto automático. Do gancho ao post no ar, sem briefing nem editor de vídeo.</p>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#FF9D3C;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Cria o roteiro e edita o vídeo a partir das trends do seu nicho</span></div>
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#FF9D3C;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Publica em Reels, TikTok, Shorts e feed no melhor horário</span></div>
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#FF9D3C;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Você aprova com um clique — ou deixa 100% automático</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · TRÁFEGO IA (WAVE) ============ -->
+<section data-label="Tráfego IA" data-screen-label="07 Tráfego" data-speaker-notes="WAVE/Alfred é o gestor de tráfego. Lê o público dos perfis do cliente, identifica quem compra, monta a estratégia de anúncio, cria as campanhas e as opera — escalando o que vende e cortando o que não rende, sem você tocar no gerenciador." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:72px;padding:88px 104px">
+  <div style="flex:1.05">
+    <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:26px"><div style="width:60px;height:60px;border-radius:15px;background:rgba(43,211,255,.12);border:1px solid rgba(43,211,255,.32);display:grid;place-items:center"><img src="assets/logo-wave.png" alt="Wave" style="width:40px;height:40px;object-fit:contain" /></div><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#2BD3FF;letter-spacing:.06em">WAVE · AGENTE ALFRED</span></div>
+    <h2 style="font-size:74px;line-height:1.03;letter-spacing:-.02em;font-weight:700;margin:0 0 28px">Tráfego IA</h2>
+    <p style="font-size:34px;color:#97A1B4;line-height:1.5;margin:0 0 40px;max-width:760px">Um gestor de tráfego que nunca dorme. Estuda quem é o seu público, define a estratégia e opera os anúncios pra você.</p>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#2BD3FF;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Lê o público dos seus perfis e identifica quem realmente compra</span></div>
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#2BD3FF;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Cria a estratégia e monta as campanhas de anúncio</span></div>
+      <div style="display:flex;align-items:center;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#2BD3FF;flex:none"></span><span style="font-size:30px;color:#E8EEF5">Opera no automático: escala o que vende, corta o que não rende</span></div>
+    </div>
+  </div>
+  <div style="flex:.95;display:flex;justify-content:center">
+    <div style="width:520px;border-radius:26px;border:1px solid rgba(43,211,255,.2);background:#06141d;padding:34px;box-shadow:0 30px 80px rgba(0,0,0,.45)">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#7fd6ff">CAMPANHA · AO VIVO</span><span style="font-size:26px;color:#5E6779">CPL <span style="color:#2BD3FF;font-weight:600">−22%</span></span></div>
+      <div style="display:flex;align-items:flex-end;gap:14px;height:230px">
+        <div style="flex:1;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.12));border-radius:6px 6px 0 0;height:50%"></div>
+        <div style="flex:1;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.12));border-radius:6px 6px 0 0;height:72%"></div>
+        <div style="flex:1;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.12));border-radius:6px 6px 0 0;height:45%"></div>
+        <div style="flex:1;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.12));border-radius:6px 6px 0 0;height:84%"></div>
+        <div style="flex:1;background:linear-gradient(180deg,#00E5A0,rgba(0,229,160,.12));border-radius:6px 6px 0 0;height:100%;box-shadow:0 0 22px rgba(0,229,160,.5)"></div>
+        <div style="flex:1;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.12));border-radius:6px 6px 0 0;height:66%"></div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:21px;color:#445069;margin-top:20px">▸ verba realocada p/ criativo vencedor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8 · ONBOARDING ============ -->
+<section data-label="Onboarding" data-screen-label="08 Onboarding" data-speaker-notes="O onboarding é rápido e guiado. Conecta os canais, escolhe os agentes, a IA aprende o negócio a partir do seu material e em poucos minutos está no ar. Sem time técnico, sem instalação." style="background:#070B16;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;flex-direction:column;justify-content:center;padding:96px 104px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.12em;color:#00E5A0;margin-bottom:24px">04 — ONBOARDING</div>
+  <h2 style="font-size:76px;line-height:1.04;letter-spacing:-.02em;font-weight:700;margin:0 0 18px">No ar em minutos, não em meses.</h2>
+  <p style="font-size:36px;color:#97A1B4;line-height:1.5;margin:0 0 60px;max-width:1240px">Sem time técnico e sem instalação. Um fluxo guiado coloca seus agentes para rodar no mesmo dia.</p>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+    <div style="padding:36px 30px;border-radius:18px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:#00E5A0;width:60px;height:60px;border-radius:14px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);display:grid;place-items:center;margin-bottom:24px">1</div>
+      <div style="font-size:30px;font-weight:600;margin-bottom:10px">Conecte os canais</div>
+      <div style="font-size:25px;color:#97A1B4;line-height:1.45">WhatsApp, Instagram e contas de anúncio em poucos cliques.</div>
+    </div>
+    <div style="padding:36px 30px;border-radius:18px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:#00E5A0;width:60px;height:60px;border-radius:14px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);display:grid;place-items:center;margin-bottom:24px">2</div>
+      <div style="font-size:30px;font-weight:600;margin-bottom:10px">Escolha os agentes</div>
+      <div style="font-size:25px;color:#97A1B4;line-height:1.45">Assine só o que precisa: secretária, conteúdo, tráfego ou todos.</div>
+    </div>
+    <div style="padding:36px 30px;border-radius:18px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:#00E5A0;width:60px;height:60px;border-radius:14px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);display:grid;place-items:center;margin-bottom:24px">3</div>
+      <div style="font-size:30px;font-weight:600;margin-bottom:10px">A IA aprende</div>
+      <div style="font-size:25px;color:#97A1B4;line-height:1.45">Ela absorve seu material e tom de voz para soar como a sua marca.</div>
+    </div>
+    <div style="padding:36px 30px;border-radius:18px;border:1px solid rgba(0,229,160,.3);background:rgba(0,229,160,.05)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:600;color:#04130D;width:60px;height:60px;border-radius:14px;background:#00E5A0;display:grid;place-items:center;margin-bottom:24px">4</div>
+      <div style="font-size:30px;font-weight:600;margin-bottom:10px">No ar</div>
+      <div style="font-size:25px;color:#97A1B4;line-height:1.45">Seus agentes começam a operar e você acompanha tudo em um painel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9 · PAGAMENTO ============ -->
+<section data-label="Pagamento" data-screen-label="09 Pagamento" data-speaker-notes="Cobrança como streaming: assinatura mensal no cartão, processada pela Stripe — líder global em pagamentos. Dados criptografados, padrão PCI, sem armazenar cartão na Ginkgo. Cancela quando quiser, igual Netflix." style="background:#0A0F1E;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;align-items:center;gap:80px;padding:88px 104px">
+  <div style="flex:1.1">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:.12em;color:#00E5A0;margin-bottom:24px">05 — PAGAMENTO</div>
+    <h2 style="font-size:74px;line-height:1.03;letter-spacing:-.02em;font-weight:700;margin:0 0 32px">Assinatura simples, segura como streaming.</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:780px">
+      <div style="display:flex;align-items:flex-start;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;flex:none;margin-top:12px"></span><span style="font-size:31px;color:#E8EEF5;line-height:1.4">Mensalidade no cartão de crédito — processada pela <span style="color:#00E5A0;font-weight:600">Stripe</span>, referência global em pagamentos</span></div>
+      <div style="display:flex;align-items:flex-start;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;flex:none;margin-top:12px"></span><span style="font-size:31px;color:#E8EEF5;line-height:1.4">Dados criptografados, padrão PCI — a Ginkgo nunca guarda o seu cartão</span></div>
+      <div style="display:flex;align-items:flex-start;gap:18px"><span style="width:14px;height:14px;border-radius:50%;background:#00E5A0;flex:none;margin-top:12px"></span><span style="font-size:31px;color:#E8EEF5;line-height:1.4">Cancele quando quiser, sem multa nem fidelidade — igual à Netflix</span></div>
+    </div>
+  </div>
+  <div style="flex:.9;display:flex;justify-content:center">
+    <div style="width:500px;border-radius:24px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(165deg,rgba(0,229,160,.1),rgba(255,255,255,.02));padding:38px;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:30px"><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#7fe6c4">ASSINATURA</span><span style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#5E6779">via Stripe</span></div>
+      <div style="display:flex;align-items:flex-end;gap:10px;margin-bottom:8px"><span style="font-size:74px;font-weight:700;line-height:1;letter-spacing:-.02em">Plano</span></div>
+      <div style="font-size:28px;color:#97A1B4;margin-bottom:30px">mensal · cancele quando quiser</div>
+      <div style="height:1px;background:rgba(255,255,255,.1);margin-bottom:26px"></div>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px"><div style="width:54px;height:38px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:24px;color:#97A1B4">VISA</div><span style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#cdd6e3;letter-spacing:.1em">•••• •••• •••• 4242</span></div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:24px;color:#7fe6c4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="1.9"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Pagamento protegido e criptografado</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 · GANCHO FINAL ============ -->
+<section data-label="Veja rodando" data-screen-label="10 Final" data-speaker-notes="Fechamento com gancho para o vídeo demonstração. Convide o lead a ver a Ginkgo operando ao vivo e a falar com a Callima (atendente IA) ou direto com o CEO. Reforce a frase-norte da marca." style="background:#070B16;color:#E8EEF5;font-family:'Space Grotesk',sans-serif;display:flex;flex-direction:column;justify-content:center;padding:96px 104px;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(ellipse 70% 70% at 78% 30%,rgba(0,229,160,.15),transparent 60%),radial-gradient(ellipse 60% 60% at 5% 95%,rgba(43,211,255,.08),transparent 60%)"></div>
+  <div style="position:relative">
+    <div style="display:inline-flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:24px;color:#7fe6c4;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.24);padding:11px 22px;border-radius:999px;margin-bottom:40px"><span style="width:10px;height:10px;border-radius:50%;background:#00E5A0;animation:gkP 2.4s infinite"></span>PRÓXIMO PASSO</div>
+    <h2 style="font-size:90px;line-height:1.02;letter-spacing:-.025em;font-weight:700;margin:0;max-width:1340px">Veja a Ginkgo <span style="color:#00E5A0;text-shadow:0 0 44px rgba(0,229,160,.45)">operando ao vivo</span>.</h2>
+    <p style="font-size:38px;color:#97A1B4;line-height:1.45;margin:36px 0 56px;max-width:1180px">No vídeo de demonstração você vê os três agentes em ação — atendendo, criando e anunciando. Em 3 minutos.</p>
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="display:inline-flex;align-items:center;gap:18px;font-weight:600;font-size:34px;padding:22px 40px;border-radius:16px;background:#00E5A0;color:#04130D;box-shadow:0 0 40px rgba(0,229,160,.35)"><svg width="34" height="34" viewBox="0 0 24 24" fill="#04130D"><path d="M8 5v14l11-7z"/></svg>Assistir à demonstração</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#97A1B4;line-height:1.6">Callima · IA &nbsp;<span style="color:#5E6779">+55 53 9133-8911</span><br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afc8c6c1c4c8c0dcd6dcdbcac2dcefc8c2cec6c381ccc0c2">[email&#160;protected]</a></div>
+    </div>
+  </div>
+  <div style="position:relative;display:flex;align-items:center;gap:16px;margin-top:80px">
+    <img src="assets/logo-ginkgo.png" alt="Ginkgo" style="width:46px;height:46px;object-fit:contain" />
+    <span style="font-size:28px;font-weight:600">Agentes que funcionam. Sistemas que se sustentam sozinhos.</span>
+  </div>
+</section>
+
+</x-import>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

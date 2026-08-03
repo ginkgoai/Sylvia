@@ -1,0 +1,393 @@
+{
+  "updatedAt": "2026-06-17T16:23:21.200Z",
+  "createdAt": "2026-06-17T16:05:27.303Z",
+  "id": "oeAXd3LE30lzOIor",
+  "name": "ENVIAR MIDIA",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "instance"
+            },
+            {
+              "name": "phone"
+            },
+            {
+              "name": "media"
+            },
+            {
+              "name": "caption"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        2600,
+        1850
+      ],
+      "id": "fe5ce3ec-a305-47ca-a829-133c7957a65e",
+      "name": "Start"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "enviar-midia-test",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        2080
+      ],
+      "id": "6b3fc8df-57cb-484c-9631-940824a2df78",
+      "name": "Test Webhook",
+      "webhookId": "8cc03b61-37cf-4607-908e-164c927ce8f2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4369a507-e2e5-49cc-96da-559b50bcd49a",
+              "name": "instance",
+              "type": "string",
+              "value": "={{ $json.body ? $json.body.instance : $json.instance }}"
+            },
+            {
+              "id": "5371aa56-d0b6-4826-a205-8c21e0aeb2b8",
+              "name": "phone",
+              "type": "string",
+              "value": "={{ $json.body ? $json.body.phone : $json.phone }}"
+            },
+            {
+              "id": "185c3b92-643c-4d61-9bbd-be7383687023",
+              "name": "media",
+              "type": "string",
+              "value": "={{ $json.body ? $json.body.media : $json.media }}"
+            },
+            {
+              "id": "823e296b-c4bc-430a-88e8-264c8fa50c98",
+              "name": "caption",
+              "type": "string",
+              "value": "={{ $json.body ? $json.body.caption : $json.caption }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2860,
+        1960
+      ],
+      "id": "f60c02f7-a795-4933-88d7-ef6b33a26155",
+      "name": "Prep"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-image",
+        "instanceName": "={{ $json.instance }}",
+        "remoteJid": "={{ $json.phone }}",
+        "media": "={{ $json.media }}",
+        "caption": "={{ $json.caption }}",
+        "options_message": {
+          "delay": 1200
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        1960
+      ],
+      "id": "b0ba4b84-33ea-49ab-a820-7bd2538de8c6",
+      "name": "Evolution Send Image",
+      "credentials": {
+        "evolutionApi": {
+          "id": "tWl4eIzULkFUsVvg",
+          "name": "Evolution account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## ENVIAR MIDIA\nEnvia midia existente (catalogo) via Evolution send-image.\nTool da Callima: passa instance, phone, media(URL), caption.\nFuturo: resolver rotulo->URL via media_assets (Supabase) antes do envio.\nTest Webhook: POST /webhook/enviar-midia-test {instance,phone,media,caption}",
+        "height": 260,
+        "width": 420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        1560
+      ],
+      "id": "57653375-74d8-4a40-8877-8b8392c28fd7",
+      "name": "Doc"
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Prep",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Test Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prep",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prep": {
+      "main": [
+        [
+          {
+            "node": "Evolution Send Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "8abe5a24-1f40-4b67-8c9c-622ee85cf630",
+  "activeVersionId": "8abe5a24-1f40-4b67-8c9c-622ee85cf630",
+  "versionCounter": 3,
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2026-06-17T16:05:27.303Z",
+      "createdAt": "2026-06-17T16:05:27.303Z",
+      "role": "workflow:owner",
+      "workflowId": "oeAXd3LE30lzOIor",
+      "projectId": "Xff40PLAFfNTY0bW",
+      "project": {
+        "updatedAt": "2026-06-08T10:00:44.195Z",
+        "createdAt": "2026-06-08T09:26:18.721Z",
+        "id": "Xff40PLAFfNTY0bW",
+        "name": "Gabriel Schaun <gschaunoficial@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-06-17T16:23:21.202Z",
+    "createdAt": "2026-06-17T16:23:21.202Z",
+    "versionId": "8abe5a24-1f40-4b67-8c9c-622ee85cf630",
+    "workflowId": "oeAXd3LE30lzOIor",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "instance"
+              },
+              {
+                "name": "phone"
+              },
+              {
+                "name": "media"
+              },
+              {
+                "name": "caption"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          2600,
+          1850
+        ],
+        "id": "fe5ce3ec-a305-47ca-a829-133c7957a65e",
+        "name": "Start"
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "enviar-midia-test",
+          "responseMode": "lastNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          2600,
+          2080
+        ],
+        "id": "6b3fc8df-57cb-484c-9631-940824a2df78",
+        "name": "Test Webhook",
+        "webhookId": "8cc03b61-37cf-4607-908e-164c927ce8f2"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "4369a507-e2e5-49cc-96da-559b50bcd49a",
+                "name": "instance",
+                "type": "string",
+                "value": "={{ $json.body ? $json.body.instance : $json.instance }}"
+              },
+              {
+                "id": "5371aa56-d0b6-4826-a205-8c21e0aeb2b8",
+                "name": "phone",
+                "type": "string",
+                "value": "={{ $json.body ? $json.body.phone : $json.phone }}"
+              },
+              {
+                "id": "185c3b92-643c-4d61-9bbd-be7383687023",
+                "name": "media",
+                "type": "string",
+                "value": "={{ $json.body ? $json.body.media : $json.media }}"
+              },
+              {
+                "id": "823e296b-c4bc-430a-88e8-264c8fa50c98",
+                "name": "caption",
+                "type": "string",
+                "value": "={{ $json.body ? $json.body.caption : $json.caption }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2860,
+          1960
+        ],
+        "id": "f60c02f7-a795-4933-88d7-ef6b33a26155",
+        "name": "Prep"
+      },
+      {
+        "parameters": {
+          "resource": "messages-api",
+          "operation": "send-image",
+          "instanceName": "={{ $json.instance }}",
+          "remoteJid": "={{ $json.phone }}",
+          "media": "={{ $json.media }}",
+          "caption": "={{ $json.caption }}",
+          "options_message": {
+            "delay": 1200
+          }
+        },
+        "type": "n8n-nodes-evolution-api.evolutionApi",
+        "typeVersion": 1,
+        "position": [
+          3120,
+          1960
+        ],
+        "id": "b0ba4b84-33ea-49ab-a820-7bd2538de8c6",
+        "name": "Evolution Send Image",
+        "credentials": {
+          "evolutionApi": {
+            "id": "tWl4eIzULkFUsVvg",
+            "name": "Evolution account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "## ENVIAR MIDIA\nEnvia midia existente (catalogo) via Evolution send-image.\nTool da Callima: passa instance, phone, media(URL), caption.\nFuturo: resolver rotulo->URL via media_assets (Supabase) antes do envio.\nTest Webhook: POST /webhook/enviar-midia-test {instance,phone,media,caption}",
+          "height": 260,
+          "width": 420
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          2560,
+          1560
+        ],
+        "id": "57653375-74d8-4a40-8877-8b8392c28fd7",
+        "name": "Doc"
+      }
+    ],
+    "connections": {
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "Prep",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Test Webhook": {
+        "main": [
+          [
+            {
+              "node": "Prep",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Prep": {
+        "main": [
+          [
+            {
+              "node": "Evolution Send Image",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Gabriel Schaun",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-06-17T16:23:23.404Z",
+        "id": 112,
+        "workflowId": "oeAXd3LE30lzOIor",
+        "versionId": "8abe5a24-1f40-4b67-8c9c-622ee85cf630",
+        "event": "activated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    ]
+  }
+}

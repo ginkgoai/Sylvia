@@ -1,0 +1,565 @@
+{
+  "updatedAt": "2026-06-17T16:05:41.426Z",
+  "createdAt": "2026-06-12T14:40:56.294Z",
+  "id": "6VHEUdndh5BYr3l6",
+  "name": "AUDIO FEM",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-audio",
+        "instanceName": "={{ $('Edit Fields').item.json.instance }}",
+        "remoteJid": "={{ $('Edit Fields').item.json.phone }}",
+        "media": "={{ $json.audioBase64 }}",
+        "options_message": {
+          "delay": 1200
+        }
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        3904,
+        1984
+      ],
+      "id": "227596f5-e39d-4514-9152-03d780164ed0",
+      "name": "Evolution2",
+      "credentials": {
+        "evolutionApi": {
+          "id": "tWl4eIzULkFUsVvg",
+          "name": "Evolution account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.texto, model_id: 'eleven_multilingual_v2' }) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3232,
+        1984
+      ],
+      "id": "bc943f51-3d8c-429f-afcc-926c391a5051",
+      "name": "Generate speech from text",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "luLmXt6dKlmAr7Yg",
+          "name": "ElevenLabs Header"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "destinationKey": "audioBase64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        3456,
+        1984
+      ],
+      "id": "62a8147e-be58-4e71-9f83-85c2b3903755",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b45a02c9-bc67-4537-b46a-f4cb8b1fa975",
+              "name": "audioBase64",
+              "value": "={{ $json.audioBase64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3680,
+        1984
+      ],
+      "id": "043918bb-4e81-4f8f-894e-ddb4bd9fa01a",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2f067e4-36b4-49e1-ae6d-0d6074f0c941",
+              "name": "instance",
+              "value": "={{ $json.INSTANCE }}",
+              "type": "string"
+            },
+            {
+              "id": "e3eec5f7-b625-46d7-91f5-1a101a1023f4",
+              "name": "phone",
+              "value": "={{ $json.NUMERO_LEAD }}",
+              "type": "string"
+            },
+            {
+              "id": "ddce3f20-7ba7-4170-87e5-4e630881ad21",
+              "name": "texto",
+              "value": "={{ $json.TEXT }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3008,
+        1984
+      ],
+      "id": "2ce4f1ac-6132-431e-9f61-76253bb32c12",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "NUMERO_LEAD"
+            },
+            {
+              "name": "INSTANCE"
+            },
+            {
+              "name": "TEXT"
+            }
+          ]
+        }
+      },
+      "id": "5d430f82-ecbe-4be6-b135-046a2200db72",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        2784,
+        1984
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## AUDIO",
+        "height": 272,
+        "width": 1360,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2736,
+        1904
+      ],
+      "id": "ce015f7b-db06-4930-8b1b-f05cdae2302f",
+      "name": "Sticky Note"
+    }
+  ],
+  "connections": {
+    "Generate speech from text": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Evolution2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Generate speech from text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": {},
+  "versionId": "ab827eac-39c2-4471-9a4e-949c59beb912",
+  "activeVersionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+  "versionCounter": 6,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-06-12T14:40:56.294Z",
+      "createdAt": "2026-06-12T14:40:56.294Z",
+      "role": "workflow:owner",
+      "workflowId": "6VHEUdndh5BYr3l6",
+      "projectId": "Xff40PLAFfNTY0bW",
+      "project": {
+        "updatedAt": "2026-06-08T10:00:44.195Z",
+        "createdAt": "2026-06-08T09:26:18.721Z",
+        "id": "Xff40PLAFfNTY0bW",
+        "name": "Gabriel Schaun <gschaunoficial@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-06-16T08:24:07.223Z",
+    "createdAt": "2026-06-16T08:24:07.223Z",
+    "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+    "workflowId": "6VHEUdndh5BYr3l6",
+    "nodes": [
+      {
+        "parameters": {
+          "resource": "messages-api",
+          "operation": "send-audio",
+          "instanceName": "={{ $('Edit Fields').item.json.instance }}",
+          "remoteJid": "={{ $('Edit Fields').item.json.phone }}",
+          "media": "={{ $json.audioBase64 }}",
+          "options_message": {
+            "delay": 1200
+          }
+        },
+        "type": "n8n-nodes-evolution-api.evolutionApi",
+        "typeVersion": 1,
+        "position": [
+          3904,
+          1984
+        ],
+        "id": "227596f5-e39d-4514-9152-03d780164ed0",
+        "name": "Evolution2",
+        "credentials": {
+          "evolutionApi": {
+            "id": "tWl4eIzULkFUsVvg",
+            "name": "Evolution account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ text: $json.texto, model_id: 'eleven_multilingual_v2' }) }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file",
+                "outputPropertyName": "data"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          3232,
+          1984
+        ],
+        "id": "bc943f51-3d8c-429f-afcc-926c391a5051",
+        "name": "Generate speech from text",
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "luLmXt6dKlmAr7Yg",
+            "name": "ElevenLabs Header"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "binaryToPropery",
+          "destinationKey": "audioBase64",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1.1,
+        "position": [
+          3456,
+          1984
+        ],
+        "id": "62a8147e-be58-4e71-9f83-85c2b3903755",
+        "name": "Extract from File"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b45a02c9-bc67-4537-b46a-f4cb8b1fa975",
+                "name": "audioBase64",
+                "value": "={{ $json.audioBase64 }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3680,
+          1984
+        ],
+        "id": "043918bb-4e81-4f8f-894e-ddb4bd9fa01a",
+        "name": "Edit Fields1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "d2f067e4-36b4-49e1-ae6d-0d6074f0c941",
+                "name": "instance",
+                "value": "={{ $json.INSTANCE }}",
+                "type": "string"
+              },
+              {
+                "id": "e3eec5f7-b625-46d7-91f5-1a101a1023f4",
+                "name": "phone",
+                "value": "={{ $json.NUMERO_LEAD }}",
+                "type": "string"
+              },
+              {
+                "id": "ddce3f20-7ba7-4170-87e5-4e630881ad21",
+                "name": "texto",
+                "value": "={{ $json.TEXT }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3008,
+          1984
+        ],
+        "id": "2ce4f1ac-6132-431e-9f61-76253bb32c12",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "NUMERO_LEAD"
+              },
+              {
+                "name": "INSTANCE"
+              },
+              {
+                "name": "TEXT"
+              }
+            ]
+          }
+        },
+        "id": "5d430f82-ecbe-4be6-b135-046a2200db72",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          2784,
+          1984
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## AUDIO",
+          "height": 272,
+          "width": 1360,
+          "color": 6
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          2736,
+          1904
+        ],
+        "id": "ce015f7b-db06-4930-8b1b-f05cdae2302f",
+        "name": "Sticky Note"
+      }
+    ],
+    "connections": {
+      "Generate speech from text": {
+        "main": [
+          [
+            {
+              "node": "Extract from File",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract from File": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields1": {
+        "main": [
+          [
+            {
+              "node": "Evolution2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Generate speech from text",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Gabriel Schaun",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-06-16T08:24:07.306Z",
+        "id": 51,
+        "workflowId": "6VHEUdndh5BYr3l6",
+        "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+        "event": "deactivated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      },
+      {
+        "createdAt": "2026-06-16T08:24:07.336Z",
+        "id": 52,
+        "workflowId": "6VHEUdndh5BYr3l6",
+        "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+        "event": "activated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      },
+      {
+        "createdAt": "2026-06-16T08:24:07.386Z",
+        "id": 53,
+        "workflowId": "6VHEUdndh5BYr3l6",
+        "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+        "event": "deactivated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      },
+      {
+        "createdAt": "2026-06-16T08:24:07.411Z",
+        "id": 54,
+        "workflowId": "6VHEUdndh5BYr3l6",
+        "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+        "event": "activated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      },
+      {
+        "createdAt": "2026-06-16T13:19:28.065Z",
+        "id": 87,
+        "workflowId": "6VHEUdndh5BYr3l6",
+        "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+        "event": "deactivated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      },
+      {
+        "createdAt": "2026-06-16T13:19:28.099Z",
+        "id": 88,
+        "workflowId": "6VHEUdndh5BYr3l6",
+        "versionId": "01c03618-55ab-4938-9304-80f87a7afa39",
+        "event": "activated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    ]
+  }
+}

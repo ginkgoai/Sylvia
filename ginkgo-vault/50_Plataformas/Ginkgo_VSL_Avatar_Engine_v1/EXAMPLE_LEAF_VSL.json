@@ -1,0 +1,72 @@
+{
+  "campaign": "Leaf — atendimento inteligente",
+  "avatar": {
+    "name": "Callima",
+    "motion_profile": "WARM_HOOK"
+  },
+  "offer": {
+    "product": "Leaf by Ginkgo",
+    "audience": "empresas que atendem pelo WhatsApp",
+    "promise": "responder, qualificar e agendar com menos trabalho manual"
+  },
+  "scenes": [
+    {
+      "start": 0,
+      "end": 3,
+      "voice": "Seu WhatsApp responde rápido ou só acumula oportunidades perdidas?",
+      "screen_text": "SEU WHATSAPP CONVERTE?",
+      "motion_profile": "WARM_HOOK",
+      "punch_in": 1.04
+    },
+    {
+      "start": 3,
+      "end": 10,
+      "voice": "Quando a resposta demora, o cliente esfria e sua equipe continua presa no repetitivo.",
+      "screen_text": "DEMORA CUSTA VENDAS.",
+      "motion_profile": "EXPLAIN",
+      "b_roll": "mensagens acumulando no celular",
+      "punch_in": 1.02
+    },
+    {
+      "start": 10,
+      "end": 21,
+      "voice": "O Leaf atende, entende o contexto, qualifica o contato e agenda automaticamente.",
+      "screen_text": "ATENDE. QUALIFICA. AGENDA.",
+      "motion_profile": "EXPLAIN",
+      "b_roll": "conversa real do Leaf",
+      "punch_in": 1.05
+    },
+    {
+      "start": 21,
+      "end": 34,
+      "voice": "O cliente recebe uma conversa natural, e sua equipe entra apenas quando realmente importa.",
+      "screen_text": "IA NO REPETITIVO. EQUIPE NO DECISIVO.",
+      "motion_profile": "EMPHASIS",
+      "b_roll": "handoff humano",
+      "punch_in": 1.03
+    },
+    {
+      "start": 34,
+      "end": 44,
+      "voice": "Isso significa mais velocidade, mais organização e menos oportunidade esquecida.",
+      "screen_text": "MAIS VELOCIDADE. MENOS ATRITO.",
+      "motion_profile": "EMPHASIS",
+      "b_roll": "agenda confirmada",
+      "punch_in": 1.06
+    },
+    {
+      "start": 44,
+      "end": 50,
+      "voice": "Veja o Leaf em ação. Fale com a Ginkgo no WhatsApp.",
+      "screen_text": "VEJA O LEAF EM AÇÃO",
+      "motion_profile": "CTA",
+      "b_roll": "tela final",
+      "punch_in": 1.03
+    }
+  ],
+  "cta": {
+    "label": "CHAMAR NO WHATSAPP",
+    "destination": "(41) 9562-3287",
+    "hold_seconds": 3.5
+  }
+}

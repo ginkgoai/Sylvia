@@ -1,0 +1,263 @@
+{
+  "updatedAt": "2026-07-01T23:56:35.085Z",
+  "createdAt": "2026-06-18T09:28:08.160Z",
+  "id": "k82S6bzBEqtIU5ps",
+  "name": "Content Engine — LinkedIn",
+  "description": null,
+  "active": false,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        2400,
+        1900
+      ],
+      "id": "842ddfe5-e0eb-4764-8ddf-a65bdbc9c593",
+      "name": "Schedule Semanal"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "33b6948a-b287-4331-81cf-5053a995e1c1",
+              "name": "org_id",
+              "type": "string",
+              "value": "6696c0e0-b24b-42cc-8595-83e42d530fbc"
+            },
+            {
+              "id": "0715df56-90e3-40ab-a2b6-4987016b36f5",
+              "name": "pilar",
+              "type": "string",
+              "value": "Educar"
+            },
+            {
+              "id": "240db620-d69b-44fb-a054-46ab7b9149e8",
+              "name": "tema",
+              "type": "string",
+              "value": "IA aplicada a atendimento no WhatsApp"
+            },
+            {
+              "id": "f09a2865-0693-4946-b48e-f58d90daf605",
+              "name": "angulo",
+              "type": "string",
+              "value": "Quanto custa um lead que espera 3h por resposta"
+            },
+            {
+              "id": "500fcbb3-eec8-44a0-a92f-80795f27655c",
+              "name": "cta",
+              "type": "string",
+              "value": "Comente AGENTE que eu te mostro como"
+            },
+            {
+              "id": "d99c5262-7f9b-4a92-b08b-92b9953d99d4",
+              "name": "canal",
+              "type": "string",
+              "value": "linkedin"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2620,
+        1900
+      ],
+      "id": "25913fc6-1ea1-4f5a-a01c-4171d72e627d",
+      "name": "Brief"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "openRouterApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: 'google/gemini-2.0-flash-001', messages: [{ role: 'system', content: \"Você é o Pyre, gerador de conteúdo da Ginkgo AI Systems. Escreva 1 post de LinkedIn B2B em português, tom humano e técnico. Hook forte na 1a linha, corpo com 1 ideia clara, CTA no fim, no máximo 3 hashtags.\" }, { role: 'user', content: 'Pilar: ' + $json.pilar + ' | Tema: ' + $json.tema + ' | Ângulo: ' + $json.angulo + ' | CTA: ' + $json.cta } ] }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2840,
+        1900
+      ],
+      "id": "608b8609-b430-40a4-b87f-5fc478760c62",
+      "name": "Pyre — Gerar Post",
+      "credentials": {
+        "openRouterApi": {
+          "id": "XxZ9pd0yUms0f8w7",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "009aaaac-0931-4d35-8d40-7ac78ceff50c",
+              "name": "post",
+              "type": "string",
+              "value": "={{ $json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3060,
+        1900
+      ],
+      "id": "72a2e2fe-26fc-482d-8247-0d6f7041dca9",
+      "name": "Extrair Texto"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO brann_actions (org_id, type, channel, payload, status, requires_hitl) VALUES ($1::uuid, 'social_post', 'linkedin', jsonb_build_object('text', $2::text, 'pilar', $3::text, 'tema', $4::text), 'pending', true) RETURNING id;",
+        "options": {
+          "queryReplacement": "={{ $('Brief').item.json.org_id }},={{ $json.post }},={{ $('Brief').item.json.pilar }},={{ $('Brief').item.json.tema }}"
+        }
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        3280,
+        1900
+      ],
+      "id": "9c21bcb4-aa44-4569-ac62-28e5d116b19f",
+      "name": "Inserir Rascunho (HITL)",
+      "credentials": {
+        "postgres": {
+          "id": "zp3JG0Ln3Dd9ZJ8F",
+          "name": "Supabase LEAF (dev)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Content Engine — LinkedIn (esqueleto)\nSchedule -> Brief -> Pyre(OpenRouter) -> Extrair -> Inserir Rascunho (brann_actions, social_post, pending=HITL).\nINATIVO. Falta: credito OpenRouter + definir org_id da Ginkgo no Brief.\nDepois: 'Social Publisher' (consumer) le aprovados -> Postiz publica.\nFuturo: Brief vem de content_calendar (Supabase) + tendencias; Atomizador p/ IG/Reels/X.",
+        "height": 320,
+        "width": 460
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2360,
+        1560
+      ],
+      "id": "49820b9c-ad9a-470f-ba5d-ce1ed4ce424e",
+      "name": "Doc"
+    },
+    {
+      "parameters": {
+        "content": "## Postiz Publish (pos-aprovacao)\nNAO inline aqui (violaria o HITL). Sera um consumer separado que pega\nbrann_actions status=approved type=social_post -> POST Postiz API -> publica.\nEspelha o 'LEAF - Brann Actions Consumer' (email).",
+        "height": 220,
+        "width": 420
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3260,
+        1560
+      ],
+      "id": "dd11aaa4-d2b2-410b-8f2c-e72e1dd75dd7",
+      "name": "DocPostiz"
+    }
+  ],
+  "connections": {
+    "Schedule Semanal": {
+      "main": [
+        [
+          {
+            "node": "Brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brief": {
+      "main": [
+        [
+          {
+            "node": "Pyre — Gerar Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pyre — Gerar Post": {
+      "main": [
+        [
+          {
+            "node": "Extrair Texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extrair Texto": {
+      "main": [
+        [
+          {
+            "node": "Inserir Rascunho (HITL)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": null,
+  "versionId": "e966d694-d7f4-4866-a9fb-0260aa16b2bd",
+  "activeVersionId": null,
+  "versionCounter": 2,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-06-18T09:28:08.160Z",
+      "createdAt": "2026-06-18T09:28:08.160Z",
+      "role": "workflow:owner",
+      "workflowId": "k82S6bzBEqtIU5ps",
+      "projectId": "Xff40PLAFfNTY0bW",
+      "project": {
+        "updatedAt": "2026-06-08T10:00:44.195Z",
+        "createdAt": "2026-06-08T09:26:18.721Z",
+        "id": "Xff40PLAFfNTY0bW",
+        "name": "Gabriel Schaun <gschaunoficial@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": null
+}

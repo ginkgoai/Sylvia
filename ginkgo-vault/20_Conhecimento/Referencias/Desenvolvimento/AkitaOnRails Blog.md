@@ -1,0 +1,194 @@
+---
+title: "AkitaOnRails Blog"
+source: "https://akitaonrails.com/"
+author:
+  - "[[Fabio Akita]]"
+published:
+created: 2026-07-09
+description: "Blog do Fabio Akita do Canal do YouTube 'Akitando' falando sobre tecnologia, carreira e coisas geek."
+tags:
+  - "clippings"
+---
+## Destaques
+
+- `2026-06-24` — [Por que LLMs vão falhar na Sua Empresa?](https://akitaonrails.com/2026/06/24/por-que-llms-vao-falhar-na-sua-empresa/)
+- `2026-06-11` — [LLM Benchmark: Fable 5 e a novela da Anthropic](https://akitaonrails.com/2026/06/11/llm-benchmark-fable-5-e-a-novela-da-anthropic/)
+- `2026-06-05` — [Controvérsia de IA em contribuições de projetos de código aberto - minha opinião](https://akitaonrails.com/2026/06/05/controversia-ia-contribuicoes-projetos-codigo-aberto-minha-opiniao/)
+- `2026-05-30` — [Boas práticas de projetos de código aberto com LLM - O Mínimo](https://akitaonrails.com/2026/05/30/boas-praticas-projetos-codigo-aberto-llm-o-minimo/)
+- `2026-04-25` — [LLM Benchmarks: Vale a Pena ($$) Misturar 2 Modelos? (Planner + Executor)](https://akitaonrails.com/2026/04/25/llm-benchmarks-vale-a-pena-misturar-2-modelos/)
+- `2026-04-24` — [Benchmark de LLMs pra Coding (Maio 2026): DeepSeek v4, Kimi v2.6, Grok 4.3, GPT 5.5](https://akitaonrails.com/2026/04/24/llm-benchmarks-parte-3-deepseek-kimi-mimo/)
+- `2026-04-20` — [Clean Code pra Agentes de IA](https://akitaonrails.com/2026/04/20/clean-code-para-agentes-de-ia/)
+- `2026-04-11` — [VS Code é o novo Cartão Perfurado](https://akitaonrails.com/2026/04/11/vs-code-e-o-novo-cartao-perfurado/)
+- `2026-02-24` — [RANT: o Akita abriu as pernas pra IA??](https://akitaonrails.com/2026/02/24/rant-o-akita-abriu-as-pernas-pra-ia/)
+- `2026-02-16` — [Vibe Code: Do Zero à Produção em 6 DIAS | The M.Akita Chronicles](https://akitaonrails.com/2026/02/16/vibe-code-do-zero-a-producao-em-6-dias-the-m-akita-chronicles/)
+- `2026-02-08` — [RANT: IA acabou com os programadores?](https://akitaonrails.com/2026/02/08/rant-ia-acabou-com-programadores/)
+- `2025-06-18` — [AGI ou Skynet não vão chegar tão cedo](https://akitaonrails.com/2025/06/18/agi-ou-skynet-nao-vai-chegar-tao-cedo/)
+- `2025-05-02` — [RANT - LLMs são LOOT BOXES!](https://akitaonrails.com/2025/05/02/rant-llms-sao-loot-boxes/)
+
+## 2026 - Julho
+
+- [Fiz o Fable 5 analisar código do TikTok, Clash of Kings e Gov.br - Entendendo Fingerprint](https://akitaonrails.com/2026/07/08/fable-5-analisar-codigo-tiktok-clash-of-kings-govbr-fingerprint/)
+- [Frank GO: brincando de GO com IA](https://akitaonrails.com/2026/07/06/frank-go-brincando-de-go-com-ia/)
+- [LLM Benchmark: Sonnet 5 falha, Gemini Flash surpreende, Sakana Fugu quase chega ao Tier A](https://akitaonrails.com/2026/07/01/llm-benchmark-sonnet-5-gemini-3-5-flash-sakana-fugu-ultra/)
+- [Off-Topic: Não tenha esperança com Política - Como se tornar imune](https://akitaonrails.com/2026/07/01/rant-nao-tenha-esperanca-com-politica-como-se-tornar-imune/)
+
+## 2026 - Junho
+
+- [Por que LLMs vão falhar na Sua Empresa?](https://akitaonrails.com/2026/06/24/por-que-llms-vao-falhar-na-sua-empresa/)
+- [ai-memory: memória de longo prazo (Karpathy Wiki) e auto-aprendizado (Hermes) pros seus projetos](https://akitaonrails.com/2026/06/16/ai-memory-memoria-longo-prazo-karpathy-wiki-auto-aprendizado-hermes-projetos/)
+- [A Controvérsia da LLM Rio 3.5. Plágio?](https://akitaonrails.com/2026/06/15/controversia-llm-rio-3-5-plagio/)
+- [ai-memory: arquitetura emergente e software maleável](https://akitaonrails.com/2026/06/14/ai-memory-arquitetura-emergente-e-software-maleavel/)
+- [LLM Benchmark: Kimi v2.7 code, GLM 5.2, Minimax M3 local](https://akitaonrails.com/2026/06/14/llm-benchmark-kimi-v2-7-code-glm-5-2-minimax-m3-local/)
+- [Burlando o bloqueio à API do GitHub no Brasil](https://akitaonrails.com/2026/06/11/burlando-bloqueio-api-github-brasil/)
+- [LLM Benchmark: Fable 5 e a novela da Anthropic](https://akitaonrails.com/2026/06/11/llm-benchmark-fable-5-e-a-novela-da-anthropic/)
+- [Brincando de TUI com LLMs - Ratatui+Bubbletea](https://akitaonrails.com/2026/06/08/brincando-tui-llms-ratatui-bubbletea/)
+- [Controvérsia de IA em contribuições de projetos de código aberto - minha opinião](https://akitaonrails.com/2026/06/05/controversia-ia-contribuicoes-projetos-codigo-aberto-minha-opiniao/)
+- [LLM Benchmarks - Atualizando sobre Grok 4.3, MiniMax v3 e Opus 4.8](https://akitaonrails.com/2026/06/01/llm-benchmarks-grok-4-3-minimax-m3-opus-4-8/)
+
+## 2026 - Maio
+
+- [Boas práticas de projetos de código aberto com LLM - O Mínimo](https://akitaonrails.com/2026/05/30/boas-praticas-projetos-codigo-aberto-llm-o-minimo/)
+- [Solução Completa de Mangá: Frank Manga+, Frank Yomik, extensão Prettify-Manga](https://akitaonrails.com/2026/05/30/manga-plus-shueisha-desktop-frank-manga-plus/)
+- [Backup de Gmail pra Maildir em Linux](https://akitaonrails.com/2026/05/28/backup-gmail-maildir-linux/)
+- [Primeiras Impressões usando Oh-My-Pi e OpenCode](https://akitaonrails.com/2026/05/25/primeiras-impressoes-usando-oh-my-pi-e-opencode/)
+- [Dicas e Toolkit de IA do Akita: ai-jail, ai-memory, ai-usagebar](https://akitaonrails.com/2026/05/24/dicas-e-toolkit-de-ia-do-akita-ai-jail-ai-memory-ai-usagebar/)
+- [Criei um Widget de Waybar pra Omarchy pra Monitorar Uso de Planos de LLM: ai-usagebar](https://akitaonrails.com/2026/05/24/criei-widget-waybar-omarchy-monitorar-uso-llms-ai-usagebar/)
+- [Criei um CLI pra Checar Pendências no Meu GitHub: ghpending](https://akitaonrails.com/2026/05/23/criei-cli-pra-checar-pendencias-github-ghpending/)
+- [Criei um Sistema de Memória pra Agentes de Código: ai-memory](https://akitaonrails.com/2026/05/23/criei-sistema-memoria-agentes-codigo-ai-memory/)
+- [Memória de Agentes IA: Karpathy LLM Wiki e agentmemory na Prática](https://akitaonrails.com/2026/05/18/memoria-agentes-karpathy-llm-wiki-agentmemory/)
+- [Terminando Minha Maratona de IA: Sucesso ou Fracasso?](https://akitaonrails.com/2026/05/14/terminando-maratona-ia-sucesso-ou-fracasso/)
+- [LLM Benchmarks: DeepSeek Destravado! Use DeepClaude](https://akitaonrails.com/2026/05/04/llm-benchmarks-deepseek-unlocked-deepclaude/)
+- [NW-Omarchy: Trazendo Omarchy pro X11 com XLibre](https://akitaonrails.com/2026/05/01/omarchy-no-xlibre/)
+
+## 2026 - Abril
+
+- [LLM Benchmarks: Vale a Pena ($$) Misturar 2 Modelos? (Planner + Executor)](https://akitaonrails.com/2026/04/25/llm-benchmarks-vale-a-pena-misturar-2-modelos/)
+- [Benchmark de LLMs pra Coding (Maio 2026): DeepSeek v4, Kimi v2.6, Grok 4.3, GPT 5.5](https://akitaonrails.com/2026/04/24/llm-benchmarks-parte-3-deepseek-kimi-mimo/)
+- [Como Driveclub e shadPS4 Quase Derrotaram a IA e a Mim: Como Aprender](https://akitaonrails.com/2026/04/23/driveclub-shadps4-e-ia-como-aprender/)
+- [Clean Code pra Agentes de IA](https://akitaonrails.com/2026/04/20/clean-code-para-agentes-de-ia/)
+- [Meus Retrogames de Corrida Favoritos Rodando no Meu Distrobox](https://akitaonrails.com/2026/04/19/retrogames-de-corrida-favoritos-no-distrobox/)
+- [LLM Benchmarks Parte 2: Vale Combinar Múltiplos Modelos no Mesmo Projeto? Claude + GLM??](https://akitaonrails.com/2026/04/18/llm-benchmarks-parte-2-multiplos-modelos/)
+- [Omarchy no Thinkpad T14 Gen 6: Mini-Review e Setup Completo](https://akitaonrails.com/2026/04/18/omarchy-no-thinkpad-t14-gen-6/)
+- [Por que as LLMs não te dão o resultado esperado | Por que eu prefiro Claude Code hoje](https://akitaonrails.com/2026/04/15/como-falar-com-o-claude-code-efetivamente/)
+- [Seedance 2.0 finalmente foi lançado: Primeiras Impressões](https://akitaonrails.com/2026/04/15/seedance-2-0-finalmente-foi-lancado-primeiras-impressoes/)
+- [Distrobox de Emulação com Claude Code](https://akitaonrails.com/2026/04/11/distrobox-de-emulacao-com-claude-code/)
+- [VS Code é o novo Cartão Perfurado](https://akitaonrails.com/2026/04/11/vs-code-e-o-novo-cartao-perfurado/)
+- [Como a ElevenLabs Não Foi Morta pelo Qwen3 TTS](https://akitaonrails.com/2026/04/09/como-a-elevenlabs-nao-foi-morta-pelo-qwen3-tts/)
+- [20 Anos de Blog: Traduzindo Tudo pra Inglês](https://akitaonrails.com/2026/04/09/20-anos-de-blog-o-ano-em-que-a-ia-finalmente-me-deixou-traduzir-tudo/)
+- [RAG Está Morto? Contexto Longo, Grep e o Fim do Vector DB Obrigatório](https://akitaonrails.com/2026/04/06/rag-esta-morto-contexto-longo/)
+- [Testando LLMs Open Source e Comerciais - Quem Consegue Bater o Claude Opus?](https://akitaonrails.com/2026/04/05/testando-llms-open-source-e-comerciais-quem-consegue-bater-o-claude-opus/)
+- [Transformando YouTube num App de Karaoke | Frank Karaoke](https://akitaonrails.com/2026/04/05/transformando-youtube-num-app-de-karaoke-frank-karaoke/)
+- [Bitcoin no Home Server: Soberania e Privacidade com Coldcard, Sparrow e Fulcrum](https://akitaonrails.com/2026/04/01/bitcoin-no-home-server-soberania-e-privacidade-com-coldcard-sparrow-e-fulcrum/)
+- [Meu Cockpit de Sim Racing - Formula FX1](https://akitaonrails.com/2026/04/01/meu-cockpit-de-sim-racing-formula-fx1/)
+
+## 2026 - Março
+
+- [O código fonte do Claude Code vazou. O que achamos dentro.](https://akitaonrails.com/2026/03/31/codigo-fonte-do-claude-code-vazou-o-que-achamos-dentro/)
+- [Migrando meu Home Server com Claude Code | openSUSE MicroOS](https://akitaonrails.com/2026/03/31/migrando-meu-home-server-com-claude-code/)
+- [Review: Minisforum MS-S1 Max | AMD AI Max+ 395 com 96GB de VRAM](https://akitaonrails.com/2026/03/31/review-minisforum-ms-s1-max-amd-ai-max-395/)
+- [Ensinando a questionar notícias | Frank Investigator](https://akitaonrails.com/2026/03/27/ensinando-a-questionar-noticias-frank-investigator/)
+- [Reescrevi o OpenClaw em Rust, funcionou? | FrankClaw](https://akitaonrails.com/2026/03/16/reescrevi-o-openclaw-em-rust-funcionou-frankclaw/)
+- [Atacando fraudes via email | Frank FBI](https://akitaonrails.com/2026/03/09/atacando-fraudes-via-email-frank-fbi/)
+- [Portando 10 Mil Linhas de Python pra Crystal com Claude: easy-subtitle](https://akitaonrails.com/2026/03/07/portando-10-mil-linhas-de-python-pra-crystal-com-claude-easy-subtitle/)
+- [Crystal e um wrapper inteligente pro FFmpeg feito em 3 horas | easy-ffmpeg](https://akitaonrails.com/2026/03/07/crystal-e-um-wrapper-inteligente-pro-ffmpeg-feito-em-3-horas-easy-ffmpeg/)
+- [37 dias de Imersão em Vibe Coding: Conclusão quanto a Modelos de Negócio](https://akitaonrails.com/2026/03/05/37-dias-de-imers%C3%A3o-em-vibe-coding-conclus%C3%A3o-quanto-a-modelos-de-neg%C3%B3cio/)
+- [Meu primeiro fracasso com Vibe Code e como Consertei | Frank Yomik](https://akitaonrails.com/2026/03/05/meu-primeiro-fracasso-com-vibe-code-e-como-consertei-frank-yomik/)
+- [Eu Fiz um Sistema de Data Mining pra Minha Namorada Influencer — Dicas e Truques](https://akitaonrails.com/2026/03/04/eu-fiz-um-sistema-de-data-mining-pra-minha-namorada-influencer-dicas-e-truques/)
+- [ai-jail: Sandbox para Agentes de IA — De Shell Script a Ferramenta Real](https://akitaonrails.com/2026/03/01/ai-jail-sandbox-para-agentes-de-ia-de-shell-script-a-ferramenta-real/)
+- [Software Nunca Está ‘Pronto’ — 4 Projetos, a Vida Pós-Deploy, e Por Que One-Shot Prompt É Mito](https://akitaonrails.com/2026/03/01/software-nunca-esta-pronto-4-projetos-a-vida-pos-deploy-e-por-que-one-shot-prompt-e-mito/)
+
+## 2026 - Fevereiro
+
+- [RANT: o Akita abriu as pernas pra IA??](https://akitaonrails.com/2026/02/24/rant-o-akita-abriu-as-pernas-pra-ia/)
+- [Vibe Code: Fiz um Indexador Inteligente de Imagens com IA em 2 dias | Frank Sherlock](https://akitaonrails.com/2026/02/23/vibe-code-fiz-um-indexador-inteligente-de-imagens-com-ia-em-2-dias/)
+- [Vibe Code: Fiz um clone do Mega em Rails em 1 dia pro meu Home Server](https://akitaonrails.com/2026/02/21/vibe-code-fiz-um-clone-do-mega-em-rails-em-1-dia-pro-meu-home-server/)
+- [Do Zero à Pós-Produção em 1 Semana - Como usar IA em Projetos de Verdade | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/20/do-zero-a-pos-producao-em-1-semana-como-usar-ia-em-projetos-de-verdade-bastidores-do-the-m-akita-chronicles/)
+- [Testes de Integração em MonoRepo | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/20/testes-de-integracao-em-monorepo-bastidores-do-the-m-akita-chronicles/)
+- [SQLite + Kamal: Deploy de Rails sem Drama | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/20/sqlite-kamal-deploy-de-rails-sem-drama-bastidores-do-the-m-akita-chronicles/)
+- [Discord como Admin Panel | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/20/discord-como-admin-panel-bastidores-do-the-m-akita-chronicles/)
+- [Jobs Assíncronos que sobrevivem ao Caos | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/19/jobs-asssincronos-que-sobrevivem-ao-caos-bastidores-do-the-m-akita-chronicles/)
+- [Frontend Sem Framework | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/19/frontend-sem-framework-bastidores-do-the-m-akita-chronicles/)
+- [Servindo IA na Nuvem: Meu TTS pessoal | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/18/servindo-ia-na-nuvem-meu-tts-pessoal-bastidores-do-the-m-akita-chronicles/)
+- [Web Scrapping em 2026 | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/18/web-scrapping-em-2026-bastidores-do-the-m-akita-chronicles/)
+- [Enviando Emails sem Spammar | Bastidores do The M.Akita Chronicles](https://akitaonrails.com/2026/02/17/enviando-emails-sem-spammar-bastidores-do-the-m-akita-chronicles/)
+- [Vibe Code: Do Zero à Produção em 6 DIAS | The M.Akita Chronicles](https://akitaonrails.com/2026/02/16/vibe-code-do-zero-a-producao-em-6-dias-the-m-akita-chronicles/)
+- [AI Agents: Qual seria a melhor Linguagem de Programação para LLMs?](https://akitaonrails.com/2026/02/09/ai-agents-qual-seria-a-melhor-linguagem-de-programacao-para-llms/)
+- [RANT: IA acabou com os programadores?](https://akitaonrails.com/2026/02/08/rant-ia-acabou-com-programadores/)
+- [Vibe Code: Fiz um Editor de Markdown do zero com Claude Code (FrankMD) PARTE 2](https://akitaonrails.com/2026/02/01/vibe-code-fiz-um-editor-de-markdown-do-zero-com-claude-code-frankmd-parte-2/)
+- [Vibe Code: Fiz um Editor de Markdown do zero com Claude Code (FrankMD) PARTE 1](https://akitaonrails.com/2026/02/01/vibe-code-fiz-um-editor-de-markdown-do-zero-com-claude-code-frankmd-part-1/)
+
+## 2026 - Janeiro
+
+- [Vibe Code: Qual LLM é a MELHOR?? Vamos falar a REAL](https://akitaonrails.com/2026/01/29/vibe-code-qual-llm-%C3%A9-a-melhor-vamos-falar-a-real/)
+- [Vibe Code: Eu fiz um appzinho 100% com GLM 4.7 (TV Clipboard)](https://akitaonrails.com/2026/01/28/vibe-code-eu-fiz-um-appzinho-100-com-glm-4-7-tv-clipboard/)
+- [AI Agents: Qual é o melhor? OpenCode, Crush, Claude Code, GPT Codex, Copilot, Cursor, Windsurf, Antigravity?](https://akitaonrails.com/2026/01/24/ai-agents-qual-e-o-melhor-opencode-crush-claude-code-gpt-codex-copilot-cursor-windsurf-antigravity/)
+- [AI 3D: Já dá pra modelar 3D com prompts?](https://akitaonrails.com/2026/01/23/ai-3d-ja-da-pra-modelar-3d-com-prompts/)
+- [AI Agents: GLM 4.7 Flash é realmente tão bom assim?](https://akitaonrails.com/2026/01/22/ai-agents-glm-4-7-flash-e-realmente-tao-bom-assim/)
+- [Omarchy 3: Setup de Dual GPUs com AMD e NVIDIA](https://akitaonrails.com/2026/01/21/omarchy-3-setup-de-dual-gpus-com-amd-e-nvidia/)
+- [AI Agents: Instalando LSPs pro Crush](https://akitaonrails.com/2026/01/21/ai-agents-instalando-lsps-pro-crush/)
+- [AI Agents: Comparando as principais LLM de 2026 no Desafio de Zig](https://akitaonrails.com/2026/01/11/ai-agents-comparando-as-principais-llm-no-desafio-de-zig/)
+- [AI Agents: Garantindo a Proteção do seu Sistema](https://akitaonrails.com/2026/01/10/ai-agents-garantindo-a-protecao-do-seu-sistema/)
+- [Omarchy 3 - Um dos Melhores Agentes pra Programação: Crush](https://akitaonrails.com/2026/01/09/omarchy-3-um-dos-melhores-agentes-pra-programacao-crush/)
+
+## 2025 - Novembro
+
+- [Omarchy - Não entrar em Sleep enquanto Copia](https://akitaonrails.com/2025/11/20/omarchy-no-sleep-on-copy/)
+
+## 2025 - Setembro
+
+- [Tudo que Precisa Saber Sobre Retro-Gaming](https://akitaonrails.com/2025/09/14/tudo-que-precisa-saber-sobre-retro-gaming/)
+- [Coisas que “Iniciantes” Ignoram sobre PCs](https://akitaonrails.com/2025/09/14/coisas-que-iniciantes-ignoram-sobre-pcs/)
+- [Omarchy 2.0 - Básico de LazyVim](https://akitaonrails.com/2025/09/12/omarchy-2-0-basico-de-lazyvim/)
+- [Omarchy 2.0 - Indicado pra Iniciantes?](https://akitaonrails.com/2025/09/12/omarchy-2-0-indicado-pra-iniciantes/)
+- [Omarchy 2.0 - Instale com a ISO do Omarchy](https://akitaonrails.com/2025/09/12/omarchy-2-0-instale-com-a-iso-do-omarchy/)
+- [Omarchy 2.0 - Bitwarden Self-Hosted / VaultWarden](https://akitaonrails.com/2025/09/10/omarchy-2-0-bitwarden-self-hosted-vaultwarden/)
+- [Instalando Grafana no meu Home Server](https://akitaonrails.com/2025/09/10/instalando-grafana-no-meu-home-server/)
+- [Meu Novo Blog - Como Eu Fiz](https://akitaonrails.com/2025/09/10/meu-novo-blog-como-eu-fiz/)
+- [Protegendo seu Home Server com Cloudflare Zero Trust](https://akitaonrails.com/2025/09/10/protegendo-seu-home-server-com-cloudflare-zero-trust/)
+- [Acessando meu Home Server com Domínio de Verdade](https://akitaonrails.com/2025/09/09/acessando-meu-home-server-com-dominio-de-verdade/)
+- [Omarchy 2.0 - Entendendo SSH e Yubikeys](https://akitaonrails.com/2025/09/09/omarchy-2-0-entendendo-ssh-e-yubikeys/)
+- [Omarchy 2.0 - TUIs (Terminal User Interface Apps)](https://akitaonrails.com/2025/09/09/omarchy-2-0-tuis/)
+- [Omarchy 2.0 - Mise pra organizar ambientes de desenvolvimento](https://akitaonrails.com/2025/09/07/omarchy-2-0-mise-pra-organizar-ambientes-de-desenvolvimento/)
+- [Omarchy 2.0 - LazyVim - LazyExtras](https://akitaonrails.com/2025/09/07/omarchy-2-0-lazyvim-lazyextras/)
+- [Omarchy 2.0 - ZSH Configs](https://akitaonrails.com/2025/09/07/omarchy-2-0-zsh-configs/)
+
+## 2025 - Agosto
+
+- [Como Contribuir no Blog do AkitaOnRails usando Docker](https://akitaonrails.com/2025/08/29/como-contribuir-no-blog-do-akitaonrails-usando-docker/)
+- [Instalando Omarchy 2.0 do Zero - Anotações Pessoais](https://akitaonrails.com/2025/08/29/new-omarchy-2-0-install/)
+
+## 2025 - Junho
+
+- [AGI ou Skynet não vão chegar tão cedo](https://akitaonrails.com/2025/06/18/agi-ou-skynet-nao-vai-chegar-tao-cedo/)
+
+## 2025 - Maio
+
+- [Seu Windows pode estar Capado sem Você Saber. Cheque isto!!](https://akitaonrails.com/2025/05/21/seu-windows-pode-estar-capado-sem-voce-saber-cheque-isto/)
+- [História da Computação e Retro Dev no YouTube](https://akitaonrails.com/2025/05/19/historia-da-computacao-e-retro-dev-no-youtube/)
+- [Último Tentativa de Treinar uma LLM com LoRa. Tiro de canhão, mas errando a mosca.](https://akitaonrails.com/2025/05/03/ultimo-tentativa-de-treinar-uma-llm-com-lora-tiro-de-canhao-mas-errando-a-mosca/)
+- [Ensinando Zig mais recente pra sua LLM - Treinando LoRas (quase)](https://akitaonrails.com/2025/05/03/ensinando-zig-mais-recente-pra-sua-llm-treinando-loras-quase/)
+- [RANT - LLMs são LOOT BOXES!](https://akitaonrails.com/2025/05/02/rant-llms-sao-loot-boxes/)
+- [Quando LLMs não Funcionam pra Programar? Um caso de uso mais real.](https://akitaonrails.com/2025/05/01/quando-llms-nao-funcionam-pra-programar-um-caso-de-uso-mais-real/)
+- [Rant - LLMs vão evoluir pra sempre? Desmistificando LLMs na programação](https://akitaonrails.com/2025/05/01/rant-llms-vao-evoluir-pra-sempre-desmistificando-llms-na-programacao/)
+
+## 2025 - Abril
+
+- [Dissecando um Modelfile de Ollama - Ajustando Qwen3 pra código](https://akitaonrails.com/2025/04/29/dissecando-um-modelfile-de-ollama-ajustando-qwen3-pra-codigo/)
+- [Testando o Recém Lançado LLM Open Source - Qwen3 (com Aider e Ollama)](https://akitaonrails.com/2025/04/28/testando-o-recem-lancado-llm-open-source-qwen3-com-aider-e-ollama/)
+- [Destruindo a “Personalidade” do ChatGPT 4o](https://akitaonrails.com/2025/04/28/destruindo-a-personalidade-do-chatgpt-4o/)
+- [Testando LLMs com Aider na RunPod - qual usar pra código?](https://akitaonrails.com/2025/04/27/testando-llms-com-aider-na-runpod-qual-usar-pra-codigo/)
+- [Seu Próprio Co-Pilot Gratuito Universal que funciona Local: AIDER-OLLAMA-QWEN](https://akitaonrails.com/2025/04/25/seu-proprio-co-pilot-gratuito-universal-que-funciona-local-aider-ollama-qwen/)
+- [Hello World de LLM: criando seu próprio chat de I.A. que roda local](https://akitaonrails.com/2025/04/25/hello-world-de-llm-criando-seu-proprio-chat-de-i-a-que-roda-local/)
+- [Acessando seu NAS usando iSCSI em vez de SMB](https://akitaonrails.com/2025/04/24/acessando-seu-nas-usando-iscsi-em-vez-de-smb/)
+- [Mudando roupas usando I.A. (ComfyUI)](https://akitaonrails.com/2025/04/23/mudando-roupas-usando-i-a-comfyui/)
+- [Usando I.A (ComfyUI) pra gerar NPCs em desenvolvimento de games](https://akitaonrails.com/2025/04/23/usando-i-a-comfyui-pra-gerar-npcs-em-desenvolvimento-de-games/)
+- [Entendendo o Básico de ComfyUI pra gerar imagens com I.A.](https://akitaonrails.com/2025/04/20/entendendo-o-basico-de-comfyui-pra-gerar-imagens-com-i-a/)
+- [Gerando Imagens com I.A - até estilo Ghibli 😂 - com Docker e CUDA](https://akitaonrails.com/2025/04/20/gerando-imagens-com-i-a-ate-estilo-ghibli-com-docker-e-cuda/)
+- [Gerando Videos de até 2 min a partir de uma Foto com I.A.](https://akitaonrails.com/2025/04/19/gerando-videos-de-ate-2-min-a-partir-de-uma-foto-com-i-a/)
+- [Aumentando Resolução de Anime velho pra 4K com I.A.](https://akitaonrails.com/2025/04/19/aumentando-resolucao-de-anime-velho-pra-4k-com-i-a/)
+- [Colorindo Imagens Preto e Branco com I.A.](https://akitaonrails.com/2025/04/19/colorindo-imagens-preto-e-branco-com-i-a/)
+- [Configurando meu NAS Synology com NFS no Linux](https://akitaonrails.com/2025/04/17/configurando-meu-nas-synology-com-nfs-no-linux/)
+- [NVIDIA e Wayland - Problemas pra PCI Passthrough em VMs](https://akitaonrails.com/2025/04/17/nvidia-e-wayland-problemas-pra-pci-passthrough-em-vms/)
+- [Configuração da BIOS do meu PC - X670E Aorus Xtreme](https://akitaonrails.com/2025/04/17/configuracao-da-bios-do-meu-pc-x670e-aorus-xtreme/)
+
+[Arquivo completo →](https://akitaonrails.com/archives/)

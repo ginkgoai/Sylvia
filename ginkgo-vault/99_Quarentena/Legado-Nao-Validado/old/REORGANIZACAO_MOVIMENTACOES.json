@@ -1,0 +1,37 @@
+[
+  {
+    "source": "/home/ubuntu/skills",
+    "destination": "/home/ubuntu/02_GINKGO_AI_SYSTEMS/04_AGENTS/Skills_Backup",
+    "type": "directory",
+    "timestamp": "2026-04-21T00:16:47.624412",
+    "status": "SUCCESS"
+  },
+  {
+    "source": "/home/ubuntu/Downloads",
+    "destination": "/home/ubuntu/01_PESSOAL/Downloads_Temporarios/Downloads_Backup",
+    "type": "directory",
+    "timestamp": "2026-04-21T00:16:47.624508",
+    "status": "SUCCESS"
+  },
+  {
+    "source": "/home/ubuntu/upload",
+    "destination": "/home/ubuntu/01_PESSOAL/Documentos/Contexto_Arquitetura/upload_Backup",
+    "type": "directory",
+    "timestamp": "2026-04-21T00:16:47.624590",
+    "status": "SUCCESS"
+  },
+  {
+    "source": "/home/ubuntu/sandbox.txt",
+    "destination": "/home/ubuntu/00_REVISAO_MANUAL/sandbox.txt",
+    "type": "file",
+    "timestamp": "2026-04-21T00:16:47.624666",
+    "status": "SUCCESS"
+  },
+  {
+    "source": "/home/ubuntu/terminal_full_output",
+    "destination": "/home/ubuntu/00_REVISAO_MANUAL/terminal_full_output",
+    "type": "directory",
+    "timestamp": "2026-04-21T00:16:47.624736",
+    "status": "SUCCESS"
+  }
+]

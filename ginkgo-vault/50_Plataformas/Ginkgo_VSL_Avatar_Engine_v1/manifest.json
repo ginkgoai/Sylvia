@@ -1,0 +1,11 @@
+{
+  "package": "Ginkgo_VSL_Avatar_Engine_v1",
+  "status": "implementation_spec",
+  "importable_comfyui_workflow": false,
+  "reason": "Os schemas exatos dependem das versões de custom nodes instaladas.",
+  "next_build_target": [
+    "LivePortrait motion-base workflow",
+    "MuseTalk 1.5 lip-sync workflow",
+    "VSL assembly workflow"
+  ]
+}

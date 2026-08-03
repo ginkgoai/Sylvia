@@ -1,0 +1,18 @@
+LEAF CLAUDE DESIGN KIT
+
+UPLOAD AS CODE FOLDER:
+- DESIGN.md
+- CLAUDE_DESIGN_SETUP.md
+- BRAND.md
+- GITHUB_COMPONENTS.md
+- src/
+- campaigns/
+- prompts/
+
+UPLOAD AS ASSETS:
+- assets/logos/* (official logos to be added)
+- assets/reference-campaigns/*
+- assets/product-screenshots/* (real screenshots to be added)
+
+GITHUB REFERENCE:
+https://github.com/ginkgoai/ginkgo-leaf-systems

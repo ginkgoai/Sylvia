@@ -1,0 +1,26 @@
+{
+  "title": "Ginkgo VSL Scene Brief",
+  "required": [
+    "campaign",
+    "avatar",
+    "offer",
+    "scenes",
+    "cta"
+  ],
+  "scene_fields": [
+    "start",
+    "end",
+    "voice",
+    "screen_text",
+    "motion_profile",
+    "b_roll",
+    "punch_in"
+  ],
+  "motion_profiles": [
+    "INTIMATE_NEUTRAL",
+    "WARM_HOOK",
+    "EXPLAIN",
+    "EMPHASIS",
+    "CTA"
+  ]
+}

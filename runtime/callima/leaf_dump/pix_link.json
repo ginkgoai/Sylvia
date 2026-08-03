@@ -1,0 +1,134 @@
+{
+  "updatedAt": "2026-06-24T18:06:28.983Z",
+  "createdAt": "2026-06-23T12:35:06.695Z",
+  "id": "pixLink0GINKGO01",
+  "name": "pix_link",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "11111111-1111-4111-8111-111111111111",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const cfg = $input.first().json || {};\nconst CLIENT_ID = '5c32404a-2362-4e33-8236-0231afb0c38d';\nconst CLIENT_SECRET = '0dfd6095-190c-485e-8e11-45589a4c8499';\nconst BASE = 'https://api.syncpayments.com.br';\nconst digits = (v) => String(v == null ? '' : v).replace(/\\D/g, '');\nconst auth = await this.helpers.httpRequest({ method: 'POST', url: BASE + '/api/partner/v1/auth-token', headers: { 'Accept': 'application/json' }, body: { client_id: CLIENT_ID, client_secret: CLIENT_SECRET }, json: true });\nconst tok = auth.access_token;\nconst amount = Number(cfg.amount) > 0 ? Number(cfg.amount) : 100;\nconst ci = await this.helpers.httpRequest({ method: 'POST', url: BASE + '/api/partner/v1/cash-in', headers: { 'Accept': 'application/json', 'Authorization': 'Bearer ' + tok }, body: { amount, description: cfg.description || 'Sinal de projeto - Ginkgo', client: { name: cfg.name || 'Cliente Ginkgo', cpf: digits(cfg.cpf), email: cfg.email || '', phone: digits(cfg.phone) }, webhook_url: cfg.webhook_url || 'https://example.com/ginkgo-webhook' }, json: true });\nreturn [{ json: { ok: true, pix_code: ci.pix_code, identifier: ci.identifier, amount, message: ci.message } }];"
+      },
+      "id": "33333333-3333-4333-8333-333333333333",
+      "name": "Pix",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "When Called": {
+      "main": [
+        [
+          {
+            "node": "Pix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": null,
+  "versionId": "3d6f0d43-5a2f-4546-ac87-65a2681d053b",
+  "activeVersionId": "3d6f0d43-5a2f-4546-ac87-65a2681d053b",
+  "versionCounter": 2,
+  "triggerCount": 0,
+  "shared": [
+    {
+      "updatedAt": "2026-06-23T12:35:06.695Z",
+      "createdAt": "2026-06-23T12:35:06.695Z",
+      "role": "workflow:owner",
+      "workflowId": "pixLink0GINKGO01",
+      "projectId": "Xff40PLAFfNTY0bW",
+      "project": {
+        "updatedAt": "2026-06-08T10:00:44.195Z",
+        "createdAt": "2026-06-08T09:26:18.721Z",
+        "id": "Xff40PLAFfNTY0bW",
+        "name": "Gabriel Schaun <gschaunoficial@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-06-23T17:58:52.920Z",
+    "createdAt": "2026-06-23T17:58:52.920Z",
+    "versionId": "3d6f0d43-5a2f-4546-ac87-65a2681d053b",
+    "workflowId": "pixLink0GINKGO01",
+    "nodes": [
+      {
+        "parameters": {
+          "inputSource": "passthrough"
+        },
+        "id": "11111111-1111-4111-8111-111111111111",
+        "name": "When Called",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          0
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "const cfg = $input.first().json || {};\nconst CLIENT_ID = '5c32404a-2362-4e33-8236-0231afb0c38d';\nconst CLIENT_SECRET = '0dfd6095-190c-485e-8e11-45589a4c8499';\nconst BASE = 'https://api.syncpayments.com.br';\nconst digits = (v) => String(v == null ? '' : v).replace(/\\D/g, '');\nconst auth = await this.helpers.httpRequest({ method: 'POST', url: BASE + '/api/partner/v1/auth-token', headers: { 'Accept': 'application/json' }, body: { client_id: CLIENT_ID, client_secret: CLIENT_SECRET }, json: true });\nconst tok = auth.access_token;\nconst amount = Number(cfg.amount) > 0 ? Number(cfg.amount) : 100;\nconst ci = await this.helpers.httpRequest({ method: 'POST', url: BASE + '/api/partner/v1/cash-in', headers: { 'Accept': 'application/json', 'Authorization': 'Bearer ' + tok }, body: { amount, description: cfg.description || 'Sinal de projeto - Ginkgo', client: { name: cfg.name || 'Cliente Ginkgo', cpf: digits(cfg.cpf), email: cfg.email || '', phone: digits(cfg.phone) }, webhook_url: cfg.webhook_url || 'https://example.com/ginkgo-webhook' }, json: true });\nreturn [{ json: { ok: true, pix_code: ci.pix_code, identifier: ci.identifier, amount, message: ci.message } }];"
+        },
+        "id": "33333333-3333-4333-8333-333333333333",
+        "name": "Pix",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          220,
+          0
+        ]
+      }
+    ],
+    "connections": {
+      "When Called": {
+        "main": [
+          [
+            {
+              "node": "Pix",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "import",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "workflowPublishHistory": []
+  }
+}

@@ -1,0 +1,36 @@
+# Segredos — nunca commitar
+.env
+.env.*
+!.env.example
+.sexta_db_pw.txt
+*.key
+*.pem
+*.token
+*_pw.txt
+credentials*.json
+secrets*
+
+# Repositório independente (não é submódulo; versionado à parte)
+ginkgo-vault/75_Studio/agencia-hot/vip-gabi/
+
+# Node / Orb
+node_modules/
+dist/
+.vite/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Obsidian (estado de janela; config versionada)
+ginkgo-vault/.obsidian/workspace*
+
+# Logs / temporários
+*.log
+.DS_Store
+Thumbs.db
+nohup.out
+
+# Repositório independente embutido (não é submódulo)
+ginkgo-vault/75_Studio/Projetos/zavancenografia-site/Landing/zavan-landing/

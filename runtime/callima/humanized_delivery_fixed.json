@@ -1,0 +1,274 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "\n// QUEBRA NATURAL DE MENSAGENS â€” Brann v3 (corrigido)\n// Carrega instance/remoteJid/full_message em CADA bloco para sobreviver\n// aos nos da Evolution que sobrescrevem o $json.\nconst MAX_CHARS = 280;\nconst out = [];\nconst dados = ($('Dados1').first() && $('Dados1').first().json) || {};\n\nfor (const item of items) {\n  const text = (item.json.text || item.json.message || item.json.output || '').trim();\n  const instance = item.json.instance || dados.INSTANCIA;            // CONFIRMAR campo em 'Dados'\n  const remoteJid = item.json.remoteJid || dados.remoteJid || dados.NUMERO_LEAD; // CONFIRMAR\n  const fullMessage = text;\n  if (!text) { continue; }\n\n  let blocos = [];\n  const porParagrafo = text.split(/\\n{2,}/).map(b => b.trim()).filter(Boolean);\n  if (porParagrafo.length > 1) {\n    blocos = porParagrafo;\n  } else if (text.length > MAX_CHARS) {\n    const frases = text.split(/(?<=[.!?])\\s+(?=[A-ZAEIOUAEOAOC])/);\n    let cur = '';\n    for (const f of frases) {\n      if ((cur + ' ' + f).trim().length > MAX_CHARS && cur.length > 0) { blocos.push(cur.trim()); cur = f; }\n      else { cur = cur ? cur + ' ' + f : f; }\n    }\n    if (cur.trim()) blocos.push(cur.trim());\n  } else {\n    blocos = [text];\n  }\n\n  const finais = [];\n  for (const b of blocos) {\n    if (b.length <= MAX_CHARS) { finais.push(b); continue; }\n    let r = b;\n    while (r.length > MAX_CHARS) {\n      let cut = r.lastIndexOf(' ', MAX_CHARS);\n      if (cut < MAX_CHARS * 0.5) cut = MAX_CHARS;\n      finais.push(r.slice(0, cut).trim());\n      r = r.slice(cut).trim();\n    }\n    if (r) finais.push(r);\n  }\n\n  for (let i = 0; i < finais.length; i++) {\n    const palavras = finais[i].split(' ').length;\n    const base = Math.min(Math.max(palavras * 0.9 * 1000 / 45 * 0.0 + palavras * 90, 1500), 9000);\n    const jitter = Math.floor(Math.random() * 800);\n    out.push({ json: {\n      message: finais[i],\n      sequence_index: i,\n      total_messages: finais.length,\n      is_last: i === finais.length - 1,\n      instance, remoteJid,\n      full_message: fullMessage,\n      typing_delay: Math.floor(base + jitter)\n    }});\n  }\n}\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4400,
+        464
+      ],
+      "id": "0ac11def-9c59-4e24-9089-dad22adef116",
+      "name": "CODE1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        4624,
+        464
+      ],
+      "id": "709403f2-ea63-4472-8ef8-1ca071c88cb2",
+      "name": "Itera1"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "operation": "send-presence-update",
+        "instanceName": "={{ $('Itera1').item.json.instance }}",
+        "remoteJid": "={{ $('Itera1').item.json.remoteJid }}",
+        "presence": "composing"
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        4848,
+        400
+      ],
+      "id": "f991d240-94c8-47d3-a633-85e5df52f7cd",
+      "name": "Typing Indicator"
+    },
+    {
+      "parameters": {
+        "amount": "={{ $('Itera1').item.json.typing_delay || 2000 }}",
+        "unit": "milliseconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5072,
+        400
+      ],
+      "id": "3c2762f8-b16a-49c3-9d73-e28459638561",
+      "name": "Wait Typing",
+      "webhookId": "wait-typing-wh-001"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "={{ $('Itera1').item.json.instance }}",
+        "remoteJid": "={{ $('Itera1').item.json.remoteJid }}",
+        "messageText": "={{ $('Itera1').item.json.message }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        5296,
+        400
+      ],
+      "id": "e94d462d-c08c-4832-96a0-d936126306fd",
+      "name": "Evolution1"
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        5520,
+        400
+      ],
+      "id": "21cba347-9e29-4808-add7-d700585debc1",
+      "name": "Espera1",
+      "webhookId": "3e8b366c-90b6-4bea-baf0-8ba8805ae813"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// LOGICA DE AUDIO ESTRATEGICO (corrigido: le o bloco do loop, audio = msg completa)\nconst item = $('Itera1').item.json;\nconst mensagem = item.full_message || item.message || '';\nconst isLast = item.is_last === true;\nconst palavras = mensagem.split(' ').length;\nconst temLink = mensagem.includes('http') || mensagem.includes('buy.stripe');\nconst temCodigo = mensagem.includes('```') || mensagem.includes('//');\nconst temSubstancia = palavras >= 15;\nconst chance = Math.random() < 0.40;\nconst deveUsarAudio = isLast && temSubstancia && !temLink && !temCodigo && chance;\nreturn [{ json: { ...item, usar_audio: deveUsarAudio, audio_text: deveUsarAudio ? mensagem : null } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5744,
+        400
+      ],
+      "id": "94844c8f-2ae0-4ea1-992f-773b67a75bb5",
+      "name": "Audio Logic"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "audio-cond-001",
+              "leftValue": "={{ $json.usar_audio }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5968,
+        464
+      ],
+      "id": "416360f9-8939-4d90-b3e0-38e7d3a4b75e",
+      "name": "Send Audio?"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "8EoLKO7wdhv0ZLgz",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/8EoLKO7wdhv0ZLgz",
+          "cachedResultName": "AUDIO BRANN"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        6192,
+        464
+      ],
+      "id": "282668ee-ca0d-4061-94e3-872d4d631309",
+      "name": "Send Audio Brann"
+    }
+  ],
+  "connections": {
+    "CODE1": {
+      "main": [
+        [
+          {
+            "node": "Itera1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Itera1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Typing Indicator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typing Indicator": {
+      "main": [
+        [
+          {
+            "node": "Wait Typing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait Typing": {
+      "main": [
+        [
+          {
+            "node": "Evolution1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evolution1": {
+      "main": [
+        [
+          {
+            "node": "Espera1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Espera1": {
+      "main": [
+        [
+          {
+            "node": "Audio Logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Logic": {
+      "main": [
+        [
+          {
+            "node": "Send Audio?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Audio?": {
+      "main": [
+        [
+          {
+            "node": "Send Audio Brann",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Itera1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Audio Brann": {
+      "main": [
+        [
+          {
+            "node": "Itera1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "99d625cdfb8d5ab9f002be9e31912dab6405fca9bca8a8ceb35969e664aaa88f"
+  }
+}

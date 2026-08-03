@@ -1,0 +1,611 @@
+{
+  "updatedAt": "2026-06-17T16:10:25.609Z",
+  "createdAt": "2026-06-17T14:46:23.651Z",
+  "id": "6gIIFvQb3pShQQaa",
+  "name": "LEAF — Brann Actions Consumer",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "brann-consumer",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "7016e2a9-52ba-4f89-a27b-b818f22e504d",
+      "name": "Run",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "83494720-edff-4364-85c0-76df96730ef1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT id FROM brann_actions WHERE status='approved' AND claimed_at IS NULL AND type='email' ORDER BY created_at LIMIT 10",
+        "options": {}
+      },
+      "id": "090c2d11-d840-4c95-92f1-002340c533a6",
+      "name": "Get Approved",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        460,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zp3JG0Ln3Dd9ZJ8F",
+          "name": "Supabase LEAF (dev)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "df7af7cf-81b6-4dbc-a8b1-c83dfc7c7e4e",
+      "name": "Loop",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM claim_brann_action('{{ $json.id }}'::uuid, 'n8n-consumer')",
+        "options": {}
+      },
+      "id": "98ab8efb-864c-4a8b-a2b6-b207af692270",
+      "name": "Claim",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        900,
+        360
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zp3JG0Ln3Dd9ZJ8F",
+          "name": "Supabase LEAF (dev)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "904ca6af-2fce-467a-8306-87908e403219",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4aace6f0-845b-46c7-97d4-2d84c5346df2",
+      "name": "Claimed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from: 'Ginkgo <nao-responder@ginkgosystems.tech>', to: [$json.target], subject: (($json.payload||{}).subject) || 'Mensagem da Ginkgo', html: '<p>' + ((($json.payload||{}).body) || (($json.payload||{}).message) || (($json.payload||{}).subject) || '') + '</p>' }) }}",
+        "options": {}
+      },
+      "id": "a21cee03-9925-4344-8188-97c405719e4f",
+      "name": "Resend Send",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        260
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "MEAzpaTxr2iUYree",
+          "name": "Resend LEAF"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE brann_actions SET status='sent', sent_at=now(), send_result='{{ JSON.stringify($json).replace(/'/g,\"''\") }}'::jsonb WHERE id='{{ $('Claim').item.json.id }}'",
+        "options": {}
+      },
+      "id": "f8e81ff1-d92b-4f7a-aab5-02095b99eef5",
+      "name": "Mark Sent",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1560,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zp3JG0Ln3Dd9ZJ8F",
+          "name": "Supabase LEAF (dev)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO brann_audit(org_id, tool, args, result, ok) VALUES('{{ $('Claim').item.json.org_id }}','consumer.email','{{ JSON.stringify(($('Claim').item.json.payload)||{}).replace(/'/g,\"''\") }}'::jsonb, '{}'::jsonb, true)",
+        "options": {}
+      },
+      "id": "f9d173cb-4ae6-4d49-8815-a47969b8f41c",
+      "name": "Audit",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1780,
+        260
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "zp3JG0Ln3Dd9ZJ8F",
+          "name": "Supabase LEAF (dev)"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Run": {
+      "main": [
+        [
+          {
+            "node": "Get Approved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Approved": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Claim",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claim": {
+      "main": [
+        [
+          {
+            "node": "Claimed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claimed?": {
+      "main": [
+        [
+          {
+            "node": "Resend Send",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resend Send": {
+      "main": [
+        [
+          {
+            "node": "Mark Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Sent": {
+      "main": [
+        [
+          {
+            "node": "Audit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audit": {
+      "main": [
+        [
+          {
+            "node": "Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
+  "pinData": null,
+  "versionId": "e9f607bc-eeac-4571-9e85-6c2d0c3c628b",
+  "activeVersionId": "e9f607bc-eeac-4571-9e85-6c2d0c3c628b",
+  "versionCounter": 1,
+  "triggerCount": 1,
+  "shared": [
+    {
+      "updatedAt": "2026-06-17T14:46:23.651Z",
+      "createdAt": "2026-06-17T14:46:23.651Z",
+      "role": "workflow:owner",
+      "workflowId": "6gIIFvQb3pShQQaa",
+      "projectId": "Xff40PLAFfNTY0bW",
+      "project": {
+        "updatedAt": "2026-06-08T10:00:44.195Z",
+        "createdAt": "2026-06-08T09:26:18.721Z",
+        "id": "Xff40PLAFfNTY0bW",
+        "name": "Gabriel Schaun <gschaunoficial@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-06-17T14:46:23.651Z",
+    "createdAt": "2026-06-17T14:46:23.651Z",
+    "versionId": "e9f607bc-eeac-4571-9e85-6c2d0c3c628b",
+    "workflowId": "6gIIFvQb3pShQQaa",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "brann-consumer",
+          "responseMode": "lastNode",
+          "options": {}
+        },
+        "id": "7016e2a9-52ba-4f89-a27b-b818f22e504d",
+        "name": "Run",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [
+          260,
+          300
+        ],
+        "webhookId": "83494720-edff-4364-85c0-76df96730ef1"
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT id FROM brann_actions WHERE status='approved' AND claimed_at IS NULL AND type='email' ORDER BY created_at LIMIT 10",
+          "options": {}
+        },
+        "id": "090c2d11-d840-4c95-92f1-002340c533a6",
+        "name": "Get Approved",
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.5,
+        "position": [
+          460,
+          300
+        ],
+        "credentials": {
+          "postgres": {
+            "id": "zp3JG0Ln3Dd9ZJ8F",
+            "name": "Supabase LEAF (dev)"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {
+            "reset": false
+          }
+        },
+        "id": "df7af7cf-81b6-4dbc-a8b1-c83dfc7c7e4e",
+        "name": "Loop",
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          680,
+          300
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "SELECT * FROM claim_brann_action('{{ $json.id }}'::uuid, 'n8n-consumer')",
+          "options": {}
+        },
+        "id": "98ab8efb-864c-4a8b-a2b6-b207af692270",
+        "name": "Claim",
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.5,
+        "position": [
+          900,
+          360
+        ],
+        "credentials": {
+          "postgres": {
+            "id": "zp3JG0Ln3Dd9ZJ8F",
+            "name": "Supabase LEAF (dev)"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "typeValidation": "loose",
+              "version": 2
+            },
+            "conditions": [
+              {
+                "id": "904ca6af-2fce-467a-8306-87908e403219",
+                "leftValue": "={{ $json.id }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEmpty",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "id": "4aace6f0-845b-46c7-97d4-2d84c5346df2",
+        "name": "Claimed?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2,
+        "position": [
+          1120,
+          360
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.resend.com/emails",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={{ JSON.stringify({ from: 'Ginkgo <nao-responder@ginkgosystems.tech>', to: [$json.target], subject: (($json.payload||{}).subject) || 'Mensagem da Ginkgo', html: '<p>' + ((($json.payload||{}).body) || (($json.payload||{}).message) || (($json.payload||{}).subject) || '') + '</p>' }) }}",
+          "options": {}
+        },
+        "id": "a21cee03-9925-4344-8188-97c405719e4f",
+        "name": "Resend Send",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          1340,
+          260
+        ],
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "MEAzpaTxr2iUYree",
+            "name": "Resend LEAF"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "UPDATE brann_actions SET status='sent', sent_at=now(), send_result='{{ JSON.stringify($json).replace(/'/g,\"''\") }}'::jsonb WHERE id='{{ $('Claim').item.json.id }}'",
+          "options": {}
+        },
+        "id": "f8e81ff1-d92b-4f7a-aab5-02095b99eef5",
+        "name": "Mark Sent",
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.5,
+        "position": [
+          1560,
+          260
+        ],
+        "credentials": {
+          "postgres": {
+            "id": "zp3JG0Ln3Dd9ZJ8F",
+            "name": "Supabase LEAF (dev)"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "executeQuery",
+          "query": "INSERT INTO brann_audit(org_id, tool, args, result, ok) VALUES('{{ $('Claim').item.json.org_id }}','consumer.email','{{ JSON.stringify(($('Claim').item.json.payload)||{}).replace(/'/g,\"''\") }}'::jsonb, '{}'::jsonb, true)",
+          "options": {}
+        },
+        "id": "f9d173cb-4ae6-4d49-8815-a47969b8f41c",
+        "name": "Audit",
+        "type": "n8n-nodes-base.postgres",
+        "typeVersion": 2.5,
+        "position": [
+          1780,
+          260
+        ],
+        "credentials": {
+          "postgres": {
+            "id": "zp3JG0Ln3Dd9ZJ8F",
+            "name": "Supabase LEAF (dev)"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Run": {
+        "main": [
+          [
+            {
+              "node": "Get Approved",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Get Approved": {
+        "main": [
+          [
+            {
+              "node": "Loop",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop": {
+        "main": [
+          [],
+          [
+            {
+              "node": "Claim",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Claim": {
+        "main": [
+          [
+            {
+              "node": "Claimed?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Claimed?": {
+        "main": [
+          [
+            {
+              "node": "Resend Send",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Loop",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Resend Send": {
+        "main": [
+          [
+            {
+              "node": "Mark Sent",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Mark Sent": {
+        "main": [
+          [
+            {
+              "node": "Audit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Audit": {
+        "main": [
+          [
+            {
+              "node": "Loop",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Gabriel Schaun",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-06-17T14:46:23.940Z",
+        "id": 111,
+        "workflowId": "6gIIFvQb3pShQQaa",
+        "versionId": "e9f607bc-eeac-4571-9e85-6c2d0c3c628b",
+        "event": "activated",
+        "userId": "13e41f1a-2e0b-478c-9965-b5aa85843dca"
+      }
+    ]
+  }
+}

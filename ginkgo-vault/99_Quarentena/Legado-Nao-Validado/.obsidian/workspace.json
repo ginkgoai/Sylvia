@@ -1,0 +1,197 @@
+{
+  "main": {
+    "id": "bfa2a0fb65dfe1ae",
+    "type": "split",
+    "children": [
+      {
+        "id": "68122821b018e130",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f3e518173309157",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "29c6c3bf7a9d5262",
+    "type": "split",
+    "children": [
+      {
+        "id": "cdf2fd8591c24879",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f06a0838c8a0b5ee",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "5d49db15f5df3677",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "0956e07747658015",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4632fad1c8bda9ff",
+    "type": "split",
+    "children": [
+      {
+        "id": "a8e7ced5f784506a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a6fed8a82a447b2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Clippings/self-improving agent.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos para self-improving agent"
+            }
+          },
+          {
+            "id": "51b0f35bff9e0535",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Clippings/self-improving agent.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída para self-improving agent"
+            }
+          },
+          {
+            "id": "f3d4ad2273b904eb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "7941a96345880a60",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "adf8d12f7fceb893",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Clippings/self-improving agent.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário de self-improving agent"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "8f3e518173309157",
+  "lastOpenFiles": [
+    "Sem título.canvas",
+    "Sem título 1.canvas",
+    "Clippings/safishamsigraphify AI coding assistant skill (Claude Code, Codex, OpenCode, Cursor, Gemini CLI, and more). Turn any folder of code, SQL schemas, R scripts, shell scripts, docs, papers, images, or videos into a queryable knowledge graph. App code.md",
+    "Clippings/amanning3390hermeshub HermesHub - The Skills Hub for Hermes Agent by Nous Research. Browse, share, and install community skills 1.md",
+    "Clippings/SamurAIGPTawesome-hermes-agent A curated list of skills, plugins, tools, integrations, and resources for Hermes Agent by Nous Research 1.md",
+    "Clippings/SamurAIGPTawesome-hermes-agent A curated list of skills, plugins, tools, integrations, and resources for Hermes Agent by Nous Research.md",
+    "Clippings/0xNykawesome-hermes-agent A curated list of awesome skills, tools, integrations, and resources for Hermes Agent by Nous Research.md",
+    "Clippings/Anil-matchaawesome-claude-fable-5 Curated Claude Fable 5 use cases, tutorials, integrations, demos, and benchmark evidence with source links. Access Claude Fable 5 exclusively via MuAPI.md",
+    "Clippings/amanning3390hermeshub HermesHub - The Skills Hub for Hermes Agent by Nous Research. Browse, share, and install community skills.md",
+    "Clippings/aattarandeepclaude Use Claude Code's autonomous agent loop with DeepSeek V4 Pro, OpenRouter, or any Anthropic-compatible backend. Same UX, 17x cheaper.md",
+    "Clippings/self-improving agent.md",
+    "Clippings"
+  ]
+}

@@ -1,0 +1,373 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "apiKey",
+        "apiKey": "={{ $env.SUPABASE_API_KEY }}",
+        "supabaseUrl": "={{ $env.SUPABASE_URL }}"
+      },
+      "name": "Supabase - Credenciais",
+      "type": "n8n-nodes-base.credentials",
+      "typeVersion": 1,
+      "id": "supabase_credentials"
+    },
+    
+    {
+      "parameters": {
+        "authentication": "apiKey",
+        "apiKey": "={{ $env.EVOLUTION_API_KEY }}",
+        "instanceName": "={{ $env.EVOLUTION_API_INSTANCE_NAME }}",
+        "baseUrl": "={{ $env.EVOLUTION_API_BASE_URL }}",
+        "whatsappNumber": "={{ $env.EVOLUTION_API_WHATSAPP_NUMBER }}"
+      },
+      "name": "Evolution API - Credenciais",
+      "type": "n8n-nodes-base.credentials",
+      "typeVersion": 1,
+      "id": "evolution_api_credentials"
+    },
+    
+    {
+      "parameters": {
+        "url": "https://api.mercadolibre.com/sites/MLB/search",
+        "options": {
+          "qs": [
+            {
+              "name": "q",
+              "value": "ofertas"
+            },
+            {
+              "name": "discount",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerData": [
+          {
+            "name": "Accept",
+            "value": "application/json"
+          }
+        ]
+      },
+      "name": "Mercado Livre - Buscar Ofertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "id": "mercado_livre_http_request"
+    },
+    {
+      "parameters": {
+        "values": [
+          {
+            "name": "source",
+            "value": "MercadoLivre"
+          }
+        ]
+      },
+      "name": "Set Source - ML",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "id": "set_source_ml"
+    },
+    {
+      "parameters": {
+        "url": "https://open.shopee.com/api/v2/product/get_item_list",
+        "options": {
+          "qs": [
+            {
+              "name": "keyword",
+              "value": "ofertas"
+            },
+            {
+              "name": "page_size",
+              "value": "50"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerData": [
+          {
+            "name": "Accept",
+            "value": "application/json"
+          }
+        ]
+      },
+      "name": "Shopee - Buscar Ofertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "id": "shopee_http_request"
+    },
+    {
+      "parameters": {
+        "values": [
+          {
+            "name": "source",
+            "value": "Shopee"
+          }
+        ]
+      },
+      "name": "Set Source - Shopee",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "id": "set_source_shopee"
+    },
+    {
+      "parameters": {
+        "url": "https://api.example.com/amazon/deals",
+        "options": {
+          "qs": [
+            {
+              "name": "category",
+              "value": "deals"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerData": [
+          {
+            "name": "Accept",
+            "value": "application/json"
+          }
+        ]
+      },
+      "name": "Amazon - Buscar Ofertas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "id": "amazon_http_request"
+    },
+    {
+      "parameters": {
+        "values": [
+          {
+            "name": "source",
+            "value": "Amazon"
+          }
+        ]
+      },
+      "name": "Set Source - Amazon",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "id": "set_source_amazon"
+    },
+    {
+      "parameters": {
+        "mode": "merge",
+        "mergeBy": "append",
+        "input1": "set_source_ml",
+        "input2": "set_source_shopee",
+        "input3": "set_source_amazon"
+      },
+      "name": "Merge Ofertas",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "id": "merge_offers"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "read",
+        "table": "postagens",
+        "filters": [
+          {
+            "column": "product_id",
+            "operator": "equalTo",
+            "value": "{{ $json.product_id }}"
+          }
+        ]
+      },
+      "name": "Supabase - Checar Duplicata",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "id": "supabase_check_duplicate"
+    },
+    {
+      "parameters": {
+        "conditions": [
+          {
+            "value1": "{{ $json.data.length }}",
+            "operator": "equalTo",
+            "value2": "0"
+          }
+        ]
+      },
+      "name": "IF - Não Duplicado",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "id": "if_not_duplicate"
+    },
+    {
+      "parameters": {
+        "functionCode": "\nconst items = $input.all();\nconst formattedItems = [];\n\nfor (const item of items) {\n  const product = item.json;\n  let priceDe = product.original_price || product.price;\n  let pricePor = product.price;\n  let imageUrl = product.thumbnail || product.secure_thumbnail;\n  let productUrl = product.permalink || product.url;\n\n  // Placeholder for affiliate link generation logic\n  let affiliateLink = productUrl; // Replace with actual affiliate link generation\n\n  let message = `✨ OFERTA IMPERDÍVEL! ✨\n\n${product.title}\n\nDe: R$ ${priceDe.toFixed(2).replace('.', ',')}\nPor: R$ ${pricePor.toFixed(2).replace('.', ',')}\n\n🛒 Compre agora: ${affiliateLink}\n`;\n\n  formattedItems.push({\n    json: {\n      product_id: product.id,\n      title: product.title,\n      message: message,\n      image_url: imageUrl,\n      affiliate_link: affiliateLink,\n      source: product.source // e.g., 'MercadoLivre', 'Shopee', 'Amazon'\n    }\n  });\n}\n\nreturn formattedItems;\n"
+      },
+      "name": "Formatar Oferta e Gerar Link",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "id": "format_offer_code"
+    },
+    {
+      "parameters": {
+        "url": "{{ $('Evolution API - Credenciais').parameter('baseUrl') }}/message/sendMedia/{{ $('Evolution API - Credenciais').parameter('instanceName') }}",
+        "method": "POST",
+        "body": {
+          "number": "{{ $('Evolution API - Credenciais').parameter('whatsappNumber') }}",
+          "options": {
+            "delay": 1200,
+            "presence": "composing"
+          },
+          "mediaMessage": {
+            "mediatype": "image",
+            "caption": "{{ $json.message }}",
+            "media": "{{ $json.image_url }}"
+          }
+        },
+        "sendHeaders": true,
+        "headerData": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "name": "apikey",
+            "value": "{{ $('Evolution API - Credenciais').parameter('apiKey') }}"
+          }
+        ]
+      },
+      "name": "Evolution API - Enviar Mensagem",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "id": "evolution_api_send_message"
+    },
+    {
+      "parameters": {
+        "resource": "table",
+        "operation": "insert",
+        "table": "postagens",
+        "data": [
+          {
+            "product_id": "{{ $json.product_id }}",
+            "post_date": "{{ new Date().toISOString() }}",
+            "source": "{{ $json.source }}"
+          }
+        ]
+      },
+      "name": "Supabase - Registrar Postagem",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "id": "supabase_register_post"
+    },
+    
+    {
+      "parameters": {
+        "mode": "everyMinute",
+        "value": "1"
+      },
+      "name": "Cron Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "id": "cron_trigger_1"
+    }
+  ],
+  "connections": {
+    "cron_trigger_1": [
+      [
+        {
+          "node": "mercado_livre_http_request",
+          "port": 0
+        }
+      ]
+    ],
+    "mercado_livre_http_request": [
+      [
+        {
+          "node": "set_source_ml",
+          "port": 0
+        }
+      ]
+    ],
+    "set_source_ml": [
+      [
+        {
+          "node": "shopee_http_request",
+          "port": 0
+        }
+      ]
+    ],
+    "shopee_http_request": [
+      [
+        {
+          "node": "set_source_shopee",
+          "port": 0
+        }
+      ]
+    ],
+    "set_source_shopee": [
+      [
+        {
+          "node": "amazon_http_request",
+          "port": 0
+        }
+      ]
+    ],
+    "amazon_http_request": [
+      [
+        {
+          "node": "set_source_amazon",
+          "port": 0
+        }
+      ]
+    ],
+    "set_source_amazon": [
+      [
+        {
+          "node": "merge_offers",
+          "port": 0
+        }
+      ]
+    ],
+    "merge_offers": [
+      [
+        {
+          "node": "supabase_check_duplicate",
+          "port": 0
+        }
+      ]
+    ],
+    "supabase_check_duplicate": [
+      [
+        {
+          "node": "if_not_duplicate",
+          "port": 0
+        }
+      ]
+    ],
+    "if_not_duplicate": [
+      [
+        {
+          "node": "format_offer_code",
+          "port": 0
+        }
+      ]
+    ],
+    "format_offer_code": [
+      [
+        {
+          "node": "evolution_api_send_message",
+          "port": 0
+        }
+      ]
+    ],
+    "evolution_api_send_message": [
+      [
+        {
+          "node": "supabase_register_post",
+          "port": 0
+        }
+      ]
+    ]
+  },
+  "active": false,
+  "settings": {},
+  "staticData": null,
+  "name": "Fluxo de Promoções - ML, Shopee, Amazon",
+  "id": "promotions_workflow_1",
+  "versionId": "1"
+}

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#0A0F1E;color:#E8EEF5;font-family:"Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+  ::selection{background:rgba(0,229,160,.3);color:#fff}
+  a{color:inherit;text-decoration:none}
+  input,textarea,button{font-family:inherit}
+  ::-webkit-scrollbar{width:11px;height:11px}
+  ::-webkit-scrollbar-track{background:#070B16}
+  ::-webkit-scrollbar-thumb{background:#1d2740;border-radius:6px;border:2px solid #070B16}
+  ::-webkit-scrollbar-thumb:hover{background:#2a3a52}
+  :focus-visible{outline:2px solid #00E5A0;outline-offset:3px;border-radius:4px}
+  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+  @keyframes gkFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(0,-28px) scale(1.07)}}
+  @keyframes gkPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,229,160,.5)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(0,229,160,0)}}
+  @keyframes gkRise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes gkBar{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+  @keyframes gkDots{0%,60%,100%{opacity:.25}30%{opacity:1}}
+  @keyframes gkSpin{to{transform:rotate(360deg)}}
+  @keyframes gkSweep{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  @keyframes gkGlow{0%,100%{opacity:.35;filter:saturate(.6)}50%{opacity:1;filter:saturate(1.3)}}
+  @keyframes gkBlink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes gkOrb{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.06);opacity:1}}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  [data-motion="off"] .gk-anim{animation:none!important}
+  @media(max-width:860px){
+    .gk-navlinks{display:none!important}
+    .gk-hero-grid{grid-template-columns:1fr!important}
+    .gk-hero-side{display:none!important}
+    .gk-cta-grid{grid-template-columns:1fr!important}
+  }
+  @media(min-width:861px){.gk-burger{display:none!important}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="position:relative;width:100%;min-height:100vh;background:#0A0F1E">
+
+<!-- ============ NAV ============ -->
+<header ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:saturate(150%) blur(14px);-webkit-backdrop-filter:saturate(150%) blur(14px);background:rgba(7,11,22,.55);border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s,border-color .3s">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px);height:72px;display:flex;align-items:center;justify-content:space-between">
+    <a href="#hero" style="display:flex;align-items:center;gap:11px">
+      <img src="assets/logo-ginkgo.png" alt="Ginkgo" style="width:34px;height:34px;object-fit:contain;filter:drop-shadow(0 0 9px rgba(43,211,255,.45))" />
+      <span style="font-weight:700;font-size:18px;letter-spacing:-.02em">Ginkgo<span style="color:#5E6779;font-weight:500;font-size:13px;margin-left:7px;letter-spacing:.04em">AI&nbsp;SYSTEMS</span></span>
+    </a>
+    <nav class="gk-navlinks" style="display:flex;gap:30px;align-items:center">
+      <a href="#especialidade" style="font-size:14.5px;color:#97A1B4;font-weight:500;transition:color .2s" style-hover="color:#fff">Especialidade</a>
+      <a href="#plataformas" style="font-size:14.5px;color:#97A1B4;font-weight:500" style-hover="color:#fff">Plataformas</a>
+      <a href="#imagine" style="font-size:14.5px;color:#97A1B4;font-weight:500" style-hover="color:#fff">IMAGINE</a>
+      <a href="#portfolio" style="font-size:14.5px;color:#97A1B4;font-weight:500" style-hover="color:#fff">Portfólio</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="#contato" style="display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:10px 18px;border-radius:10px;background:#00E5A0;color:#04130D;box-shadow:0 0 22px rgba(0,229,160,.28);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 6px 30px rgba(0,229,160,.5)">Falar com a Ginkgo</a>
+      <button class="gk-burger" onClick="{{ toggleMenu }}" aria-label="Menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px">
+        <span style="width:22px;height:2px;background:#E8EEF5;border-radius:2px"></span>
+        <span style="width:22px;height:2px;background:#E8EEF5;border-radius:2px"></span>
+        <span style="width:22px;height:2px;background:#E8EEF5;border-radius:2px"></span>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;padding:8px 22px 18px;background:#070B16;border-bottom:1px solid rgba(255,255,255,.08)">
+      <a href="#especialidade" onClick="{{ closeMenu }}" style="padding:13px 0;color:#97A1B4;border-bottom:1px solid rgba(255,255,255,.06)">Especialidade</a>
+      <a href="#plataformas" onClick="{{ closeMenu }}" style="padding:13px 0;color:#97A1B4;border-bottom:1px solid rgba(255,255,255,.06)">Plataformas</a>
+      <a href="#imagine" onClick="{{ closeMenu }}" style="padding:13px 0;color:#97A1B4;border-bottom:1px solid rgba(255,255,255,.06)">IMAGINE</a>
+      <a href="#portfolio" onClick="{{ closeMenu }}" style="padding:13px 0;color:#97A1B4">Portfólio</a>
+    </div>
+  </sc-if>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:120px 0 80px">
+  <canvas ref="{{ canvasRef }}" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);background-size:62px 62px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 30% 40%,#000 20%,transparent 78%);mask-image:radial-gradient(ellipse 80% 70% at 30% 40%,#000 20%,transparent 78%)"></div>
+  <div style="position:absolute;top:-160px;right:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,160,.16),transparent 70%);filter:blur(60px);z-index:0;pointer-events:none;animation:gkFloat 13s ease-in-out infinite" class="gk-anim"></div>
+  <div style="position:absolute;bottom:-200px;left:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(43,211,255,.12),transparent 70%);filter:blur(70px);z-index:0;pointer-events:none"></div>
+
+  <div style="position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px);width:100%">
+    <div class="gk-hero-grid" style="display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center">
+      <div data-reveal>
+        <div style="display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#8aa;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.22);padding:7px 14px;border-radius:999px;color:#7fe6c4">
+          <span class="gk-anim" style="width:7px;height:7px;border-radius:50%;background:#00E5A0;animation:gkPulse 2.4s infinite"></span>
+          INFRAESTRUTURA DE IA · B2B AI-NATIVE
+        </div>
+        <h1 style="font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.03em;font-weight:700;margin:24px 0 0">Infraestrutura de IA<br/>que <span style="color:#00E5A0;text-shadow:0 0 38px rgba(0,229,160,.45)">pensa, executa</span><br/>e se sustenta.</h1>
+        <p style="font-size:clamp(16px,1.6vw,19px);color:#97A1B4;max-width:520px;margin:26px 0 0;line-height:1.65">Não vendemos ferramentas com IA. Construímos a fundação: agentes autônomos confiáveis e sistemas que operam, se monitoram e se sustentam sozinhos. <span style="color:#E8EEF5">A raiz antes da copa.</span></p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px">
+          <a href="#portfolio" style="display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:15px 26px;border-radius:12px;background:#00E5A0;color:#04130D;box-shadow:0 0 30px rgba(0,229,160,.3);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 8px 38px rgba(0,229,160,.5)">Ver o que entregamos →</a>
+          <a href="#contato" style="display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:15px 26px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:#E8EEF5;transition:border-color .25s,background .25s" style-hover="border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.07)">Falar com a Ginkgo</a>
+        </div>
+        <div style="display:flex;gap:34px;flex-wrap:wrap;margin-top:46px">
+          <div><div style="font-weight:700;font-size:26px;color:#E8EEF5">3</div><div style="font-size:13px;color:#5E6779">plataformas em produção</div></div>
+          <div><div style="font-weight:700;font-size:26px;color:#E8EEF5">100%</div><div style="font-size:13px;color:#5E6779">agentes auditáveis</div></div>
+          <div><div style="font-weight:700;font-size:26px;color:#E8EEF5">24/7</div><div style="font-size:13px;color:#5E6779">observabilidade embarcada</div></div>
+        </div>
+      </div>
+
+      <!-- system status panel -->
+      <div class="gk-hero-side" data-reveal style="position:relative">
+        <div style="position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.1);background:rgba(10,16,30,.6);backdrop-filter:blur(16px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)">
+          <div style="display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)">
+            <span style="width:10px;height:10px;border-radius:50%;background:#ff5f56"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#ffbd2e"></span>
+            <span style="width:10px;height:10px;border-radius:50%;background:#27c93f"></span>
+            <span style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5E6779">ginkgo://core · status</span>
+          </div>
+          <div style="padding:18px;font-family:'JetBrains Mono',monospace;font-size:12.5px;display:flex;flex-direction:column;gap:13px">
+            <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:#7fe6c4">▸ LEAF · Brann</span><span style="color:#5E6779">atendimento · <span style="color:#00E5A0">online</span></span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:#7fd6ff">▸ WAVE · Alfred</span><span style="color:#5E6779">tráfego · <span style="color:#2BD3FF">online</span></span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:#ffc78f">▸ PYRE · Nyra</span><span style="color:#5E6779">conteúdo · <span style="color:#FF9D3C">online</span></span></div>
+            <div style="height:1px;background:rgba(255,255,255,.07);margin:2px 0"></div>
+            <div style="color:#5E6779;line-height:1.7">uptime <span style="color:#E8EEF5">99.98%</span> · custo/req <span style="color:#E8EEF5">monitorado</span><br/>guardrails <span style="color:#00E5A0">ativos</span> · kill-switch <span style="color:#00E5A0">pronto</span></div>
+            <div style="display:flex;align-items:center;gap:8px;color:#7fe6c4"><span class="gk-anim" style="width:6px;height:6px;border-radius:50%;background:#00E5A0;animation:gkPulse 1.8s infinite"></span>orquestrando<span class="gk-anim" style="animation:gkBlink 1.1s infinite">_</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:64px;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#445069;letter-spacing:.06em">// role o cursor — a raiz responde</div>
+  </div>
+</section>
+
+<!-- ============ ESPECIALIDADE ============ -->
+<section id="especialidade" style="position:relative;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+    <div data-reveal style="max-width:680px;margin-bottom:54px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#00E5A0;margin-bottom:16px">01 — ESPECIALIDADE</div>
+      <h2 style="font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:0">O que a Ginkgo domina</h2>
+      <p style="font-size:17px;color:#97A1B4;margin:18px 0 0;line-height:1.6">Automação inteligente de negócios e agentes autônomos confiáveis para empresas B2B — marketing, vendas, atendimento e operações. Engenharia séria, não hype.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px">
+      <div data-reveal style="padding:30px 26px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);transition:border-color .35s,transform .35s,background .35s" style-hover="border-color:rgba(0,229,160,.35);transform:translateY(-4px);background:rgba(0,229,160,.04)">
+        <div style="width:46px;height:46px;border-radius:12px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.25);display:grid;place-items:center;margin-bottom:18px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3"/><path d="m5.6 5.6 2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
+        </div>
+        <h3 style="font-size:18px;font-weight:600;margin:0 0 9px">Automação de processos</h3>
+        <p style="font-size:14.5px;color:#97A1B4;margin:0;line-height:1.6">Orquestração com n8n, webhooks e integrações de API entre os sistemas que sua empresa já usa.</p>
+      </div>
+      <div data-reveal style="padding:30px 26px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);transition:border-color .35s,transform .35s,background .35s" style-hover="border-color:rgba(0,229,160,.35);transform:translateY(-4px);background:rgba(0,229,160,.04)">
+        <div style="width:46px;height:46px;border-radius:12px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.25);display:grid;place-items:center;margin-bottom:18px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3 style="font-size:18px;font-weight:600;margin:0 0 9px">Agentes auditáveis</h3>
+        <p style="font-size:14.5px;color:#97A1B4;margin:0;line-height:1.6">Papel definido, limites explícitos, memória controlada e objetivos mensuráveis — sempre com kill-switch.</p>
+      </div>
+      <div data-reveal style="padding:30px 26px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);transition:border-color .35s,transform .35s,background .35s" style-hover="border-color:rgba(0,229,160,.35);transform:translateY(-4px);background:rgba(0,229,160,.04)">
+        <div style="width:46px;height:46px;border-radius:12px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.25);display:grid;place-items:center;margin-bottom:18px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <h3 style="font-size:18px;font-weight:600;margin:0 0 9px">Plataformas multi-tenant</h3>
+        <p style="font-size:14.5px;color:#97A1B4;margin:0;line-height:1.6">Arquitetura proprietária pronta para produção, isolada por cliente e escalável por padrão.</p>
+      </div>
+      <div data-reveal style="padding:30px 26px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);transition:border-color .35s,transform .35s,background .35s" style-hover="border-color:rgba(0,229,160,.35);transform:translateY(-4px);background:rgba(0,229,160,.04)">
+        <div style="width:46px;height:46px;border-radius:12px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.25);display:grid;place-items:center;margin-bottom:18px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-3 3 3 5-6"/><circle cx="7" cy="14" r="1"/><circle cx="18" cy="8" r="1"/></svg>
+        </div>
+        <h3 style="font-size:18px;font-weight:600;margin:0 0 9px">IA como infra crítica</h3>
+        <p style="font-size:14.5px;color:#97A1B4;margin:0;line-height:1.6">Observabilidade, segurança e controle de custo embarcados desde o dia zero — por padrão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATAFORMAS ============ -->
+<section id="plataformas" style="position:relative;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+    <div data-reveal style="max-width:680px;margin-bottom:54px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#00E5A0;margin-bottom:16px">02 — AS 3 PLATAFORMAS</div>
+      <h2 style="font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:0">Três agentes nomeados. Um sistema.</h2>
+      <p style="font-size:17px;color:#97A1B4;margin:18px 0 0;line-height:1.6">Cada plataforma tem identidade própria e um agente com papel claro. Passe o cursor — cada uma acende no seu neon e mostra o agente em ação.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+
+      <!-- LEAF -->
+      <div data-reveal style="position:relative;border-radius:18px;border:1px solid rgba(0,229,160,.18);background:rgba(255,255,255,.025);overflow:hidden;transition:border-color .4s,transform .4s,box-shadow .4s" style-hover="border-color:rgba(0,229,160,.55);transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,229,160,.14)">
+        <div style="padding:26px 24px 0">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);display:grid;place-items:center;flex:none"><img src="assets/logo-leaf.png" alt="Leaf" style="width:34px;height:34px;object-fit:contain"/></div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:#00E5A0">CRM DE IA · WHATSAPP / INSTAGRAM</div>
+              <h3 style="font-size:23px;font-weight:700;margin:2px 0 0">LEAF <span style="color:#5E6779;font-weight:500;font-size:15px">· agente Brann</span></h3>
+            </div>
+          </div>
+          <p style="font-size:14.5px;color:#97A1B4;margin:14px 0 18px;line-height:1.6">Atendimento consultivo, qualificação de leads, vendas com método SPIN e follow-up automático — direto no canal que o cliente já usa.</p>
+        </div>
+        <!-- demo: whatsapp chat -->
+        <div style="margin:0 16px 18px;border-radius:13px;background:#071a14;border:1px solid rgba(0,229,160,.15);padding:14px;display:flex;flex-direction:column;gap:9px;min-height:188px">
+          <div class="gk-anim" style="align-self:flex-start;max-width:78%;background:rgba(255,255,255,.06);padding:9px 12px;border-radius:12px 12px 12px 3px;font-size:12.5px;color:#cdd6e3">Vocês fazem orçamento p/ implante?</div>
+          <div class="gk-anim" style="align-self:flex-end;max-width:80%;background:rgba(0,229,160,.14);border:1px solid rgba(0,229,160,.3);padding:9px 12px;border-radius:12px 12px 3px 12px;font-size:12.5px;color:#d6f5e8"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#00E5A0;display:block;margin-bottom:3px">BRANN · SPIN</span>Fazemos sim. Pra te passar certinho: é unitário ou mais de um dente?</div>
+          <div class="gk-anim" style="align-self:flex-start;max-width:78%;background:rgba(255,255,255,.06);padding:9px 12px;border-radius:12px 12px 12px 3px;font-size:12.5px;color:#cdd6e3">Dois dentes</div>
+          <div class="gk-anim" style="align-self:flex-end;display:flex;align-items:center;gap:5px;background:rgba(0,229,160,.14);border:1px solid rgba(0,229,160,.3);padding:11px 13px;border-radius:12px">
+            <span class="gk-anim" style="width:6px;height:6px;border-radius:50%;background:#00E5A0;animation:gkDots 1.2s infinite"></span>
+            <span class="gk-anim" style="width:6px;height:6px;border-radius:50%;background:#00E5A0;animation:gkDots 1.2s infinite .2s"></span>
+            <span class="gk-anim" style="width:6px;height:6px;border-radius:50%;background:#00E5A0;animation:gkDots 1.2s infinite .4s"></span>
+          </div>
+        </div>
+        <div style="padding:0 24px 22px;display:flex;flex-wrap:wrap;gap:7px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fe6c4;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);padding:4px 9px;border-radius:6px">qualificação</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fe6c4;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);padding:4px 9px;border-radius:6px">follow-up</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fe6c4;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);padding:4px 9px;border-radius:6px">agendamento</span>
+        </div>
+      </div>
+
+      <!-- WAVE -->
+      <div data-reveal style="position:relative;border-radius:18px;border:1px solid rgba(43,211,255,.18);background:rgba(255,255,255,.025);overflow:hidden;transition:border-color .4s,transform .4s,box-shadow .4s" style-hover="border-color:rgba(43,211,255,.55);transform:translateY(-5px);box-shadow:0 24px 60px rgba(43,211,255,.14)">
+        <div style="padding:26px 24px 0">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(43,211,255,.1);border:1px solid rgba(43,211,255,.3);display:grid;place-items:center;flex:none"><img src="assets/logo-wave.png" alt="Wave" style="width:34px;height:34px;object-fit:contain"/></div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:#2BD3FF">TRÁFEGO PAGO &amp; ORGÂNICO</div>
+              <h3 style="font-size:23px;font-weight:700;margin:2px 0 0">WAVE <span style="color:#5E6779;font-weight:500;font-size:15px">· agente Alfred</span></h3>
+            </div>
+          </div>
+          <p style="font-size:14.5px;color:#97A1B4;margin:14px 0 18px;line-height:1.6">Orquestração de campanhas, leitura de performance e decisões de crescimento — escala o que vende, corta o que não rende.</p>
+        </div>
+        <!-- demo: campaign graph -->
+        <div style="margin:0 16px 18px;border-radius:13px;background:#06141d;border:1px solid rgba(43,211,255,.15);padding:16px;min-height:188px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;letter-spacing:.06em">CAMPANHA #3 · AO VIVO</span>
+            <span style="font-size:12px;color:#5E6779">CPL <span style="color:#2BD3FF;font-weight:600">−22%</span></span>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:7px;height:96px;flex:1">
+            <div class="gk-anim" style="flex:1;height:100%;display:flex;align-items:flex-end"><div class="gk-anim" style="width:100%;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.15));border-radius:4px 4px 0 0;transform-origin:bottom;height:55%;animation:gkBar 3s ease-in-out infinite"></div></div>
+            <div class="gk-anim" style="flex:1;height:100%;display:flex;align-items:flex-end"><div class="gk-anim" style="width:100%;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.15));border-radius:4px 4px 0 0;transform-origin:bottom;height:75%;animation:gkBar 3s ease-in-out infinite .3s"></div></div>
+            <div class="gk-anim" style="flex:1;height:100%;display:flex;align-items:flex-end"><div class="gk-anim" style="width:100%;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.15));border-radius:4px 4px 0 0;transform-origin:bottom;height:48%;animation:gkBar 3s ease-in-out infinite .6s"></div></div>
+            <div class="gk-anim" style="flex:1;height:100%;display:flex;align-items:flex-end"><div class="gk-anim" style="width:100%;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.15));border-radius:4px 4px 0 0;transform-origin:bottom;height:88%;animation:gkBar 3s ease-in-out infinite .9s"></div></div>
+            <div class="gk-anim" style="flex:1;height:100%;display:flex;align-items:flex-end"><div class="gk-anim" style="width:100%;background:linear-gradient(180deg,#00E5A0,rgba(0,229,160,.15));border-radius:4px 4px 0 0;transform-origin:bottom;height:100%;animation:gkBar 3s ease-in-out infinite 1.2s;box-shadow:0 0 14px rgba(0,229,160,.5)"></div></div>
+            <div class="gk-anim" style="flex:1;height:100%;display:flex;align-items:flex-end"><div class="gk-anim" style="width:100%;background:linear-gradient(180deg,#2BD3FF,rgba(43,211,255,.15));border-radius:4px 4px 0 0;transform-origin:bottom;height:67%;animation:gkBar 3s ease-in-out infinite 1.5s"></div></div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#445069;margin-top:10px">▸ verba realocada p/ criativo vencedor</div>
+        </div>
+        <div style="padding:0 24px 22px;display:flex;flex-wrap:wrap;gap:7px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;background:rgba(43,211,255,.08);border:1px solid rgba(43,211,255,.2);padding:4px 9px;border-radius:6px">otimização</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;background:rgba(43,211,255,.08);border:1px solid rgba(43,211,255,.2);padding:4px 9px;border-radius:6px">escala</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;background:rgba(43,211,255,.08);border:1px solid rgba(43,211,255,.2);padding:4px 9px;border-radius:6px">relatórios</span>
+        </div>
+      </div>
+
+      <!-- PYRE -->
+      <div data-reveal style="position:relative;border-radius:18px;border:1px solid rgba(255,157,60,.18);background:rgba(255,255,255,.025);overflow:hidden;transition:border-color .4s,transform .4s,box-shadow .4s" style-hover="border-color:rgba(255,157,60,.55);transform:translateY(-5px);box-shadow:0 24px 60px rgba(255,157,60,.13)">
+        <div style="padding:26px 24px 0">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,157,60,.1);border:1px solid rgba(255,157,60,.3);display:grid;place-items:center;flex:none"><img src="assets/logo-pyre.png" alt="Pyre" style="width:34px;height:34px;object-fit:contain"/></div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:#FF9D3C">CONTEÚDO · MULTIPLATAFORMA</div>
+              <h3 style="font-size:23px;font-weight:700;margin:2px 0 0">PYRE <span style="color:#5E6779;font-weight:500;font-size:15px">· agente Nyra</span></h3>
+            </div>
+          </div>
+          <p style="font-size:14.5px;color:#97A1B4;margin:14px 0 18px;line-height:1.6">Criação e agendamento de conteúdo: produção multiplataforma e publicação automatizada, do roteiro ao post no ar.</p>
+        </div>
+        <!-- demo: content pipeline -->
+        <div style="margin:0 16px 18px;border-radius:13px;background:#1a1108;border:1px solid rgba(255,157,60,.15);padding:16px;min-height:188px;display:flex;flex-direction:column;justify-content:center;gap:11px">
+          <div class="gk-anim" style="display:flex;align-items:center;gap:11px;animation:gkGlow 4s infinite;animation-delay:0s">
+            <div style="width:30px;height:30px;border-radius:9px;background:rgba(255,157,60,.14);border:1px solid rgba(255,157,60,.35);display:grid;place-items:center;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9D3C" stroke-width="2"><path d="M3 17v-6l9-9 9 9-9 9-9-9Z"/></svg></div>
+            <div style="flex:1"><div style="font-size:12.5px;color:#E8EEF5;font-weight:600">Trend detectada</div><div style="font-size:10.5px;color:#5E6779">áudio em alta · nicho odontologia</div></div>
+          </div>
+          <div style="margin-left:14px;width:1px;height:8px;background:rgba(255,157,60,.3)"></div>
+          <div class="gk-anim" style="display:flex;align-items:center;gap:11px;animation:gkGlow 4s infinite;animation-delay:1.3s">
+            <div style="width:30px;height:30px;border-radius:9px;background:rgba(255,157,60,.14);border:1px solid rgba(255,157,60,.35);display:grid;place-items:center;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9D3C" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg></div>
+            <div style="flex:1"><div style="font-size:12.5px;color:#E8EEF5;font-weight:600">Roteiro + edição</div><div style="font-size:10.5px;color:#5E6779">vídeo curto gerado · legenda pronta</div></div>
+          </div>
+          <div style="margin-left:14px;width:1px;height:8px;background:rgba(255,157,60,.3)"></div>
+          <div class="gk-anim" style="display:flex;align-items:center;gap:11px;animation:gkGlow 4s infinite;animation-delay:2.6s">
+            <div style="width:30px;height:30px;border-radius:9px;background:rgba(255,157,60,.14);border:1px solid rgba(255,157,60,.35);display:grid;place-items:center;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9D3C" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div>
+            <div style="flex:1"><div style="font-size:12.5px;color:#E8EEF5;font-weight:600">Publicado · 4 redes</div><div style="font-size:10.5px;color:#5E6779">Reels · TikTok · Shorts · feed</div></div>
+          </div>
+        </div>
+        <div style="padding:0 24px 22px;display:flex;flex-wrap:wrap;gap:7px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#ffc78f;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.2);padding:4px 9px;border-radius:6px">roteiro</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#ffc78f;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.2);padding:4px 9px;border-radius:6px">edição</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#ffc78f;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.2);padding:4px 9px;border-radius:6px">agendamento</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMAGINE ============ -->
+<section id="imagine" style="position:relative;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.05);overflow:hidden">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(255,200,90,.07),transparent 65%);filter:blur(60px);z-index:0;pointer-events:none"></div>
+  <div style="position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+    <div data-reveal style="text-align:center;max-width:760px;margin:0 auto 56px">
+      <div style="display:flex;justify-content:center;margin-bottom:22px"><img src="assets/logo-full.png" alt="IMAGINE" style="width:74px;height:74px;object-fit:contain;filter:drop-shadow(0 0 26px rgba(255,200,90,.4))"/></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#FFC85A;margin-bottom:14px">03 — TIER IMAGINE</div>
+      <h2 style="font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.025em;font-weight:700;margin:0">Você imagina.<br/><span style="background:linear-gradient(100deg,#FFD98A,#E0A33A);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">A Ginkgo realiza.</span></h2>
+      <p style="font-size:17px;color:#97A1B4;margin:20px auto 0;line-height:1.65;max-width:580px">O nível premium acima dos planos Básico e Futurista: soluções de IA customizadas do zero, <span style="color:#E8EEF5">arquitetadas antes de implementadas</span>, monitoradas e auditáveis. Infraestrutura sob medida.</p>
+    </div>
+    <!-- process flow -->
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:stretch">
+      <sc-for list="{{ imagineSteps }}" as="step" hint-placeholder-count="5">
+        <div style="flex:1;min-width:180px;max-width:230px;position:relative;padding:26px 22px;border-radius:15px;border:1px solid rgba(255,200,90,.16);background:rgba(255,200,90,.025)">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:#FFC85A;width:36px;height:36px;border-radius:10px;background:rgba(255,200,90,.1);border:1px solid rgba(255,200,90,.3);display:grid;place-items:center;margin-bottom:16px">{{ step.n }}</div>
+          <h4 style="font-size:16px;font-weight:600;margin:0 0 7px">{{ step.title }}</h4>
+          <p style="font-size:13px;color:#97A1B4;margin:0;line-height:1.55">{{ step.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal style="text-align:center;margin-top:44px">
+      <a href="#contato" style="display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;padding:15px 30px;border-radius:12px;background:linear-gradient(100deg,#FFD98A,#E0A33A);color:#241803;box-shadow:0 0 30px rgba(255,200,90,.28);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 8px 38px rgba(255,200,90,.5)">Tenho um desafio — imagine comigo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFÓLIO ============ -->
+<section id="portfolio" style="position:relative;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+    <div data-reveal style="max-width:680px;margin-bottom:46px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;color:#00E5A0;margin-bottom:16px">04 — PORTFÓLIO</div>
+      <h2 style="font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.02em;font-weight:700;margin:0">Repertório que se prova brincando.</h2>
+      <p style="font-size:17px;color:#97A1B4;margin:18px 0 0;line-height:1.6">Nada de captura estática. Cada projeto abre uma demo funcional — comece pelo Lead Finder.</p>
+    </div>
+
+    <!-- LEAD FINDER — centerpiece -->
+    <div data-reveal style="position:relative;border-radius:20px;border:1px solid rgba(0,229,160,.22);background:linear-gradient(160deg,rgba(0,229,160,.05),rgba(255,255,255,.02));overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0">
+        <!-- left: pitch + search -->
+        <div style="padding:clamp(24px,3vw,38px);border-right:1px solid rgba(255,255,255,.06)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#04130D;background:#00E5A0;padding:4px 10px;border-radius:6px;font-weight:600">PEÇA CENTRAL · RPA · DADOS</span>
+          </div>
+          <h3 style="font-size:clamp(22px,2.6vw,30px);font-weight:700;margin:0 0 12px;letter-spacing:-.02em">Lead Finder</h3>
+          <p style="font-size:14.5px;color:#97A1B4;line-height:1.6;margin:0 0 8px"><span style="color:#5E6779;font-family:'JetBrains Mono',monospace;font-size:11px">PROBLEMA · </span>prospecção manual é lenta e os dados envelhecem.</p>
+          <p style="font-size:14.5px;color:#97A1B4;line-height:1.6;margin:0 0 24px"><span style="color:#5E6779;font-family:'JetBrains Mono',monospace;font-size:11px">CONSTRUÍMOS · </span>raspagem web que captura leads em potencial e entrega num CRM proprietário, com score de qualificação.</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:#7fe6c4;margin-bottom:6px">NICHO</label>
+              <input ref="{{ nichoRef }}" placeholder="clínicas odontológicas" style="width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;color:#E8EEF5;font-size:14.5px;transition:border-color .2s" style-focus="border-color:#00E5A0;outline:none" />
+            </div>
+            <div>
+              <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:#7fe6c4;margin-bottom:6px">REGIÃO</label>
+              <input ref="{{ regiaoRef }}" placeholder="Pelotas, RS" style="width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;color:#E8EEF5;font-size:14.5px;transition:border-color .2s" style-focus="border-color:#00E5A0;outline:none" />
+            </div>
+            <button onClick="{{ runScan }}" style="margin-top:4px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15px;padding:13px 22px;border-radius:11px;background:#00E5A0;color:#04130D;border:none;cursor:pointer;box-shadow:0 0 24px rgba(0,229,160,.28);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 6px 30px rgba(0,229,160,.5)">{{ scanLabel }}</button>
+          </div>
+        </div>
+        <!-- right: scanner + leads -->
+        <div style="padding:clamp(20px,2.6vw,30px);background:rgba(0,0,0,.22);min-height:340px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7fe6c4">{{ scanStatusText }}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5E6779">{{ leadCountText }}</span>
+          </div>
+
+          <sc-if value="{{ isScanning }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 0;gap:20px">
+              <div style="position:relative;width:84px;height:84px">
+                <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,229,160,.2)"></div>
+                <div style="position:absolute;inset:14px;border-radius:50%;border:1px solid rgba(0,229,160,.15)"></div>
+                <div class="gk-anim" style="position:absolute;inset:0;border-radius:50%;border:2px solid transparent;border-top-color:#00E5A0;animation:gkSpin 1s linear infinite;box-shadow:0 0 20px rgba(0,229,160,.4)"></div>
+                <div class="gk-anim" style="position:absolute;top:50%;left:50%;width:50%;height:2px;transform-origin:left;background:linear-gradient(90deg,#00E5A0,transparent);animation:gkSweep 2s linear infinite"></div>
+              </div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#7fe6c4;text-align:center">{{ scanLine }}<span class="gk-anim" style="animation:gkBlink 1s infinite">_</span></div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showLeads }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ scanLeads }}" as="ld" hint-placeholder-count="0">
+                <div draggable="true" data-id="{{ ld.id }}" onDragStart="{{ onDragStart }}" style="display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);cursor:grab" style-hover="border-color:rgba(0,229,160,.4);background:rgba(0,229,160,.05)">
+                  <div style="width:34px;height:34px;border-radius:9px;background:rgba(0,229,160,.1);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#00E5A0;flex:none">{{ ld.initials }}</div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13.5px;font-weight:600;color:#E8EEF5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ld.empresa }}</div>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#5E6779;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ ld.contato }}</div>
+                  </div>
+                  <div style="text-align:right;flex:none">
+                    <div style="font-size:14px;font-weight:700;color: {{ ld.scoreColor }}">{{ ld.score }}</div>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5E6779">score</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isIdle }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 20px;text-align:center;gap:14px">
+              <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#2a3a52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <div style="font-size:13.5px;color:#5E6779;max-width:240px">Defina nicho e região, depois rode o scan. Os leads aparecem aqui em tempo real.</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- CRM board -->
+      <sc-if value="{{ showLeads }}" hint-placeholder-val="{{ false }}">
+        <div style="border-top:1px solid rgba(255,255,255,.08);padding:clamp(20px,2.6vw,30px)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7fe6c4;letter-spacing:.06em">CRM PROPRIETÁRIO</span>
+            <span style="font-size:12px;color:#5E6779">— arraste os leads entre as colunas</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px">
+            <div data-col="novo" onDragOver="{{ allowDrop }}" onDrop="{{ onDrop }}" style="border-radius:13px;border:1px dashed rgba(255,255,255,.12);background:rgba(255,255,255,.02);padding:14px;min-height:140px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="width:8px;height:8px;border-radius:50%;background:#5E6779"></span><span style="font-size:12.5px;font-weight:600;color:#97A1B4">Novo</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-left:auto">{{ countNovo }}</span></div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ leadsNovo }}" as="ld" hint-placeholder-count="0">
+                  <div draggable="true" data-id="{{ ld.id }}" onDragStart="{{ onDragStart }}" style="padding:10px 12px;border-radius:9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);cursor:grab" style-hover="border-color:rgba(0,229,160,.4)"><div style="font-size:12.5px;font-weight:600;color:#E8EEF5">{{ ld.empresa }}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-top:2px">score {{ ld.score }} · {{ ld.fone }}</div></div>
+                </sc-for>
+              </div>
+            </div>
+            <div data-col="qualificado" onDragOver="{{ allowDrop }}" onDrop="{{ onDrop }}" style="border-radius:13px;border:1px dashed rgba(0,229,160,.22);background:rgba(0,229,160,.025);padding:14px;min-height:140px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="width:8px;height:8px;border-radius:50%;background:#00E5A0"></span><span style="font-size:12.5px;font-weight:600;color:#7fe6c4">Qualificado</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-left:auto">{{ countQual }}</span></div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ leadsQual }}" as="ld" hint-placeholder-count="0">
+                  <div draggable="true" data-id="{{ ld.id }}" onDragStart="{{ onDragStart }}" style="padding:10px 12px;border-radius:9px;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.2);cursor:grab" style-hover="border-color:rgba(0,229,160,.5)"><div style="font-size:12.5px;font-weight:600;color:#E8EEF5">{{ ld.empresa }}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-top:2px">score {{ ld.score }} · {{ ld.fone }}</div></div>
+                </sc-for>
+              </div>
+            </div>
+            <div data-col="contato" onDragOver="{{ allowDrop }}" onDrop="{{ onDrop }}" style="border-radius:13px;border:1px dashed rgba(43,211,255,.22);background:rgba(43,211,255,.025);padding:14px;min-height:140px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="width:8px;height:8px;border-radius:50%;background:#2BD3FF"></span><span style="font-size:12.5px;font-weight:600;color:#7fd6ff">Em contato</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-left:auto">{{ countContato }}</span></div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ leadsContato }}" as="ld" hint-placeholder-count="0">
+                  <div draggable="true" data-id="{{ ld.id }}" onDragStart="{{ onDragStart }}" style="padding:10px 12px;border-radius:9px;background:rgba(43,211,255,.06);border:1px solid rgba(43,211,255,.2);cursor:grab" style-hover="border-color:rgba(43,211,255,.5)"><div style="font-size:12.5px;font-weight:600;color:#E8EEF5">{{ ld.empresa }}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-top:2px">score {{ ld.score }} · {{ ld.fone }}</div></div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- other projects -->
+    <div data-reveal style="display:flex;gap:9px;flex-wrap:wrap;margin:34px 0 22px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <button data-f="{{ f.key }}" onClick="{{ setFilter }}" style="font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:500;padding:8px 16px;border-radius:9px;cursor:pointer;background: {{ f.bg }};border:1px solid {{ f.bd }};color: {{ f.fg }};transition:.2s">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(372px,1fr));gap:20px">
+
+      <!-- LEXRA -->
+      <sc-if value="{{ visLexra }}" hint-placeholder-val="{{ true }}">
+      <article data-reveal data-screen-label="Lexra" style="display:flex;flex-direction:column;border-radius:18px;border:1px solid rgba(77,141,240,.2);background:rgba(255,255,255,.022);overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s" style-hover="border-color:rgba(77,141,240,.5);transform:translateY(-4px);box-shadow:0 22px 54px rgba(77,141,240,.13)">
+        <div style="position:relative;padding:18px 20px;background:#07101f;border-bottom:1px solid rgba(255,255,255,.06);min-height:158px;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px"></div>
+          <span style="position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:#9cc4ff;background:rgba(77,141,240,.12);border:1px solid rgba(77,141,240,.3);padding:3px 8px;border-radius:6px">LEGALTECH · SAAS</span>
+          <div style="position:relative;display:flex;align-items:center;gap:8px;margin-bottom:3px"><span class="gk-anim" style="width:7px;height:7px;border-radius:50%;background:#4D8DF0;animation:gkPulse 2.4s infinite"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fa8e8">PROC. 5012345-67 · MONITORANDO</span></div>
+          <div style="position:relative;display:flex;align-items:center;gap:9px;font-size:11.5px;color:#9aa6bd"><span style="width:6px;height:6px;border-radius:50%;background:#3a4b66;flex:none"></span>Despacho: cite-se o réu <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-left:auto">19/06</span></div>
+          <div style="position:relative;display:flex;align-items:center;gap:9px;font-size:11.5px;color:#9aa6bd"><span style="width:6px;height:6px;border-radius:50%;background:#3a4b66;flex:none"></span>Juntada de AR — citação cumprida <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#5E6779;margin-left:auto">20/06</span></div>
+          <div style="position:relative;display:flex;align-items:center;gap:9px;background:rgba(77,141,240,.1);border:1px solid rgba(77,141,240,.3);border-radius:9px;padding:8px 11px;margin-top:2px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4D8DF0" stroke-width="1.9" stroke-linecap="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+            <span style="font-size:11.5px;color:#cfe0ff">Alerta → prazo de contestação aberto (15d)</span>
+          </div>
+        </div>
+        <div style="padding:22px 24px 24px;display:flex;flex-direction:column;flex:1">
+          <h3 style="font-size:20px;font-weight:700;margin:0 0 12px;letter-spacing:-.01em">Lexra</h3>
+          <div style="display:flex;flex-direction:column;gap:9px;flex:1">
+            <p style="margin:0;font-size:13.5px;color:#97A1B4;line-height:1.55"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#7fa8e8;letter-spacing:.05em">PROBLEMA&nbsp;&nbsp;</span>Acompanhar prazos e andamentos à mão custa caro — e um prazo perdido é irreversível.</p>
+            <p style="margin:0;font-size:13.5px;color:#cdd6e3;line-height:1.55"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#4D8DF0;letter-spacing:.05em">CONSTRUÍMOS&nbsp;&nbsp;</span>Monitor que lê o tribunal, estrutura cada movimentação e alerta o advogado por bot.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin:18px 0">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9cc4ff;background:rgba(77,141,240,.08);border:1px solid rgba(77,141,240,.2);padding:4px 9px;border-radius:6px">prazos</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9cc4ff;background:rgba(77,141,240,.08);border:1px solid rgba(77,141,240,.2);padding:4px 9px;border-radius:6px">andamentos</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9cc4ff;background:rgba(77,141,240,.08);border:1px solid rgba(77,141,240,.2);padding:4px 9px;border-radius:6px">alerta via bot</span>
+          </div>
+          <button data-k="lexra" onClick="{{ openDemo }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:11px 18px;border-radius:10px;background:rgba(77,141,240,.12);border:1px solid rgba(77,141,240,.32);color:#9cc4ff;cursor:pointer;transition:.2s" style-hover="background:rgba(77,141,240,.22);border-color:rgba(77,141,240,.55)">Explorar demo interativa →</button>
+        </div>
+      </article>
+      </sc-if>
+
+      <!-- GINKGO LIVE AGENT -->
+      <sc-if value="{{ visLive }}" hint-placeholder-val="{{ true }}">
+      <article data-reveal data-screen-label="Ginkgo Live Agent" style="display:flex;flex-direction:column;border-radius:18px;border:1px solid rgba(255,157,60,.2);background:rgba(255,255,255,.022);overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s" style-hover="border-color:rgba(255,157,60,.5);transform:translateY(-4px);box-shadow:0 22px 54px rgba(255,157,60,.12)">
+        <div style="position:relative;padding:18px 20px;background:#15100a;border-bottom:1px solid rgba(255,255,255,.06);min-height:158px;display:flex;flex-direction:column;justify-content:center;gap:14px;overflow:hidden">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px"></div>
+          <span style="position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:#ffc78f;background:rgba(255,157,60,.12);border:1px solid rgba(255,157,60,.3);padding:3px 8px;border-radius:6px">CONTEÚDO · VÍDEO</span>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#d99a5b">PIPELINE · AVATAR DE IA</div>
+          <div style="position:relative;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#cdd6e3;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:5px 9px;border-radius:7px">trend</span>
+            <span style="color:#6b5a42">→</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#cdd6e3;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:5px 9px;border-radius:7px">roteiro</span>
+            <span style="color:#6b5a42">→</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#cdd6e3;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:5px 9px;border-radius:7px">vídeo</span>
+            <span style="color:#6b5a42">→</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#1a1108;background:#FF9D3C;padding:5px 10px;border-radius:7px;font-weight:600;box-shadow:0 0 16px rgba(255,157,60,.5)">no ar</span>
+          </div>
+          <div style="position:relative;font-size:11.5px;color:#9aa6bd">Publica em <span style="color:#ffc78f">Reels · TikTok · Shorts · feed</span></div>
+        </div>
+        <div style="padding:22px 24px 24px;display:flex;flex-direction:column;flex:1">
+          <h3 style="font-size:20px;font-weight:700;margin:0 0 12px;letter-spacing:-.01em">Ginkgo Live Agent</h3>
+          <div style="display:flex;flex-direction:column;gap:9px;flex:1">
+            <p style="margin:0;font-size:13.5px;color:#97A1B4;line-height:1.55"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#d99a5b;letter-spacing:.05em">PROBLEMA&nbsp;&nbsp;</span>Acompanhar o ritmo das trends produzindo vídeo curto à mão é inviável.</p>
+            <p style="margin:0;font-size:13.5px;color:#cdd6e3;line-height:1.55"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FF9D3C;letter-spacing:.05em">CONSTRUÍMOS&nbsp;&nbsp;</span>Pipeline com avatar de IA: trend, roteiro, vídeo e publicação com aprovação em 1 clique.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin:18px 0">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#ffc78f;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.2);padding:4px 9px;border-radius:6px">avatar IA</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#ffc78f;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.2);padding:4px 9px;border-radius:6px">multiplataforma</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#ffc78f;background:rgba(255,157,60,.08);border:1px solid rgba(255,157,60,.2);padding:4px 9px;border-radius:6px">agendamento</span>
+          </div>
+          <button data-k="live" onClick="{{ openDemo }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:11px 18px;border-radius:10px;background:rgba(255,157,60,.12);border:1px solid rgba(255,157,60,.32);color:#ffc78f;cursor:pointer;transition:.2s" style-hover="background:rgba(255,157,60,.22);border-color:rgba(255,157,60,.55)">Explorar demo interativa →</button>
+        </div>
+      </article>
+      </sc-if>
+
+      <!-- SHION -->
+      <sc-if value="{{ visSexta }}" hint-placeholder-val="{{ true }}">
+      <article data-reveal data-screen-label="Shion" style="display:flex;flex-direction:column;border-radius:18px;border:1px solid rgba(43,211,255,.2);background:rgba(255,255,255,.022);overflow:hidden;transition:border-color .35s,transform .35s,box-shadow .35s" style-hover="border-color:rgba(43,211,255,.5);transform:translateY(-4px);box-shadow:0 22px 54px rgba(43,211,255,.12)">
+        <div style="position:relative;padding:18px 20px;background:#06141d;border-bottom:1px solid rgba(255,255,255,.06);min-height:158px;display:flex;flex-direction:column;justify-content:center;gap:10px;overflow:hidden">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px"></div>
+          <span style="position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:#7fd6ff;background:rgba(43,211,255,.12);border:1px solid rgba(43,211,255,.3);padding:3px 8px;border-radius:6px">AGENTE · ORQUESTRADOR</span>
+          <div style="position:relative;display:flex;align-items:center;gap:9px">
+            <span class="gk-anim" style="width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#9eeaff,#2BD3FF 60%,#0e3a5f);box-shadow:0 0 16px rgba(43,211,255,.6);flex:none;animation:gkOrb 2.6s ease-in-out infinite"></span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff">shion://core · online</span>
+          </div>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;font-size:12px;color:#cdd6e3">&gt; resumo do dia<span class="gk-anim" style="animation:gkBlink 1s infinite">_</span></div>
+          <div style="position:relative;font-size:11.5px;color:#9aa6bd;line-height:1.5">12 leads novos · CPL <span style="color:#7fd6ff">−18%</span> · 2 posts no ar · próxima reunião 14h</div>
+        </div>
+        <div style="padding:22px 24px 24px;display:flex;flex-direction:column;flex:1">
+          <h3 style="font-size:20px;font-weight:700;margin:0 0 12px;letter-spacing:-.01em">Shion</h3>
+          <div style="display:flex;flex-direction:column;gap:9px;flex:1">
+            <p style="margin:0;font-size:13.5px;color:#97A1B4;line-height:1.55"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#7fd6ff;letter-spacing:.05em">PROBLEMA&nbsp;&nbsp;</span>O contexto da operação fica espalhado entre ferramentas e pessoas.</p>
+            <p style="margin:0;font-size:13.5px;color:#cdd6e3;line-height:1.55"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#2BD3FF;letter-spacing:.05em">CONSTRUÍMOS&nbsp;&nbsp;</span>Orquestrador pessoal ("Jarvis") que responde comandos, resume o dia e aciona os outros agentes.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin:18px 0">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;background:rgba(43,211,255,.08);border:1px solid rgba(43,211,255,.2);padding:4px 9px;border-radius:6px">comandos</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;background:rgba(43,211,255,.08);border:1px solid rgba(43,211,255,.2);padding:4px 9px;border-radius:6px">memória</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7fd6ff;background:rgba(43,211,255,.08);border:1px solid rgba(43,211,255,.2);padding:4px 9px;border-radius:6px">orquestração</span>
+          </div>
+          <button data-k="sexta" onClick="{{ openDemo }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:11px 18px;border-radius:10px;background:rgba(43,211,255,.12);border:1px solid rgba(43,211,255,.32);color:#7fd6ff;cursor:pointer;transition:.2s" style-hover="background:rgba(43,211,255,.22);border-color:rgba(43,211,255,.55)">Explorar demo interativa →</button>
+        </div>
+      </article>
+      </sc-if>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA / CONTATO ============ -->
+<section id="contato" style="position:relative;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.05)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px)">
+    <div data-reveal style="position:relative;border-radius:26px;border:1px solid rgba(255,255,255,.12);overflow:hidden;padding:clamp(32px,5vw,64px);background:radial-gradient(120% 130% at 85% 0%,rgba(0,229,160,.16),transparent 55%),radial-gradient(120% 130% at 0% 100%,rgba(43,211,255,.1),transparent 55%),rgba(255,255,255,.02)">
+      <div class="gk-cta-grid" style="position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#7fe6c4;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.22);padding:7px 14px;border-radius:999px"><span class="gk-anim" style="width:7px;height:7px;border-radius:50%;background:#00E5A0;animation:gkPulse 2.4s infinite"></span>VAMOS CONSTRUIR</div>
+          <h2 style="font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.025em;font-weight:700;margin:20px 0 0">Agentes que funcionam.<br/><span style="color:#00E5A0;text-shadow:0 0 34px rgba(0,229,160,.4)">Sistemas que se sustentam sozinhos.</span></h2>
+          <p style="font-size:17px;color:#97A1B4;margin:20px 0 0;max-width:480px;line-height:1.6">Traga a dor ou a oportunidade. Devolvemos um caminho técnico claro — arquitetura, trade-offs e próximos passos.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="https://wa.me/555391338911" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:17px 20px;border-radius:14px;background:#00E5A0;color:#04130D;box-shadow:0 0 30px rgba(0,229,160,.3);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,229,160,.55)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#04130D"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+            <div style="flex:1"><div style="font-weight:700;font-size:15.5px">Falar com a Callima · IA</div><div style="font-size:12.5px;opacity:.75">Atendente 24/7 · +55 53 9133-8911</div></div>
+          </a>
+          <a href="https://wa.me/5553991214817" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:15px 20px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);transition:border-color .25s,background .25s" style-hover="border-color:rgba(0,229,160,.4);background:rgba(0,229,160,.05)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#00E5A0"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+            <div style="flex:1"><div style="font-weight:600;font-size:14.5px;color:#E8EEF5">Gabriel Schaun · CEO</div><div style="font-size:12.5px;color:#97A1B4">Direto com a fundação · (53) 99121-4817</div></div>
+          </a>
+          <a href="/cdn-cgi/l/email-protection#c1a6a8afaaa6aeb2b8b2b5a4acb281a6aca0a8adefa2aeac" style="display:flex;align-items:center;gap:14px;padding:15px 20px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);transition:border-color .25s,background .25s" style-hover="border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.06)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00E5A0" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            <div style="flex:1"><div style="font-weight:600;font-size:14.5px;color:#E8EEF5">E-mail</div><div style="font-size:12.5px;color:#97A1B4"><span class="__cf_email__" data-cfemail="385f5156535f574b414b4c5d554b785f55595154165b5755">[email&#160;protected]</span></div></div>
+          </a>
+          <div style="margin-top:6px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:#5E6779;margin-bottom:10px">COMUNIDADE &amp; REDES</div>
+            <div style="display:flex;flex-wrap:wrap;gap:9px">
+              <a href="https://www.instagram.com/ginkgo.ai/" target="_blank" rel="noopener" aria-label="Instagram" style="width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#97A1B4;transition:.2s" style-hover="border-color:rgba(0,229,160,.45);color:#00E5A0;transform:translateY(-2px)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="https://discord.com/invite/HHRkVgG3n6" target="_blank" rel="noopener" aria-label="Discord" style="width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#97A1B4;transition:.2s" style-hover="border-color:rgba(0,229,160,.45);color:#00E5A0;transform:translateY(-2px)">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.6A16 16 0 0 0 15.4 4.4l-.2.4a14.5 14.5 0 0 1 3.3 1.6 11 11 0 0 0-9 0 14.5 14.5 0 0 1 3.3-1.6l-.2-.4A16 16 0 0 0 4.7 5.6 18.4 18.4 0 0 0 1.7 17.9a16.3 16.3 0 0 0 4.9 2.4l.6-1.1c-.6-.2-1.1-.5-1.6-.8l.4-.3a11.5 11.5 0 0 0 9.8 0l.4.3c-.5.3-1 .6-1.6.8l.6 1.1a16.2 16.2 0 0 0 4.9-2.4 18.3 18.3 0 0 0-3-12.3ZM8.7 15.3c-1 0-1.7-.9-1.7-1.9s.8-1.9 1.7-1.9 1.8.9 1.7 1.9-.8 1.9-1.7 1.9Zm6.6 0c-1 0-1.7-.9-1.7-1.9s.8-1.9 1.7-1.9 1.8.9 1.7 1.9-.8 1.9-1.7 1.9Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/ginkgo-ai-systems-940972379/" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#97A1B4;transition:.2s" style-hover="border-color:rgba(0,229,160,.45);color:#00E5A0;transform:translateY(-2px)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5ZM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.8-2.05 3.7-2.05 4 0 4.7 2.6 4.7 6V21H18.5v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H11z"/></svg>
+              </a>
+              <a href="https://x.com/ginkgo_systems" target="_blank" rel="noopener" aria-label="X" style="width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#97A1B4;transition:.2s" style-hover="border-color:rgba(0,229,160,.45);color:#00E5A0;transform:translateY(-2px)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-7 8 8.2 10h-6.4l-5-6.1L4 21H1l7.4-8.5L1 3h6.5l4.5 5.6Zm-1.1 16h1.7L7.2 4.8H5.4z"/></svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61579973649280" target="_blank" rel="noopener" aria-label="Facebook" style="width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#97A1B4;transition:.2s" style-hover="border-color:rgba(0,229,160,.45);color:#00E5A0;transform:translateY(-2px)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .2-1.5 1.5-1.5H17V2.5h-2.7C11.2 2.5 10 4 10 6.6V9H8v3h2v9h4v-9h2.6l.4-3z"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@ginkgo.ai.systems" target="_blank" rel="noopener" aria-label="TikTok" style="width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#97A1B4;transition:.2s" style-hover="border-color:rgba(0,229,160,.45);color:#00E5A0;transform:translateY(-2px)">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2 1.6 3.7 4 4v3c-1.5 0-2.9-.5-4-1.3V15a6 6 0 1 1-6-6c.34 0 .67.03 1 .09v3.2A2.8 2.8 0 1 0 13 15V3z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer style="border-top:1px solid rgba(255,255,255,.07);padding:48px 0 36px;background:rgba(5,8,15,.5)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,40px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:11px">
+      <img src="assets/logo-ginkgo.png" alt="Ginkgo" style="width:30px;height:30px;object-fit:contain"/>
+      <div><div style="font-weight:700;font-size:15px">Ginkgo AI Systems</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5E6779">A raiz antes da copa.</div></div>
+    </div>
+    <div style="font-size:12.5px;color:#445069;font-family:'JetBrains Mono',monospace">© 2026 Ginkgo AI Systems · infraestrutura de IA</div>
+  </div>
+</footer>
+
+<!-- ============ MODALS ============ -->
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeDemo }}" style="position:fixed;inset:0;z-index:200;background:rgba(3,6,12,.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div onClick="{{ stop }}" style="position:relative;width:100%;max-width:640px;max-height:88vh;overflow:auto;border-radius:18px;border:1px solid rgba(255,255,255,.14);background:#0c1220;box-shadow:0 40px 100px rgba(0,0,0,.6)">
+      <div style="position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.08);background:#0c1220">
+        <div style="display:flex;align-items:center;gap:11px"><span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#04130D;background:#00E5A0;padding:3px 9px;border-radius:6px;font-weight:600">DEMO</span><h3 style="font-size:18px;font-weight:700;margin:0">{{ modalTitle }}</h3></div>
+        <button onClick="{{ closeDemo }}" aria-label="Fechar" style="width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#97A1B4;cursor:pointer;font-size:17px;line-height:1">✕</button>
+      </div>
+      <div style="padding:22px" data-modalbody="{{ modalKey }}">{{ modalBody }}</div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;motionLevel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Cinematográfico&quot;,&quot;Sutil&quot;,&quot;Estático&quot;],&quot;default&quot;:&quot;Sutil&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = {
+    menuOpen: false,
+    filter: 'all',
+    scanState: 'idle',     // idle | scanning | done
+    scanLine: '',
+    leads: [],             // {id,empresa,contato,fone,initials,score,scoreColor,col}
+    modal: null,           // null | lexra | live | surebet | sexta
+    // modal sub-state
+    lexraItems: [],
+    liveStep: 0,
+    surebet: [],
+    sextaLog: [],
+    sextaActive: null,
+  };
+
+  // ---------- lifecycle ----------
+  componentDidMount() {
+    this.timers = [];
+    this.dragId = null;
+    this._reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || (this.props.motionLevel === 'Estático');
+    this._setupReveals();
+    this._setupNav();
+    if (!this._reduced) this._setupCanvas();
+    else this._renderStaticCanvas();
+  }
+  componentWillUnmount() {
+    (this.timers || []).forEach(clearInterval);
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._onResize) removeEventListener('resize', this._onResize);
+    if (this._onScroll) removeEventListener('scroll', this._onScroll);
+    if (this._onMove) removeEventListener('pointermove', this._onMove);
+  }
+
+  // ---------- reveals ----------
+  // NOTE: never set opacity:0 inline — the runtime adds its own entrance
+  // animation in response and it can freeze, hiding content. Instead we run
+  // our own short slide-up via WAAPI on intersect (fill:backwards leaves the
+  // element at its natural state afterwards) and finish any frozen runtime anims.
+  _setupReveals() {
+    const root = this._root; if (!root) return;
+    const els = [...root.querySelectorAll('[data-reveal]')];
+    const unfreeze = () => els.forEach(el => (el.getAnimations ? el.getAnimations() : []).forEach(a => { try { a.finish(); } catch (e) {} }));
+    unfreeze();
+    this.timers.push(setTimeout(unfreeze, 60));
+    if (this._reduced) return;
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        // transform-only so the element is never left invisible if the timeline stalls
+        try { e.target.animate([{ transform: 'translateY(20px)' }, { transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.2,.7,.2,1)' }); } catch (x) {}
+        io.unobserve(e.target);
+      }
+    }), { threshold: 0.1, rootMargin: '0px 0px -7% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
+  _setupNav() {
+    const nav = this._nav; if (!nav) return;
+    this._onScroll = () => {
+      if (scrollY > 12) { nav.style.background = 'rgba(7,11,22,.9)'; nav.style.borderColor = 'rgba(255,255,255,.1)'; }
+      else { nav.style.background = 'rgba(7,11,22,.55)'; nav.style.borderColor = 'rgba(255,255,255,.06)'; }
+    };
+    addEventListener('scroll', this._onScroll, { passive: true });
+  }
+
+  // ---------- hero canvas: reactive root/neural net ----------
+  _setupCanvas() {
+    const cv = this._canvas; if (!cv) return;
+    const ctx = cv.getContext('2d');
+    let W = 0, H = 0, dpr = Math.min(devicePixelRatio || 1, 2);
+    const mouse = { x: -9999, y: -9999 };
+    let nodes = [];
+    const build = () => {
+      const rect = cv.getBoundingClientRect();
+      W = rect.width; H = rect.height;
+      cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.max(28, Math.min(64, Math.floor(W * H / 22000)));
+      nodes = [];
+      for (let i = 0; i < count; i++) {
+        nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, r: Math.random() * 1.6 + .8 });
+      }
+    };
+    build();
+    this._onResize = build; addEventListener('resize', this._onResize);
+    this._onMove = (e) => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; };
+    addEventListener('pointermove', this._onMove, { passive: true });
+    const LINK = 132;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      for (const n of nodes) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
+        const dm = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+        if (dm < 150) { const f = (150 - dm) / 150 * .6; n.x += (mouse.x - n.x) / dm * f; n.y += (mouse.y - n.y) / dm * f; }
+      }
+      // links
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < LINK) {
+            const al = (1 - d / LINK) * .22;
+            ctx.strokeStyle = `rgba(0,229,160,${al})`; ctx.lineWidth = .7;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      // mouse links
+      for (const n of nodes) {
+        const d = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+        if (d < 170) {
+          const al = (1 - d / 170) * .5;
+          ctx.strokeStyle = `rgba(0,229,160,${al})`; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+      }
+      // nodes
+      for (const n of nodes) {
+        const d = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+        const near = d < 170;
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r + (near ? 1 : 0), 0, 7);
+        ctx.fillStyle = near ? 'rgba(0,229,160,.95)' : 'rgba(120,200,180,.5)';
+        if (near) { ctx.shadowColor = 'rgba(0,229,160,.9)'; ctx.shadowBlur = 10; } else ctx.shadowBlur = 0;
+        ctx.fill(); ctx.shadowBlur = 0;
+      }
+      this._raf = requestAnimationFrame(draw);
+    };
+    draw();
+  }
+  _renderStaticCanvas() {
+    const cv = this._canvas; if (!cv) return;
+    const ctx = cv.getContext('2d'); const r = cv.getBoundingClientRect();
+    cv.width = r.width; cv.height = r.height;
+    for (let i = 0; i < 30; i++) { ctx.beginPath(); ctx.arc(Math.random() * r.width, Math.random() * r.height, 1.4, 0, 7); ctx.fillStyle = 'rgba(120,200,180,.4)'; ctx.fill(); }
+  }
+
+  // ---------- lead finder ----------
+  _mockLeads(nicho, regiao) {
+    const N = nicho || 'empresas';
+    const R = regiao || 'sua região';
+    const stems = ['Aurora', 'Vértice', 'Nova', 'Prime', 'Orion', 'Vale Verde', 'Atlas', 'Lumen', 'Polo', 'Costa', 'Horizonte', 'Matriz'];
+    const tipo = /clinic|odont|saúde|saude|médic|medic|estét|estet/i.test(N) ? 'Clínica'
+      : /escrit|advoc|jurí|juri|legal/i.test(N) ? 'Escritório'
+      : /restaur|food|aliment|gastr/i.test(N) ? 'Restaurante'
+      : /imob|imóv|imov|corret/i.test(N) ? 'Imobiliária'
+      : /loja|varejo|comérc|comerc|ecom/i.test(N) ? 'Loja'
+      : 'Grupo';
+    const slug = (N.split(/[\s,]+/)[0] || 'lead').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const pick = () => stems.splice(Math.floor(Math.random() * stems.length), 1)[0];
+    const out = [];
+    const total = 6;
+    for (let i = 0; i < total; i++) {
+      const name = pick() || ('Lead ' + (i + 1));
+      const score = Math.floor(55 + Math.random() * 44);
+      const scoreColor = score >= 85 ? '#00E5A0' : score >= 70 ? '#7fd6ff' : '#97A1B4';
+      const dd = 50 + Math.floor(Math.random() * 49);
+      const nn = 1000 + Math.floor(Math.random() * 8999);
+      out.push({
+        id: 'ld' + Date.now() + i,
+        empresa: `${tipo} ${name}`,
+        contato: `contato@${slug}${i + 1}.com.br · ${R}`,
+        fone: `(53) 9${dd}${String(nn).slice(0,2)}-${String(nn).slice(0,4)}`,
+        initials: (tipo[0] + name[0]).toUpperCase(),
+        score, scoreColor, col: 'novo',
+      });
+    }
+    return out.sort((a, b) => b.score - a.score);
+  }
+
+  runScan = () => {
+    if (this.state.scanState === 'scanning') return;
+    const nicho = (this._nicho && this._nicho.value) || '';
+    const regiao = (this._regiao && this._regiao.value) || '';
+    const lines = [
+      'inicializando crawler...',
+      'consultando fontes públicas...',
+      `filtrando por "${nicho || 'nicho'}"...`,
+      `cruzando região "${regiao || '—'}"...`,
+      'calculando score de qualificação...',
+    ];
+    this.setState({ scanState: 'scanning', leads: [], scanLine: lines[0] });
+    let i = 0;
+    const t = setInterval(() => {
+      i++;
+      if (i < lines.length) { this.setState({ scanLine: lines[i] }); }
+      else {
+        clearInterval(t);
+        this.setState({ scanState: 'done', leads: this._mockLeads(nicho, regiao) });
+      }
+    }, this._reduced ? 120 : 620);
+    this.timers.push(t);
+  };
+
+  onDragStart = (e) => { this.dragId = e.currentTarget.dataset.id; e.dataTransfer.effectAllowed = 'move'; try { e.dataTransfer.setData('text/plain', this.dragId); } catch (x) {} };
+  allowDrop = (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; };
+  onDrop = (e) => {
+    e.preventDefault();
+    const col = e.currentTarget.dataset.col;
+    const id = this.dragId || (e.dataTransfer && e.dataTransfer.getData('text/plain'));
+    if (!id) return;
+    this.setState(s => ({ leads: s.leads.map(l => l.id === id ? { ...l, col } : l) }));
+    this.dragId = null;
+  };
+
+  // ---------- nav / menu ----------
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+
+  // ---------- filter ----------
+  setFilter = (e) => this.setState({ filter: e.currentTarget.dataset.f });
+
+  // ---------- modals ----------
+  stop = (e) => e.stopPropagation();
+  openDemo = (e) => {
+    const k = e.currentTarget.dataset.k;
+    (this.timers || []).forEach(clearInterval);
+    this.timers = this.timers.filter(() => false);
+    this.setState({ modal: k, lexraItems: [], liveStep: 0, surebet: [], sextaLog: [], sextaActive: null });
+    if (k === 'lexra') this._startLexra();
+    if (k === 'surebet') this._startSurebet();
+  };
+  closeDemo = () => { (this.timers || []).forEach(clearInterval); this.timers = []; this.setState({ modal: null }); };
+
+  _startLexra() {
+    const feed = [
+      { d: '18/06 09:12', t: 'Petição inicial protocolada', tag: 'distribuição' },
+      { d: '18/06 14:40', t: 'Concluso para despacho', tag: 'andamento' },
+      { d: '19/06 08:05', t: 'Despacho: cite-se o réu', tag: 'decisão' },
+      { d: '20/06 16:22', t: 'Juntada de AR — citação cumprida', tag: 'andamento' },
+      { d: '23/06 10:00', t: 'Prazo p/ contestação aberto (15d)', tag: 'prazo' },
+    ];
+    let i = 0;
+    const t = setInterval(() => {
+      if (i >= feed.length) { clearInterval(t); return; }
+      const item = feed[i]; i++;
+      this.setState(s => ({ lexraItems: [...s.lexraItems, item] }));
+    }, this._reduced ? 200 : 1100);
+    this.timers.push(t);
+  }
+  restartLexra = () => { this.setState({ lexraItems: [] }); this._startLexra(); };
+
+  liveAdvance = () => this.setState(s => ({ liveStep: Math.min(4, s.liveStep + 1) }));
+  liveReset = () => this.setState({ liveStep: 0 });
+
+  _startSurebet() {
+    const evs = [
+      { m: 'Grêmio x Internacional', mk: 'Vencedor', a: 2.10, b: 2.05, sure: true },
+      { m: 'Flamengo x Palmeiras', mk: 'Over 2.5', a: 1.95, b: 1.92, sure: false },
+      { m: 'Boca x River', mk: 'Dupla chance', a: 1.45, b: 3.40, sure: true },
+      { m: 'Santos x Corinthians', mk: 'Ambas marcam', a: 1.80, b: 2.00, sure: false },
+    ];
+    let i = 0;
+    const t = setInterval(() => {
+      const ev = evs[i % evs.length]; i++;
+      this.setState(s => ({ surebet: [{ ...ev, id: 'e' + Date.now() + i }, ...s.surebet].slice(0, 5) }));
+    }, this._reduced ? 300 : 1500);
+    this.timers.push(t);
+  }
+
+  runSexta = (e) => {
+    const cmd = e.currentTarget.dataset.cmd;
+    const map = {
+      'agenda': 'Você tem 3 reuniões hoje. A próxima é às 14h com a equipe WAVE. Bloqueei 30min antes para preparo.',
+      'resumo': 'Resumo do dia: 12 leads novos (4 qualificados), CPL caiu 18%, 2 conteúdos publicados pela Nyra.',
+      'foco': 'Modo foco ativado. Notificações silenciadas por 50min. Brann assume o atendimento enquanto isso.',
+      'briefing': 'Briefing pronto: 3 oportunidades quentes no CRM aguardando follow-up. Quer que o Brann dispare?',
+    };
+    this.setState(s => ({ sextaActive: cmd, sextaLog: [{ cmd, resp: map[cmd], id: 'x' + Date.now() }, ...s.sextaLog].slice(0, 4) }));
+  };
+
+  // ---------- refs ----------
+  rootRef = (el) => { this._root = el; };
+  navRef = (el) => { this._nav = el; };
+  canvasRef = (el) => { this._canvas = el; };
+  nichoRef = (el) => { this._nicho = el; };
+  regiaoRef = (el) => { this._regiao = el; };
+
+  // ---------- render ----------
+  renderVals() {
+    const st = this.state;
+    const scanState = st.scanState;
+    const leads = st.leads;
+    const isScanning = scanState === 'scanning';
+    const isIdle = scanState === 'idle';
+    const showLeads = scanState === 'done' && leads.length > 0;
+
+    // filters
+    const filters = [
+      { key: 'all', label: 'Todos' },
+      { key: 'LegalTech', label: 'LegalTech' },
+      { key: 'Conteúdo', label: 'Conteúdo' },
+      { key: 'Agente', label: 'Agente' },
+      { key: 'Dados', label: 'Dados' },
+    ].map(f => {
+      const active = st.filter === f.key;
+      return { ...f, bg: active ? '#00E5A0' : 'rgba(255,255,255,.04)', bd: active ? '#00E5A0' : 'rgba(255,255,255,.1)', fg: active ? '#04130D' : '#97A1B4' };
+    });
+
+    const R = React.createElement;
+    const svg = (ch) => R('svg', { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: '#fff', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }, ch);
+    const projects = [
+      { key: 'lexra', cat: 'LegalTech · SaaS', title: 'Lexra', cats: ['LegalTech', 'Dados'],
+        cover: 'linear-gradient(135deg,#1e3a5f,#2563eb)',
+        icon: svg([R('path', { key: 1, d: 'M3 6v13a1 1 0 0 0 1 1h16' }), R('path', { key: 2, d: 'M7 16l3-4 3 3 4-6' })]),
+        desc: 'Monitoramento automatizado de processos judiciais — andamentos em tempo real com alerta via bot.' },
+      { key: 'live', cat: 'Conteúdo · Vídeo', title: 'Ginkgo Live Agent', cats: ['Conteúdo', 'Agente'],
+        cover: 'linear-gradient(135deg,#7a3d12,#FF9D3C)',
+        icon: svg([R('rect', { key: 1, x: 2, y: 5, width: 14, height: 14, rx: 2 }), R('path', { key: 2, d: 'm22 8-6 4 6 4Z' })]),
+        desc: 'Pipeline de vídeo curto com avatar de IA: trend → roteiro → vídeo → aprovação → publicado.' },
+      { key: 'surebet', cat: 'Dados · Agente', title: 'Surebet / Sports Bot', cats: ['Dados', 'Agente'],
+        cover: 'linear-gradient(135deg,#0e5f4a,#00E5A0)',
+        icon: svg([R('path', { key: 1, d: 'M3 3v18h18' }), R('path', { key: 2, d: 'm19 9-5 5-3-3-4 4' })]),
+        desc: 'Monitoramento esportivo ao vivo com cálculo automático de oportunidades de arbitragem.' },
+      { key: 'sexta', cat: 'Agente · Orquestrador', title: 'Sexta-feira', cats: ['Agente'],
+        cover: 'linear-gradient(135deg,#0e3a5f,#2BD3FF)',
+        icon: svg([R('circle', { key: 1, cx: 12, cy: 12, r: 3.5 }), R('path', { key: 2, d: 'M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2' })]),
+        desc: 'Orquestrador pessoal autônomo ("Jarvis"): dashboard cyberpunk respondendo a comandos.' },
+    ];
+    const shownProjects = projects.filter(p => st.filter === 'all' || p.cats.includes(st.filter));
+    const vis = (cats) => st.filter === 'all' || cats.includes(st.filter);
+
+    const imagineSteps = [
+      { n: '01', title: 'Ideia', desc: 'Você traz a dor ou a oportunidade — sem formalidade, só o problema real.' },
+      { n: '02', title: 'Arquitetura', desc: 'Desenhamos o sistema, agentes, limites e métricas antes de uma linha de código.' },
+      { n: '03', title: 'Construção faseada', desc: 'Implementação testável e incremental, com integrações reais.' },
+      { n: '04', title: 'Entrega em produção', desc: 'Vai ao ar com observabilidade, segurança e custo sob controle.' },
+      { n: '05', title: 'Operação contínua', desc: 'Monitoramento e evolução — o sistema se sustenta sozinho.' },
+    ];
+
+    // modal content
+    const modalKey = st.modal;
+    const modalTitleMap = { lexra: 'Lexra — monitor de processos', live: 'Ginkgo Live Agent — pipeline', sexta: 'Shion — orquestrador' };
+
+    return {
+      menuOpen: st.menuOpen, toggleMenu: this.toggleMenu, closeMenu: this.closeMenu,
+      rootRef: this.rootRef, navRef: this.navRef, canvasRef: this.canvasRef,
+      nichoRef: this.nichoRef, regiaoRef: this.regiaoRef,
+      // lead finder
+      runScan: this.runScan,
+      scanLabel: isScanning ? 'Escaneando…' : (showLeads ? 'Escanear de novo' : 'Escanear leads'),
+      scanStatusText: isScanning ? '⟳ varrendo fontes' : showLeads ? '✓ scan concluído' : 'aguardando scan',
+      leadCountText: showLeads ? leads.length + ' leads' : '',
+      scanLine: st.scanLine,
+      isScanning, isIdle, showLeads,
+      scanLeads: leads,
+      onDragStart: this.onDragStart, allowDrop: this.allowDrop, onDrop: this.onDrop,
+      leadsNovo: leads.filter(l => l.col === 'novo'),
+      leadsQual: leads.filter(l => l.col === 'qualificado'),
+      leadsContato: leads.filter(l => l.col === 'contato'),
+      countNovo: leads.filter(l => l.col === 'novo').length,
+      countQual: leads.filter(l => l.col === 'qualificado').length,
+      countContato: leads.filter(l => l.col === 'contato').length,
+      // portfolio
+      filters, setFilter: this.setFilter, shownProjects,
+      openDemo: this.openDemo,
+      visLexra: vis(['LegalTech', 'Dados']),
+      visLive: vis(['Conteúdo', 'Agente']),
+      visSurebet: vis(['Dados', 'Agente']),
+      visSexta: vis(['Agente']),
+      imagineSteps,
+      // modal shell
+      modalOpen: !!st.modal, closeDemo: this.closeDemo, stop: this.stop,
+      modalKey, modalTitle: modalTitleMap[modalKey] || '',
+      modalBody: this._renderModalBody(modalKey),
+    };
+  }
+
+  _renderModalBody(k) {
+    const R = React.createElement;
+    if (k === 'lexra') return this._lexraBody(R);
+    if (k === 'live') return this._liveBody(R);
+    if (k === 'surebet') return this._surebetBody(R);
+    if (k === 'sexta') return this._sextaBody(R);
+    return null;
+  }
+
+  _lexraBody(R) {
+    const items = this.state.lexraItems;
+    const last = items[items.length - 1];
+    return R('div', {},
+      R('p', { style: { fontSize: '14px', color: '#97A1B4', margin: '0 0 18px', lineHeight: 1.6 } }, 'Processo nº 5012345-67.2026.8.21.0019 — andamentos chegando em tempo real. Cada movimentação dispara um alerta no bot.'),
+      last ? R('div', { style: { display: 'flex', gap: '11px', alignItems: 'center', background: 'rgba(0,229,160,.08)', border: '1px solid rgba(0,229,160,.28)', borderRadius: '11px', padding: '12px 14px', marginBottom: '18px' } },
+        R('div', { style: { width: '30px', height: '30px', borderRadius: '8px', background: 'rgba(0,229,160,.15)', display: 'grid', placeItems: 'center', flex: 'none', fontSize: '15px' } }, '🔔'),
+        R('div', {}, R('div', { style: { fontSize: '12px', fontFamily: "'JetBrains Mono',monospace", color: '#00E5A0' } }, 'ALERTA BOT · WhatsApp'), R('div', { style: { fontSize: '13.5px', color: '#E8EEF5' } }, last.t))
+      ) : null,
+      R('div', { style: { position: 'relative', paddingLeft: '22px' } },
+        R('div', { style: { position: 'absolute', left: '6px', top: '4px', bottom: '4px', width: '2px', background: 'rgba(255,255,255,.1)' } }),
+        items.length === 0 ? R('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '12px', color: '#5E6779' } }, 'consultando tribunal…') :
+          items.map((it, i) => R('div', { key: i, style: { position: 'relative', marginBottom: '16px' } },
+            R('div', { style: { position: 'absolute', left: '-22px', top: '3px', width: '12px', height: '12px', borderRadius: '50%', background: '#0c1220', border: '2px solid #00E5A0' } }),
+            R('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '11px', color: '#5E6779' } }, it.d + ' · ' + it.tag),
+            R('div', { style: { fontSize: '14px', color: '#E8EEF5', marginTop: '2px' } }, it.t)
+          ))
+      ),
+      R('button', { onClick: this.restartLexra, style: { marginTop: '8px', fontSize: '13px', fontWeight: 600, padding: '9px 16px', borderRadius: '9px', background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.14)', color: '#97A1B4', cursor: 'pointer' } }, '↻ Reiniciar')
+    );
+  }
+
+  _liveBody(R) {
+    const step = this.state.liveStep;
+    const steps = [
+      { t: 'Trend detectada', d: 'Hook em alta no nicho — janela de 6h', ic: '🔥' },
+      { t: 'Roteiro gerado', d: 'Gancho + 3 bullets + CTA, 32s', ic: '📝' },
+      { t: 'Vídeo montado', d: 'Avatar de IA + legenda + trilha', ic: '🎬' },
+      { t: 'Aprovação', d: 'Revisão humana — 1 clique', ic: '✅' },
+      { t: 'Publicado', d: 'Reels · TikTok · Shorts · feed', ic: '🚀' },
+    ];
+    return R('div', {},
+      R('p', { style: { fontSize: '14px', color: '#97A1B4', margin: '0 0 20px', lineHeight: 1.6 } }, 'Da tendência ao post no ar. Avance pelas etapas — cada uma é um estágio real do pipeline.'),
+      R('div', { style: { display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' } },
+        steps.map((s, i) => {
+          const done = i < step, active = i === step;
+          return R('div', { key: i, style: { display: 'flex', alignItems: 'center', gap: '13px', padding: '13px 15px', borderRadius: '12px', background: active ? 'rgba(255,157,60,.1)' : done ? 'rgba(0,229,160,.06)' : 'rgba(255,255,255,.03)', border: '1px solid ' + (active ? 'rgba(255,157,60,.4)' : done ? 'rgba(0,229,160,.25)' : 'rgba(255,255,255,.08)'), opacity: i <= step ? 1 : .45, transition: 'all .3s' } },
+            R('div', { style: { width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(0,0,0,.3)', display: 'grid', placeItems: 'center', fontSize: '17px', flex: 'none' } }, done ? '✓' : s.ic),
+            R('div', { style: { flex: 1 } }, R('div', { style: { fontSize: '14px', fontWeight: 600, color: '#E8EEF5' } }, s.t), R('div', { style: { fontSize: '12px', color: '#97A1B4' } }, s.d)),
+            active ? R('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '10px', color: '#FF9D3C' } }, '● agora') : null
+          );
+        })
+      ),
+      R('div', { style: { display: 'flex', gap: '10px' } },
+        step < 4 ? R('button', { onClick: this.liveAdvance, style: { fontSize: '14px', fontWeight: 600, padding: '11px 20px', borderRadius: '10px', background: '#FF9D3C', border: 'none', color: '#241803', cursor: 'pointer' } }, 'Avançar etapa →')
+          : R('div', { style: { fontSize: '14px', fontWeight: 600, color: '#00E5A0', padding: '11px 0' } }, '✓ Conteúdo no ar em 4 redes'),
+        step > 0 ? R('button', { onClick: this.liveReset, style: { fontSize: '13px', fontWeight: 600, padding: '11px 18px', borderRadius: '10px', background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.14)', color: '#97A1B4', cursor: 'pointer' } }, '↻ Reiniciar') : null
+      )
+    );
+  }
+
+  _surebetBody(R) {
+    const feed = this.state.surebet;
+    return R('div', {},
+      R('p', { style: { fontSize: '14px', color: '#97A1B4', margin: '0 0 18px', lineHeight: 1.6 } }, 'Feed de eventos ao vivo. O bot cruza odds de casas diferentes e sinaliza arbitragem (lucro garantido) automaticamente.'),
+      R('div', { style: { display: 'flex', flexDirection: 'column', gap: '9px' } },
+        feed.length === 0 ? R('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '12px', color: '#5E6779', padding: '10px 0' } }, 'conectando ao feed…') :
+          feed.map((ev) => {
+            const inv = (1 / ev.a + 1 / ev.b); const profit = ((1 / inv - 1) * 100);
+            const sure = ev.sure && profit > 0;
+            return R('div', { key: ev.id, style: { padding: '13px 15px', borderRadius: '12px', background: sure ? 'rgba(0,229,160,.08)' : 'rgba(255,255,255,.03)', border: '1px solid ' + (sure ? 'rgba(0,229,160,.35)' : 'rgba(255,255,255,.08)') } },
+              R('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' } },
+                R('span', { style: { fontSize: '14px', fontWeight: 600, color: '#E8EEF5' } }, ev.m),
+                sure ? R('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '10px', fontWeight: 600, color: '#04130D', background: '#00E5A0', padding: '3px 8px', borderRadius: '6px' } }, 'SUREBET +' + profit.toFixed(1) + '%') : R('span', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '10px', color: '#5E6779' } }, 'sem arbitragem')
+              ),
+              R('div', { style: { display: 'flex', gap: '18px', fontFamily: "'JetBrains Mono',monospace", fontSize: '11.5px', color: '#97A1B4' } },
+                R('span', {}, ev.mk),
+                R('span', {}, 'Casa A ', R('b', { style: { color: '#E8EEF5' } }, ev.a.toFixed(2))),
+                R('span', {}, 'Casa B ', R('b', { style: { color: '#E8EEF5' } }, ev.b.toFixed(2)))
+              )
+            );
+          })
+      )
+    );
+  }
+
+  _sextaBody(R) {
+    const log = this.state.sextaLog;
+    const active = this.state.sextaActive;
+    const cmds = [
+      { c: 'agenda', l: 'Minha agenda hoje' },
+      { c: 'resumo', l: 'Resumo do dia' },
+      { c: 'foco', l: 'Ativar modo foco' },
+      { c: 'briefing', l: 'Briefing comercial' },
+    ];
+    return R('div', {},
+      R('div', { style: { display: 'flex', justifyContent: 'center', margin: '4px 0 20px' } },
+        R('div', { style: { position: 'relative', width: '110px', height: '110px', display: 'grid', placeItems: 'center' } },
+          R('div', { style: { position: 'absolute', inset: 0, borderRadius: '50%', background: 'radial-gradient(circle,rgba(43,211,255,.35),transparent 70%)', filter: 'blur(8px)', animation: this._reduced ? 'none' : 'gkOrb 2.6s ease-in-out infinite' } }),
+          R('div', { style: { position: 'relative', width: '74px', height: '74px', borderRadius: '50%', background: 'radial-gradient(circle at 35% 30%,#7fe6ff,#2BD3FF 55%,#0e3a5f)', boxShadow: '0 0 30px rgba(43,211,255,.6), inset 0 0 18px rgba(255,255,255,.4)', animation: this._reduced ? 'none' : 'gkOrb 2.6s ease-in-out infinite' } }),
+          active ? R('div', { style: { position: 'absolute', inset: '-6px', borderRadius: '50%', border: '2px solid rgba(43,211,255,.5)', animation: this._reduced ? 'none' : 'gkPulse 1.6s infinite' } }) : null
+        )
+      ),
+      R('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center', marginBottom: '18px' } },
+        cmds.map(c => R('button', { key: c.c, 'data-cmd': c.c, onClick: this.runSexta, style: { fontSize: '12.5px', fontWeight: 500, padding: '9px 14px', borderRadius: '9px', cursor: 'pointer', background: active === c.c ? 'rgba(43,211,255,.18)' : 'rgba(255,255,255,.04)', border: '1px solid ' + (active === c.c ? 'rgba(43,211,255,.5)' : 'rgba(255,255,255,.12)'), color: active === c.c ? '#7fd6ff' : '#97A1B4' } }, c.l))
+      ),
+      R('div', { style: { display: 'flex', flexDirection: 'column', gap: '10px' } },
+        log.length === 0 ? R('div', { style: { textAlign: 'center', fontSize: '13px', color: '#5E6779', fontFamily: "'JetBrains Mono',monospace" } }, 'aguardando comando…') :
+          log.map(l => R('div', { key: l.id, style: { background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.08)', borderRadius: '12px', padding: '13px 15px' } },
+            R('div', { style: { fontFamily: "'JetBrains Mono',monospace", fontSize: '11px', color: '#7fd6ff', marginBottom: '5px' } }, '▸ ' + l.cmd),
+            R('div', { style: { fontSize: '13.5px', color: '#E8EEF5', lineHeight: 1.55 } }, l.resp)
+          ))
+      )
+    );
+  }
+}
+</script>
+</body>
+</html>
