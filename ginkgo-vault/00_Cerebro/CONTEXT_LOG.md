@@ -10,3 +10,5 @@
 | 2026-07-16 | Clippings | Segurança de agentes, verticalização e operação WhatsApp foram destiladas como hipóteses/recomendações, sem alterar o produto automaticamente. | hipótese | `Insights/2026-07-16-triagem-de-clippings.md` |
 
 <!-- Adicione entradas novas no topo. Não registre segredos, PII ou dados de cliente. -->
+
+- 2026-08-03 — Fundação da Sylvia: renomeação (ex-Sexta-feira), constituição SYLVIA.md, protocolos cognicao/, empresas/ (Ginkgo + Scale Group), runtime/ reorganizado, repo git criado; runtime alvo OpenClaw; pendências: push GitHub + revogar PAT + dossiês. [comprovado: commit]

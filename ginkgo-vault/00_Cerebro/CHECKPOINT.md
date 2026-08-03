@@ -1,10 +1,10 @@
-# Checkpoint da Sexta-feira
+# Checkpoint da Sylvia
 
-> Atualizado em 2026-07-16. Leia depois de `00_INDEX.md` e antes de executar trabalho novo.
+> Atualizado em 2026-08-03. Leia depois de `00_INDEX.md` e antes de executar trabalho novo. A assistente foi renomeada: **Sexta-feira → Sylvia** (constituição nova em `../../SYLVIA.md`).
 
 ## Estado vivo
 
-- **Papel da Sexta-feira:** assistente pessoal completa do fundador — estrategista, gestora e operadora privada da Ginkgo, com acesso contextual às ferramentas, serviços e à biblioteca de trabalho autorizados. Acesso não elimina confirmação para efeitos externos, gastos, publicação, deleção ou ação sobre cliente.
+- **Papel da Sylvia:** inteligência executiva da holding (Ginkgo + Scale Group) — pensa e dirige como CEO; o fundador opera e decide como dono, com gates de autonomia (`cognicao/AUTONOMIA.md`). Assistente pessoal completa do fundador — estrategista, gestora e operadora privada da Ginkgo, com acesso contextual às ferramentas, serviços e à biblioteca de trabalho autorizados. Acesso não elimina confirmação para efeitos externos, gastos, publicação, deleção ou ação sobre cliente.
 - **Topologia operacional:** `C:\sexta-feira` é o centro de comando e memória; `75_Studio` é agenciamento ativo de clientes, Ginkgo Motor e redes da Ginkgo; `C:\dev` é desenvolvimento, testes e produção.
 - **Foco de produto:** LEAF é o produto recorrente; agência manual valida operações antes de PYRE/WAVE virarem SaaS.
 - **Saída do LEAF:** o produto está no caminho de sair de testes para produção e receber usuários. Só considerar a transição concluída com prova de fluxo crítico, isolamento, observabilidade e operação de suporte.
@@ -13,21 +13,21 @@
 - **PYRE:** benchmark de referência StudioBanana foi salvo em `50_Plataformas/benchmark_studiobanana_pyre.md`. Aplicar somente princípios adaptados: job real, ativo versionado, aprovação humana e handoff verificável ao WAVE.
 - **InfraNodus:** hipótese de integração futura somente como análise opt-in de lacunas de conhecimento/PYRE. Não substitui o RAG factual do LEAF nem recebe conversas brutas de tenants.
 
-## Consolidação desta sessão
+## Consolidação desta sessão (2026-08-03 — fundação da Sylvia)
 
-- Criado o cérebro canônico em `00_Cerebro/`, com protocolo de retomada, checkpoint, handoff, log e ledger.
-- O gravador de memória foi redirecionado ao ledger canônico e validado: aceita entradas classificadas e recusa marcadores óbvios de segredo.
-- Inventariados 126 clippings textuais: 75 de julho e 51 de junho; identificadas duplicatas exatas e um acervo legado/multimídia sem classificação atual.
-- Triagem inicial produziu quatro temas prioritários: segurança de agentes, arquitetura/agentes verticais, operação comercial WhatsApp e projetos de conteúdo/Studio.
-- Conversas recentes da Sexta-feira foram resumidas sem copiar transcrições, credenciais, PII ou dados de cliente.
-- A identidade de operação foi corrigida: Studio não é trilha secundária; é a frente de agenciamento ativa. O Orb com voz feminina e chat textual é a interface-alvo, ainda pendente de conexão ao runtime.
+- **Renomeação e constituição**: Sexta-feira → Sylvia. Constituição em `SYLVIA.md` (raiz) + adaptadores `AGENTS.md`/`SOUL.md`/`CLAUDE.md` + protocolos em `cognicao/` (memória, triagem de clippings, autonomia A0–A3, heartbeat).
+- **Reorganização**: runtime legado (hermes, bridges, callima, db, dashboard-orb, memory) movido para `runtime/`; camada de negócio criada em `empresas/` (ecossistema Ginkgo + 10 perfis de produto + briefs fonte + Scale Group) e `operacao/` (contas/canais, financeiro). Mapa completo em `MIGRATION.md`.
+- **Runtime alvo decidido**: OpenClaw (canais, heartbeat, skills); Claude Cowork/Code como oficina; n8n como automação determinística; Hermes em desativação (`runtime/openclaw/SETUP.md`).
+- **Repo git `sylvia` criado** no centro de comando (commit de nascimento, ~1,5 mil arquivos, sem segredos; vip-gabi e zavan-landing seguem como repos independentes fora do índice). Push ao GitHub privado via `subir_github.ps1` (executar no Windows).
+- Decisão registrada em `Decisoes/2026-08-03-sylvia-constituicao-e-repo.md`.
 
 ## Próxima sequência de maior retorno
 
-1. Preparar a saída do LEAF para usuários: provar o QR ponta a ponta, isolamento por organização, suporte manual, logs e rollback antes de abrir acesso.
-2. Configurar e testar Gabbih manualmente: entrada → plano → pagamento teste → webhook → VIP → conciliação → expiração.
-3. Usar os insights de segurança para endurecer o ambiente de agentes em WSL/ambiente isolado, sem alterar produção por impulso.
-4. Promover do legado apenas material comparado ao estado atual do produto; o restante permanece arquivado.
+1. Executar `subir_github.ps1`, confirmar o repo privado `sylvia` no GitHub e **revogar o PAT** usado (foi colado em chat).
+2. Instalar OpenClaw e cumprir a Fase 1 da Sylvia (Telegram + boot + memória + heartbeat) — critério de pronto em `runtime/openclaw/SETUP.md`.
+3. Gerar os dossiês comerciais a partir de `empresas/*/briefs_fonte/` (um por produto + ecossistema + Scale Group), com revisão do fundador.
+4. Preparar a saída do LEAF para usuários: provar o QR ponta a ponta, isolamento por organização, suporte manual, logs e rollback antes de abrir acesso.
+5. Triagem do backlog de clippings até zerar `00_Inbox` e depurar `20_Conhecimento/Referencias`; preencher `operacao/CONTAS_E_CANAIS.md`.
 
 ## Regras de atualização
 
