@@ -1,5 +1,7 @@
 # Sexta-feira — Arquitetura (Fase 1: "a espinha")
 
+> **HISTÓRICO — arquitetura v1.** Este documento preserva o desenho original da Sexta-feira com Hermes como core. A arquitetura atual da Sylvia mantém **OpenClaw como cérebro/runtime principal** e reposiciona **Hermes como execution runtime governado**. Ver `SYLVIA.md` e `docs/feature_sylvia_execution_fabric.md`. Não usar este arquivo como fonte atual para a divisão de responsabilidades OpenClaw/Hermes.
+
 Orquestrador pessoal autônomo do fundador (Gabriel). NÃO é produto, NÃO atende
 clientes. Fica por cima do stack `leaf` e comanda os braços executores.
 

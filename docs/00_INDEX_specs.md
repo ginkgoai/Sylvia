@@ -4,9 +4,20 @@ Visão geral de tudo que está specado, status e ordem. Atualizar a cada entrega
 Convenção de status: ✅ feito · 🔧 em build (Claude Code) · 📋 specado (na fila) · ⛔ bloqueado (founder).
 
 ## Arquitetura
+- **Sylvia Execution Fabric** — OpenClaw cérebro + Agent OS governança + Hermes executor + Coding Fabric (OpenCode/Codex/Claude Code) → `feature_sylvia_execution_fabric.md` · 📋
 - Suíte (1 login → apps Leaf/Wave/Pyre, carteira GTK única, governança Laplace) → `suite_arquitetura_spec.md`
 - Roster de agentes: Leaf=Brann · Pyre=Nyra · Wave=Alfred · Callima=secretária do cliente → `roster_agentes_ginkgo.md`
 - Visão/loop do ecossistema → `ecossistema_ginkgo_visao.md`
+
+## Infra / runtime da Sylvia
+| # | Item | Spec | Status |
+|---|------|------|--------|
+| S1 | Contrato de missão + policy gates | feature_sylvia_execution_fabric.md | 📋 |
+| S2 | Hermes como execution runtime | feature_sylvia_execution_fabric.md | 📋 |
+| S3 | OpenCode integrado ao Hermes | feature_sylvia_execution_fabric.md | 📋 |
+| S4 | GitHub branch/worktree + quality gates | feature_sylvia_execution_fabric.md | 📋 |
+| S5 | Coding Router: OpenCode/Codex/Claude Code | feature_sylvia_execution_fabric.md | 📋 |
+| S6 | Métricas, auditoria e custo por missão | feature_sylvia_execution_fabric.md | 📋 |
 
 ## Ordem de build (uma spec por vez pro Code)
 | # | Item | Spec | Status |
@@ -32,5 +43,4 @@ Leaf $79/$199/$499 · Wave $99/$249 · Pyre $99/$249 · Full $599 · top-ups GTK
 Detalhe: `pricing_tokenizado_ginkgo.md`.
 
 ## Ritmo de trabalho
-Founder envia 1 spec pro Claude Code → manda print da resposta → Sexta-feira(eu) revisa e
-prepara o próximo prompt. Uma de cada vez, PRs limpos, branch local até decidir publicar.
+Specs são executadas em branches/worktrees isolados e entregues em PRs limpas. Para missões de engenharia da Sylvia, o roteamento entre OpenCode, Codex e Claude Code segue `feature_sylvia_execution_fabric.md`; aprovação, merge e produção permanecem governados.
