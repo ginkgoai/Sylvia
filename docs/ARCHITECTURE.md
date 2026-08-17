@@ -1,64 +1,181 @@
-# Sexta-feira — Arquitetura (Fase 1: "a espinha")
+# Sylvia — Arquitetura Visual
 
-> **HISTÓRICO — arquitetura v1.** Este documento preserva o desenho original da Sexta-feira com Hermes como core. A arquitetura atual da Sylvia mantém **OpenClaw como cérebro/runtime principal** e reposiciona **Hermes como execution runtime governado**. Ver `SYLVIA.md` e `docs/feature_sylvia_execution_fabric.md`. Não usar este arquivo como fonte atual para a divisão de responsabilidades OpenClaw/Hermes.
+> Arquitetura atual da Sylvia v2.1. Fonte normativa: `SYLVIA.md`. Este documento substitui o diagrama histórico da antiga Sexta-feira como mapa operacional principal.
 
-Orquestrador pessoal autônomo do fundador (Gabriel). NÃO é produto, NÃO atende
-clientes. Fica por cima do stack `leaf` e comanda os braços executores.
+## 1. Mapa do sistema
 
-> **CALLIMA ≠ SEXTA-FEIRA.** Callima é o produto comercial (atendimento/vendas
-> via WhatsApp na Evolution API + n8n, número comercial). Sexta-feira pode
-> **observar** a Callima, mas nunca a personifica nem compartilha toolset.
+```mermaid
+flowchart TB
+    F[Fundador]
 
-## Diagrama
+    subgraph COG[Cognição e coordenação]
+        OC[OpenClaw\nCérebro e runtime principal]
+        CTX[Composição de contexto]
+        HB[Heartbeat e rotinas]
+        POL[Autonomia e políticas]
+    end
 
+    subgraph MEM[Memória institucional]
+        CON[SYLVIA.md\nConstituição]
+        BRAIN[ginkgo-vault/00_Cerebro\nMemória canônica]
+        INBOX[ginkgo-vault/00_Inbox\nClippings brutos]
+        BIZ[empresas/ + operacao/\nContexto de negócio]
+    end
+
+    subgraph GOV[Execution Fabric]
+        AOS[Agent OS\nPolicy, risco, orçamento e aprovação]
+        AUD[Auditoria e evidência]
+    end
+
+    subgraph EXEC[Executores]
+        H[Hermes\nExecution runtime]
+        N8N[n8n\nAutomações determinísticas]
+        CODE[Coding Fabric\nOpenCode / Codex / Claude Code]
+        MCP[MCPs e APIs]
+    end
+
+    subgraph DATA[Infra operacional]
+        PG[(Postgres)]
+        RD[(Redis)]
+        GH[GitHub\nFonte de verdade da engenharia]
+    end
+
+    F --> OC
+    OC --> CTX
+    CTX --> CON
+    CTX --> BRAIN
+    CTX --> BIZ
+    INBOX -->|triagem| BRAIN
+    HB --> OC
+    POL --> AOS
+    OC --> AOS
+    AOS --> H
+    AOS --> N8N
+    AOS --> CODE
+    H --> MCP
+    N8N --> PG
+    N8N --> RD
+    CODE --> GH
+    H --> AUD
+    N8N --> AUD
+    CODE --> AUD
+    AUD --> BRAIN
+    AOS -->|gate quando necessário| F
 ```
-            FUNDADOR (Gabriel)
-                  │
-      ┌───────────┴───────────┐
- Dashboard Orb            Telegram
- (voz+texto, web)         (adapter nativo Hermes)
-      │  HTTP OpenAI-compat       │
-      └───────────┬───────────────┘
-                  ▼
-        ┌────────────────────┐
-        │   HERMES AGENT     │  core (Nous Research, MIT) — NATIVO no Windows
-        │  gateway + loop    │
-        └─────────┬──────────┘
-   tools/skills:  │
-   ┌───────┬──────┴───────┬───────────────┐
-   ▼       ▼              ▼               ▼
- Claude   n8n REST     AnythingLLM    sexta.status_events
- (API)    (read-only)  (RAG)          (Postgres leaf)
- +MCP
+
+## 2. Fluxo de uma ação com efeito colateral
+
+```mermaid
+sequenceDiagram
+    participant F as Fundador
+    participant S as Sylvia / OpenClaw
+    participant A as Agent OS
+    participant E as Executor
+    participant X as Sistema externo
+    participant M as Memória/Auditoria
+
+    F->>S: objetivo ou instrução
+    S->>S: compõe contexto e intenção
+    S->>A: missão + risco + orçamento + escopo
+    A->>A: classifica política e permissões
+    alt ação exige aprovação
+        A-->>F: intenção + impacto + pedido de aprovação
+        F-->>A: aprova ou rejeita
+    end
+    A->>E: execução governada
+    E->>X: ação autorizada
+    X-->>E: resultado/evidência
+    E-->>A: status + evidência
+    A->>M: trilha auditável
+    A-->>S: resultado validado
+    S-->>F: síntese e próxima decisão
 ```
 
-## Decisões travadas (Fase 1)
+## 3. Memória e verdade
 
-| Tema | Decisão | Motivo |
-|---|---|---|
-| Runtime Hermes | **Nativo Windows (install.ps1)** | Doc oficial confirma suporte nativo (CLI, gateway, MCP, cron, browser). Só o painel PTY do dashboard é WSL2-only — não usamos. |
-| Local do projeto | **C:\sexta-feira** (sem espaços) | §7: paths com espaço quebram tooling Node (Orb e Hermes). Isolado do `compose stack`. |
-| Nome "hermes" | Stub FastAPI **aposentado** do leaf | Evitar colisão. "Hermes" = agente Nous. n8n/Postgres/Redis/Evolution = braços. |
-| Provider do cérebro | **Anthropic API key direta** | Acesso direto aos modelos Claude. |
-| Canal do Orb | **API Server OpenAI-compatible do Hermes** | Documentado (`hermes-api-server`, "Open WebUI + API Server"). Sem inventar protocolo. |
-| Status store | `sexta.status_events` no Postgres do leaf | Schema dedicado; role `sexta_app` só INSERT+SELECT (append-only §5). |
+```mermaid
+flowchart LR
+    RAW[Material bruto] --> IN[ginkgo-vault/00_Inbox]
+    IN --> TRI[Triagem de clippings]
+    TRI -->|comprovado / relatado / hipótese| CAN[ginkgo-vault/00_Cerebro]
+    CAN --> CP[CHECKPOINT / HANDOFF / CONTEXT_LOG]
+    CAN --> DEC[Decisões e Insights]
+    CAN --> BOOT[Boot da Sylvia]
+    BOOT --> ACT[Decisão / coordenação]
+    ACT --> LOG[Registro do que foi feito e por quê]
+    LOG --> CAN
 
-## Divergências spec × ferramenta (registradas)
+    EXT[Dados vivos de sistemas] --> VERIFY[Verificação na fonte real]
+    VERIFY --> ACT
+```
 
-1. **Windows nativo é suportado** (README do Hermes diz "só WSL2", mas a doc atual tem `install.ps1`). Usamos nativo.
-2. **Hermes não é serviço docker-compose** — instala via installer e roda como CLI/gateway. O `docker-compose.yml` do projeto cobre só o que é container (Orb); o leaf continua sendo o stack existente.
-3. **Hermes tem cron próprio** — conflita com "um relógio só (BullMQ)". Em Fase 1 autonomia está OFF; decidir o relógio único na Fase 2.
+Regra: conversa não registrada não é memória institucional; estado de sistema vivo não deve ser inferido da memória.
 
-## Gates de segurança (Fase 1)
+## 4. Coding Fabric
 
-- Toda ação com efeito colateral (enviar email, criar evento, disparar workflow)
-  **declara intenção e pede confirmação** antes de executar.
-- n8n: **read-only**. Disparo de workflow só com confirmação (dry-run por padrão).
-- `status_events`: **append-only**, `sexta_app` sem UPDATE/DELETE/TRUNCATE (provado).
-- Ads / gasto de dinheiro / escrita autônoma em prod: **fora de escopo**, não existe no código.
+```mermaid
+flowchart TD
+    NEED[Necessidade de engenharia] --> PLAN[Sylvia define escopo e acceptance criteria]
+    PLAN --> AOS[Agent OS classifica risco]
+    AOS --> WORKER{Selecionar executor}
+    WORKER --> OC[OpenCode\npreferencial para tarefa delimitada]
+    WORKER --> CX[Codex\nfallback / revisão]
+    WORKER --> CC[Claude Code\nfallback / revisão premium]
+    OC --> BR[Branch / worktree / sandbox]
+    CX --> BR
+    CC --> BR
+    BR --> TEST[Quality gates]
+    TEST --> REVIEW[Revisão]
+    REVIEW --> PR[Pull Request]
+    PR --> MERGE{Aprovação de merge}
+    MERGE -->|aprovado| MAIN[main]
+    MAIN --> DEPLOY{Gate separado de deploy}
+    DEPLOY --> PROD[Produção]
+```
 
-## Fora de escopo (Fase 1)
+Invariantes: nenhum coding worker recebe segredos; `main` não é alvo direto por padrão; merge e deploy são decisões separadas; `SUCCESS` exige quality gates aplicáveis.
 
-Meta/Google Ads, escrita autônoma em banco de prod, jobs cron autônomos
-(só preparar o gancho BullMQ), relatório completo de consumo de tokens.
-Não tocar no workflow CALLIMA nem no número comercial.
+## 5. Fronteiras do ecossistema
+
+```mermaid
+flowchart LR
+    S[Sylvia\nCEO cognitiva da holding]
+    G[Ginkgo AI Systems]
+    SC[Scale Group]
+    P[Operação pessoal/patrimonial autorizada]
+
+    S --> G
+    S --> SC
+    S --> P
+
+    G --> TREE[Tree / Laplace]
+    G --> LEAF[Leaf]
+    G --> CONNECT[Connect]
+    G --> WORK[Workforce]
+    G --> PYRE[Pyre]
+    G --> WAVE[Wave]
+    G --> AEGIS[Aegis]
+    G --> LEXRA[Lexra]
+    G --> COM[Commerce OS]
+    G --> LAB[AI Stack]
+
+    S -. não personifica .-> CALLIMA[Callima\nAgente comercial de cliente]
+```
+
+Sylvia governa a holding e prepara execução; não é um produto, não atende clientes e não compartilha identidade com Callima.
+
+## 6. Responsabilidades por camada
+
+| Camada | Responsabilidade |
+|---|---|
+| OpenClaw | intenção, contexto, heartbeat, coordenação e comunicação |
+| Agent OS | política, risco, orçamento, permissões, aprovação e auditoria |
+| Hermes | terminal, browser, skills, jobs, MCPs/APIs e delegação executiva |
+| n8n | processos repetíveis, integrações estáveis, retries e workflows aprovados |
+| Coding Fabric | implementação/revisão de engenharia com workers substituíveis |
+| GitHub | fonte de verdade técnica e fluxo branch/PR |
+| ginkgo-vault | memória institucional e biblioteca documental, sem segredos/PII |
+
+## 7. Histórico
+
+A arquitetura v1 da antiga **Sexta-feira** usava Hermes como núcleo. Ela foi sucedida pela Sylvia v2.x: OpenClaw tornou-se cérebro/runtime principal e Hermes passou a executor governado. Para decisões atuais, prevalecem `SYLVIA.md`, `cognicao/AUTONOMIA.md` e `docs/feature_sylvia_execution_fabric.md`.
