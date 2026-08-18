@@ -827,7 +827,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer H7Z8VCT-VQX466S-MG82W22-XXX1WW8"
+              "value": "Bearer ${ANYTHINGLLM_API_KEY}"
             },
             {
               "name": "Content-Type",
@@ -1488,7 +1488,7 @@
           "parameters": [
             {
               "name": "x-ginkgo-service-token",
-              "value": "gkcl_YlDB82SXDKi5VrWcw4Wa6Adb_5v823nL"
+              "value": "${GINGKO_TREE_INGEST_TOKEN}"
             },
             {
               "name": "Content-Type",
@@ -1578,7 +1578,7 @@
           "parameters": [
             {
               "name": "x-ginkgo-service-token",
-              "value": "gkcl_YlDB82SXDKi5VrWcw4Wa6Adb_5v823nL"
+              "value": "${GINGKO_TREE_INGEST_TOKEN}"
             },
             {
               "name": "Content-Type",
@@ -3117,7 +3117,7 @@
             "parameters": [
               {
                 "name": "Authorization",
-                "value": "Bearer H7Z8VCT-VQX466S-MG82W22-XXX1WW8"
+                "value": "Bearer ${ANYTHINGLLM_API_KEY}"
               },
               {
                 "name": "Content-Type",
@@ -3778,7 +3778,7 @@
             "parameters": [
               {
                 "name": "x-ginkgo-service-token",
-                "value": "gkcl_YlDB82SXDKi5VrWcw4Wa6Adb_5v823nL"
+                "value": "${GINGKO_TREE_INGEST_TOKEN}"
               },
               {
                 "name": "Content-Type",
@@ -3868,7 +3868,7 @@
             "parameters": [
               {
                 "name": "x-ginkgo-service-token",
-                "value": "gkcl_YlDB82SXDKi5VrWcw4Wa6Adb_5v823nL"
+                "value": "${GINGKO_TREE_INGEST_TOKEN}"
               },
               {
                 "name": "Content-Type",
